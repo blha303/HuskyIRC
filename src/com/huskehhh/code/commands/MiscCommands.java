@@ -9,7 +9,7 @@ public class MiscCommands extends ListenerAdapter {
 
 	String[] line = event.getMessage().split(" ");
 
-	if (event.getMessage().startsWith("!c")) {
+	if (event.getMessage().startsWith("!c ")) {
 	    if(line[1] != null) {
 		event.getBot().sendAction(event.getChannel(), "gives " + line[1] + " a cookie!");
 	    } else {
