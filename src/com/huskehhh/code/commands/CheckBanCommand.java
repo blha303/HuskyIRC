@@ -1,6 +1,7 @@
 package com.huskehhh.code.commands;
 
 import java.sql.ResultSet;
+
 import java.sql.SQLException;
 
 import org.pircbotx.hooks.ListenerAdapter;
@@ -10,6 +11,7 @@ import com.huskehhh.code.Config;
 
 import code.husky.mysql.MySQL;
 
+@SuppressWarnings("rawtypes")
 public class CheckBanCommand extends ListenerAdapter {
 
     MySQL mysql = new MySQL(Config.Ohostname,
@@ -42,7 +44,7 @@ public class CheckBanCommand extends ListenerAdapter {
         ResultSet rs = null;
         String query = "SELECT * FROM `bm_bans_pvp` WHERE `banned`='" + player + "';";
         try {
-            rs = mysql.open().createStatement().executeQuery(query);
+            rs = mysql.openConnection().createStatement().executeQuery(query);
             if(rs != null) {
                 rs.next();
                 if(rs.getString("banned") == null) {
@@ -63,7 +65,7 @@ public class CheckBanCommand extends ListenerAdapter {
         ResultSet rs = null;
         String query = "SELECT * FROM `mb_bans_onslaught` WHERE `banned`='" + player + "';";
         try {
-            rs = mysql.open().createStatement().executeQuery(query);
+            rs = mysql.openConnection().createStatement().executeQuery(query);
             if(rs != null) {
                 rs.next();
                 if(rs.getString("banned") == null) {
@@ -84,7 +86,7 @@ public class CheckBanCommand extends ListenerAdapter {
         ResultSet rs = null;
         String query = "SELECT * FROM `mb_bans_smp` WHERE `banned`='" + player + "';";
         try {
-            rs = mysql.open().createStatement().executeQuery(query);
+            rs = mysql.openConnection().createStatement().executeQuery(query);
             if(rs != null) {
                 rs.next();
                 if(rs.getString("banned") == null) {
@@ -106,7 +108,7 @@ public class CheckBanCommand extends ListenerAdapter {
 
         String query = "SELECT * FROM `mb_bans_battles` WHERE `banned`='" + player + "';";
         try {
-            rs = mysql.open().createStatement().executeQuery(query);
+            rs = mysql.openConnection().createStatement().executeQuery(query);
             if(rs != null) {
                 rs.next();
                 if(rs.getString("banned") == null) {

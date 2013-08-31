@@ -6,57 +6,100 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class MySQL extends Database
-{
-    String user = "";
-    String database = "";
-    String password = "";
-    String port = "";
-    String hostname = "";
-    Connection c = null;
+import code.husky.Database;
 
-    public MySQL(String hostname, String portnmbr, String database, String username, String password) {
+/**
+ * Connects to and uses a MySQL database
+ * 
+ * @author -_Husky_-
+ * @author tips48
+ */
+public class MySQL extends Database {
+    private final String user;
+    private final String database;
+    private final String password;
+    private final String port;
+    private final String hostname;
+
+    private Connection connection;
+
+    /**
+     * Creates a new MySQL instance
+     * 
+     * @param plugin
+     *            Plugin instance
+     * @param hostname
+     *            Name of the host
+     * @param portnmbr
+     *            Port number
+     * @param database
+     *            Database name
+     * @param username
+     *            Username
+     * @param password
+     *            Password
+     */
+    public MySQL(String hostname, String port, String database, String username, String password) {
         this.hostname = hostname;
-        this.port = portnmbr;
+        this.port = port;
         this.database = database;
         this.user = username;
         this.password = password;
+        this.connection = null;
     }
-    public Connection open() {
+
+    @Override
+    public Connection openConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            this.c = DriverManager.getConnection("jdbc:mysql://" + this.hostname + ":" + this.port + "/" + this.database, this.user, this.password);
-            return c;
+            connection = DriverManager.getConnection("jdbc:mysql://" + this.hostname + ":" + this.port + "/" + this.database, this.user, this.password);
         } catch (SQLException e) {
             System.out.println("Could not connect to MySQL server! because: " + e.getMessage());
         } catch (ClassNotFoundException e) {
             System.out.println("JDBC Driver not found!");
         }
-        return this.c;
+        return connection;
     }
+
+    @Override
     public boolean checkConnection() {
-        if (this.c != null) {
-            return true;
+        return connection != null;
+    }
+
+    @Override
+    public Connection getConnection() {
+        return connection;
+    }
+
+    @Override
+    public void closeConnection() {
+        if (connection != null) {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                System.out.println("Error closing the MySQL Connection!");
+                e.printStackTrace();
+            }
         }
-        return false;
     }
-    public Connection getConn() {
-        return this.c;
-    }
-    public void closeConnection(Connection c) {
-        c = null;
-    }
+
     public ResultSet querySQL(String query) {
 
-        Connection c = open();
+        Connection c = openConnection();
         Statement s = null;
-        ResultSet ret = null;
 
         try {
             s = c.createStatement();
-            return s.executeQuery(query);
         } catch (SQLException e1) {
             e1.printStackTrace();
+        }
+
+        ResultSet ret = null;
+
+        try {
+            ret = s.executeQuery(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
         return ret;
@@ -64,7 +107,7 @@ public class MySQL extends Database
 
     public void updateSQL(String update) {
 
-        Connection c = open();
+        Connection c = openConnection();
         Statement s = null;
 
         try {
@@ -75,4 +118,5 @@ public class MySQL extends Database
         }
 
     }
+
 }
