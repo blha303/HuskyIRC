@@ -29,8 +29,6 @@ public class JoinCommand extends ListenerAdapter {
                     if (admin[i].replaceAll(" ", "").equals(event.getUser().getNick())) {
                         HuskyIRC.bot.sendRawLineNow("join" + " " + channelarg);
                         event.respond("Attempted to join channel " + channelarg);
-                    } else {
-                        event.respond("What you doing here boy, ain't no work for you.");
                     }
                     
                 }

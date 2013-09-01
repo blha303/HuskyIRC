@@ -14,20 +14,18 @@ public class PartCommand extends ListenerAdapter {
 
             String channel = event.getMessage().split(" ")[1];
             if (event.getMessage().startsWith("!part ") && event.getMessage().contains(channel)) {
-                
+
                 String[] admin = Config.admins;
 
                 for(int i = 0; i<=admin.length; i++) {
-                    
+
                     if(admin[i] == null) return;
-                    
+
                     if (admin[i].replaceAll(" ", "").equals(event.getUser().getNick())) {
                         HuskyIRC.bot.sendRawLineNow("part" + " " + channel);
                         event.respond("Ciao! " + channel);
-                    } else {
-                        event.respond("What you doing here boy, ain't no work for you.");
                     }
-                    
+
                 }
 
             }
