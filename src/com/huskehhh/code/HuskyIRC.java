@@ -26,7 +26,7 @@ public class HuskyIRC {
 
             bot.setVersion("HuskyIRC Bot - Kudos to Zachoz for some code.");
 
-            bot.setLogin(Config.user);
+            bot.setLogin("HuskBot");
 
             bot.setName(Config.ircuser);
 
@@ -56,6 +56,7 @@ public class HuskyIRC {
     }
 
 
+    @SuppressWarnings("resource")
     public static void end() {
         Scanner reader = new Scanner(System.in);
         String command = reader.nextLine();
