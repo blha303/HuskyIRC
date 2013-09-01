@@ -34,7 +34,10 @@ public class CheckBanCommand extends ListenerAdapter {
             } else if (server.equalsIgnoreCase("pvp")) {
                 event.respond(pvpBan(player));
             } else {
-                event.respond(event.getUser().getNick() + "Unknown paramater [2] Server doesn't exist! !checkban [player] [smp|pvp|battle|onslaught]");
+                event.respond(battleBan(player));
+                event.respond(smpBan(player));
+                event.respond(onslaughtBan(player));
+                event.respond(pvpBan(player));
             }
         }
 
