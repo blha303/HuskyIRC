@@ -32,18 +32,24 @@ public class MiscCommands extends ListenerAdapter {
 		event.getBot().sendAction(event.getChannel(), "slays " + line[1] + "!");
 	    } else {
 		event.respond("You need to actually have a paramater after the command! >.<");
-	    }
+	    } 
+	} else if(event.getMessage().startsWith("!eat")) {
+		if(line[1] != null) {
+		event.getBot().sendAction(event.getChannel(), "eats " + line[1] + "!");
+		} else {
+		event.respond("You need to actually have a parameter after the comand! >.<");
+		}
 	} else if(event.getMessage().startsWith("!hf")) {
 	    if(line[1] != null) {
 		event.getBot().sendAction(event.getChannel(), "gives " + line[1] + " a hi-five!");
 	    } else {
 		event.respond("You need to actually have a paramater after the command! >.<");
-	    }
+	    } 
 	} else if(event.getMessage().contains("\\o")) {
 	    event.respond("o/");
 	} else if(event.getMessage().contains("o/")) {
 	    event.respond("\\o");
-	}
+	} 
     }
 
 }
