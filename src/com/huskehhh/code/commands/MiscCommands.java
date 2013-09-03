@@ -46,9 +46,9 @@ public class MiscCommands extends ListenerAdapter {
             } else {
                 event.respond("You need to actually have a paramater after the command! >.<");
             } 
-        } else if(event.getMessage().contains("\\o")) {
+        } else if(event.getMessage().startsWith("\\o")) {
             event.respond("o/");
-        } else if(event.getMessage().contains("o/")) {
+        } else if(event.getMessage().startsWith("o/")) {
             event.respond("\\o");
         } 
     }
