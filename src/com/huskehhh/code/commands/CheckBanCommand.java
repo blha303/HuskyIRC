@@ -33,7 +33,7 @@ public class CheckBanCommand extends ListenerAdapter {
                 event.respond(onslaughtBan(player));
             } else if (server.equalsIgnoreCase("pvp")) {
                 event.respond(pvpBan(player));
-            } else {
+            } else if (server.equalsIgnoreCase("all")) {
                 event.respond(battleBan(player));
                 event.respond(smpBan(player));
                 event.respond(onslaughtBan(player));
