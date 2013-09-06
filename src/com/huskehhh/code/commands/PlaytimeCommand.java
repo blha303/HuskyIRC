@@ -31,7 +31,7 @@ public class PlaytimeCommand extends ListenerAdapter {
                     rs.next();
                     int playtime = Integer.parseInt(rs.getString("onlinetime"));
                     playtime = playtime / 60;
-                    event.respond(player + " has played for " + (playtime / 60) + " hours!");
+                    event.respond(player + " has played for " + (playtime / 60) + " hours! (SMP)");
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
