@@ -50,10 +50,10 @@ public class MiscCommands extends ListenerAdapter {
             event.respond("o/");
         } else if(event.getMessage().startsWith("o/")) {
             event.respond("\\o");
-        } else if(event.getMessage().startsWith("HuskBot: Is Smithey someones bitch?")) {
+        } else if(event.getMessage().equalsIgnorecase("HuskBot: Is Smithey someones bitch?")) {
             event.respond("Once upon a there was a person named Smithey, He went around saying he would finish stuff, but in actual fact he didn't.");
-            event.respond("One day the almighty Zachoz learned that incetives would make him become his bitch.")
-            event.respond("And to this day he is still the bitch of the almight Zachoz!")
+            event.respond("One day the almighty Zachoz learned that incentives would make him become his bitch.")
+            event.respond("And to this day he is still the bitch of the almighty Zachoz!")
             event.respond("The End!!")
         } 
     }
