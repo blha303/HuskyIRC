@@ -55,15 +55,13 @@ public class HuskyIRC {
         end();
     }
 
-
-    @SuppressWarnings("resource")
     public static void end() {
         Scanner reader = new Scanner(System.in);
         String command = reader.nextLine();
         if (command.equals("end")) {
+            System.out.println("Bot shutting down! Cya!");
             bot.disconnect();
             bot.shutdown();
-            System.out.println("Bot shutting down! Cya!");
             System.exit(0);
         }
     }
@@ -75,7 +73,6 @@ public class HuskyIRC {
         bot.getListenerManager().addListener(new PartCommand());
         bot.getListenerManager().addListener(new JoinCommand());
         bot.getListenerManager().addListener(new MiscCommands());
-        bot.getListenerManager().addListener(new StatsCommand());
         bot.getListenerManager().addListener(new PlaytimeCommand());
     }
 

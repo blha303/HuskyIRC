@@ -22,8 +22,8 @@ public class PartCommand extends ListenerAdapter {
                     if(admin[i] == null) return;
 
                     if (admin[i].replaceAll(" ", "").equals(event.getUser().getNick())) {
-                        HuskyIRC.bot.sendRawLineNow("part" + " " + channel);
                         event.respond("Ciao! " + channel);
+                        HuskyIRC.bot.sendRawLineNow("part" + " " + channel);
                     }
 
                 }
