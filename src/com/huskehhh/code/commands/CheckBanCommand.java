@@ -44,7 +44,7 @@ public class CheckBanCommand extends ListenerAdapter {
         ResultSet rs = null;
         String query = "SELECT * FROM `mb_bans_onslaught` WHERE `banned`='" + player + "';";
         try {
-            rs = mysql.openConnection().createStatement().executeQuery(query);
+            rs = mysql.getConnection().createStatement().executeQuery(query);
             if(rs != null) {
                 rs.next();
                 if(rs.getString("banned") == null) {
@@ -65,7 +65,7 @@ public class CheckBanCommand extends ListenerAdapter {
         ResultSet rs = null;
         String query = "SELECT * FROM `mb_bans_smp` WHERE `banned`='" + player + "';";
         try {
-            rs = mysql.openConnection().createStatement().executeQuery(query);
+            rs = mysql.getConnection().createStatement().executeQuery(query);
             if(rs != null) {
                 rs.next();
                 if(rs.getString("banned") == null) {
@@ -87,7 +87,7 @@ public class CheckBanCommand extends ListenerAdapter {
 
         String query = "SELECT * FROM `mb_bans_battles` WHERE `banned`='" + player + "';";
         try {
-            rs = mysql.openConnection().createStatement().executeQuery(query);
+            rs = mysql.getConnection().createStatement().executeQuery(query);
             if(rs != null) {
                 rs.next();
                 if(rs.getString("banned") == null) {
