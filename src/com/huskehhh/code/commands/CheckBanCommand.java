@@ -31,37 +31,13 @@ public class CheckBanCommand extends ListenerAdapter {
                 event.respond(smpBan(player));
             } else if (server.equalsIgnoreCase("onslaught")) {
                 event.respond(onslaughtBan(player));
-            } else if (server.equalsIgnoreCase("pvp")) {
-                event.respond(pvpBan(player));
             } else if (server.equalsIgnoreCase("all")) {
                 event.respond(battleBan(player));
                 event.respond(smpBan(player));
                 event.respond(onslaughtBan(player));
-                event.respond(pvpBan(player));
             }
         }
 
-    }
-
-    private String pvpBan(String player) {
-        ResultSet rs = null;
-        String query = "SELECT * FROM `bm_bans_pvp` WHERE `banned`='" + player + "';";
-        try {
-            rs = mysql.openConnection().createStatement().executeQuery(query);
-            if(rs != null) {
-                rs.next();
-                if(rs.getString("banned") == null) {
-                    return player + " is not banned from PvP";
-                } else {
-                    return player + " is banned from PvP, banned by " + rs.getString("banned_by") + " for the reason of '" + rs.getString("ban_reason") + "'.";
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
-
-        return player + " is not banned from PvP.";
     }
 
     private String onslaughtBan(String player) {

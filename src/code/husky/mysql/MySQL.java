@@ -1,16 +1,12 @@
 package code.husky.mysql;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 import code.husky.Database;
+
+import java.sql.*;
 
 /**
  * Connects to and uses a MySQL database
- * 
+ *
  * @author -_Husky_-
  * @author tips48
  */
@@ -25,19 +21,12 @@ public class MySQL extends Database {
 
     /**
      * Creates a new MySQL instance
-     * 
-     * @param plugin
-     *            Plugin instance
-     * @param hostname
-     *            Name of the host
-     * @param portnmbr
-     *            Port number
-     * @param database
-     *            Database name
-     * @param username
-     *            Username
-     * @param password
-     *            Password
+     *
+     * @param hostname Name of the host
+     * @param port Port number
+     * @param database Database name
+     * @param username Username
+     * @param password Password
      */
     public MySQL(String hostname, String port, String database, String username, String password) {
         this.hostname = hostname;
@@ -68,6 +57,9 @@ public class MySQL extends Database {
 
     @Override
     public Connection getConnection() {
+        if (!checkConnection()) {
+            return openConnection();
+        }
         return connection;
     }
 
@@ -84,39 +76,31 @@ public class MySQL extends Database {
     }
 
     public ResultSet querySQL(String query) {
-
-        Connection c = openConnection();
+        Connection c = getConnection();
         Statement s = null;
-
         try {
             s = c.createStatement();
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
-
         ResultSet ret = null;
-
         try {
             ret = s.executeQuery(query);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return ret;
     }
 
     public void updateSQL(String update) {
-
-        Connection c = openConnection();
+        Connection c = getConnection();
         Statement s = null;
-
         try {
             s = c.createStatement();
             s.executeUpdate(update);
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
-
     }
 
 }

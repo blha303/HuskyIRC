@@ -1,12 +1,11 @@
 package com.huskehhh.code;
 
-import java.io.IOException;
-import java.util.Scanner;
-
+import com.huskehhh.code.commands.*;
 import org.pircbotx.PircBotX;
 import org.pircbotx.exception.IrcException;
 
-import com.huskehhh.code.commands.*;
+import java.io.IOException;
+import java.util.Scanner;
 
 public class HuskyIRC {
 
@@ -37,7 +36,7 @@ public class HuskyIRC {
             bot.connect(Config.network, 6667);
 
             bot.setMessageDelay(1000);
-            
+
             bot.setAutoReconnect(true);
 
             bot.setAutoReconnectChannels(true);
@@ -74,6 +73,7 @@ public class HuskyIRC {
         bot.getListenerManager().addListener(new JoinCommand());
         bot.getListenerManager().addListener(new MiscCommands());
         bot.getListenerManager().addListener(new PlaytimeCommand());
+        bot.getListenerManager().addListener(new RapCommand());
     }
 
 
