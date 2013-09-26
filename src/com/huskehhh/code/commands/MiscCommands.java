@@ -7,7 +7,7 @@ import org.pircbotx.hooks.events.MessageEvent;
 public class MiscCommands extends ListenerAdapter {
 
     public void onMessage(MessageEvent event) {
-        if (event.getMessage().length() <= 1) {
+        if (event.getMessage().length() >= 1) {
             String[] line = event.getMessage().split(" ");
 
             if (event.getMessage().startsWith("!c ")) {
