@@ -79,7 +79,7 @@ public class HuskyIRC {
 
     private static void joinChannels() {
         for (int i = 0; i < Config.channels.length; i++) {
-            bot.joinChannel(Config.channels[i]);
+            bot.joinChannel(Config.channels[i].replaceAll(" ", ""));
         }
     }
 
