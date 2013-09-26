@@ -27,7 +27,7 @@ public class PlaytimeCommand extends ListenerAdapter {
             ResultSet rs = null;
             try {
                 rs = mysql.openConnection().createStatement().executeQuery(query);
-                if(rs != null) {
+                if (rs != null) {
                     rs.next();
                     int playtime = Integer.parseInt(rs.getString("onlinetime"));
                     playtime = playtime / 60;
@@ -38,5 +38,6 @@ public class PlaytimeCommand extends ListenerAdapter {
                 System.out.println(e.getMessage());
             }
         }
+
     }
 }
