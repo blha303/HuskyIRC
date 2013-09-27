@@ -55,6 +55,8 @@ public class MiscCommands extends ListenerAdapter {
                 event.respond("One day the almighty Zachoz learned that incentives would make him become his bitch.");
                 event.respond("And to this day he is still the bitch of the almighty Zachoz!");
                 event.respond("The End!");
+            } else if (event.getMessage().equalsIgnoreCase("HuskBot: Do you like OresomeBot?")) {
+                event.respond("He's okay I guess...But it wouldn't bother me if it had a bug and was taken out of action.");
             }
         }
     }
