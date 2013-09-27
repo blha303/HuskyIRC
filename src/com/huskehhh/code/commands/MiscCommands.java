@@ -38,7 +38,7 @@ public class MiscCommands extends ListenerAdapter {
                 if (line[1] != null) {
                     event.getBot().sendAction(event.getChannel(), "eats " + line[1] + "!");
                 } else {
-                    event.respond("You need to actually have a parameter after the comand! >.<");
+                    event.respond("You need to actually have a parameter after the command! >.<");
                 }
             } else if (event.getMessage().startsWith("!hf ")) {
                 if (line[1] != null) {
@@ -57,6 +57,14 @@ public class MiscCommands extends ListenerAdapter {
                 event.respond("The End!");
             } else if (event.getMessage().equalsIgnoreCase("HuskBot: Do you like OresomeBot?")) {
                 event.respond("He's okay I guess...But it wouldn't bother me if it had a bug and was taken out of action.");
+            } else if (event.getMessage().startsWith("!roll")) {
+                if (line[1] != null) {
+                    event.getBot().sendAction(event.getChannel(), "*rolls*");
+                    int num = Math.Random() * line[1] + 1;
+                    event.respond("You rolled a "  + num + "!");
+                } else {
+                    event.respond("Usage: !roll <Highest Number>");
+                }
             }
         }
     }

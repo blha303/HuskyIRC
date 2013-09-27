@@ -27,7 +27,7 @@ public class FirstJoinCommand extends ListenerAdapter {
                 rs = mysql.querySQL(query);
                 if (rs != null) {
                     rs.next();
-                    event.respond(player + " first joined " + rs.getString("firstjoin") + " (SMP)");
+                    event.respond(player + " first joined " + rs + " (SMP)");
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
