@@ -26,7 +26,7 @@ public class PlaytimeCommand extends ListenerAdapter {
             String query = "SELECT * FROM `Logblock_SMP`.`lb-players` WHERE `playername`='" + player + "';";
             ResultSet rs = null;
             try {
-                rs = mysql.openConnection().createStatement().executeQuery(query);
+                rs = mysql.querySQL(query);
                 if (rs != null) {
                     rs.next();
                     int playtime = Integer.parseInt(rs.getString("onlinetime"));
