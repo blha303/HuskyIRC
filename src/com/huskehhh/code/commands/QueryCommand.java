@@ -36,9 +36,12 @@ public class QueryCommand extends ListenerAdapter {
 
                     if (rs != null) {
                         while (rs.next()) {
-                            if (rs.getString(line[2].replaceAll("`", "")) != null) event.respond("Result: " + rs.getString(line[2].replaceAll("`", "")));
-                            if (rs.getInt(line[2].replaceAll("`", "")) != 0) event.respond("Result: " + rs.getInt(line[2].replaceAll("`", "")));
-                            if (rs.getDouble(line[2].replaceAll("`", "")) != 0) event.respond("Result: " + rs.getDouble(line[2].replaceAll("`", "")));
+                            if (rs.getString(line[2].replaceAll("`", "")) != null)
+                                event.respond("Result: " + rs.getString(line[2].replaceAll("`", "")));
+                            if (rs.getInt(line[2].replaceAll("`", "")) != 0)
+                                event.respond("Result: " + rs.getInt(line[2].replaceAll("`", "")));
+                            if (rs.getDouble(line[2].replaceAll("`", "")) != 0)
+                                event.respond("Result: " + rs.getDouble(line[2].replaceAll("`", "")));
                         }
                     }
 
