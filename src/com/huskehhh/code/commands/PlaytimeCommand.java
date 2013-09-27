@@ -1,14 +1,12 @@
 package com.huskehhh.code.commands;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
+import code.husky.mysql.MySQL;
+import com.huskehhh.code.Config;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 
-import code.husky.mysql.MySQL;
-
-import com.huskehhh.code.Config;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 @SuppressWarnings("rawtypes")
 public class PlaytimeCommand extends ListenerAdapter {
@@ -22,8 +20,8 @@ public class PlaytimeCommand extends ListenerAdapter {
         String[] line = event.getMessage().split(" ");
         String player = line[1];
 
-        if (event.getMessage().contains("!playtime ")) {
-            String query = "SELECT * FROM `Logblock_SMP`.`lb-players` WHERE `playername`='" + player + "';";
+        if (event.getMessage().startsWith("!playtime ")) {
+            String query = "SELECT onlinetime FROM `Logblock_SMP`.`lb-players` WHERE `playername`='" + player + "';";
             ResultSet rs = null;
             try {
                 rs = mysql.querySQL(query);
