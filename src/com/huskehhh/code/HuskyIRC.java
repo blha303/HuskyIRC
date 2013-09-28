@@ -25,7 +25,7 @@ public class HuskyIRC {
 
             bot.setVersion("HuskyIRC Bot - Kudos to Zachoz for some code.");
 
-            bot.setLogin("HuskBot");
+            bot.setLogin(Config.ircuser);
 
             bot.setName(Config.ircuser);
 
@@ -33,7 +33,7 @@ public class HuskyIRC {
 
             bot.setVerbose(true);
 
-            bot.connect(Config.network, 6667);
+            bot.connect(Config.network, 6667, Config.nickPass);
 
             bot.setMessageDelay(1000);
 
