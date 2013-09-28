@@ -19,7 +19,7 @@ public class FirstJoinCommand extends ListenerAdapter {
 
         String[] line = event.getMessage().split(" ");
 
-        if (event.getMessage().startsWith("!firstjoin")) {
+        if (line[0].startsWith("!firstjoin")) {
             if (line.length > 1) {
                 String query = "SELECT firstjoin FROM `Logblock_SMP`.`lb-players` WHERE `playername`='" + line[1] + "';";
                 ResultSet rs = null;
