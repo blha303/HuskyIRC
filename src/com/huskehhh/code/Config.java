@@ -17,6 +17,7 @@ public class Config {
     public static String network;
     public static String nickPass;
     public static String ircuser;
+    public static String version;
     
     public static void loadConfiguration() throws FileNotFoundException, IOException {
         
@@ -28,6 +29,7 @@ public class Config {
         channels = config.getProperty("channels").split(",");
         ircuser = config.getProperty("ircuser");
         admins = config.getProperty("admin").split(",");
+        version = config.getProperty("version");
         
         Ohostname = config.getProperty("OMySQL-host");
         Oport = config.getProperty("OMySQL-port");
