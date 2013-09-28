@@ -33,7 +33,7 @@ public class HuskyIRC {
 
             bot.setVerbose(true);
 
-            bot.connect(Config.network, 6667, Config.nickPass);
+            bot.connect(Config.network, 6667);
 
             bot.setMessageDelay(1000);
 
