@@ -23,7 +23,7 @@ public class UpdateCommand extends ListenerAdapter {
                     try {
                         Runtime.getRuntime().exec("./update.sh");
                         event.respond("Updating!");
-                        HuskyIRC.end();
+                        HuskyIRC.shutdown();
                     } catch (IOException exception) {
                         exception.printStackTrace();
                     }

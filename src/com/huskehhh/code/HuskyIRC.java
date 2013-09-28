@@ -85,4 +85,9 @@ public class HuskyIRC {
         }
     }
 
+    public static void shutdown() {
+        bot.disconnect();
+        bot.shutdown();
+        System.exit(0);
+    }
 }
