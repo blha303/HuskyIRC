@@ -26,6 +26,8 @@ public class UpdateCommand extends ListenerAdapter {
                     } catch (IOException exception) {
                         exception.printStackTrace();
                     }
+                } else {
+                    event.respond("No update available!");
                 }
             }
         }
