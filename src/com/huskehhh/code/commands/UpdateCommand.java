@@ -22,7 +22,7 @@ public class UpdateCommand extends ListenerAdapter {
                 if (isUpdate()) {
                     try {
                         event.respond("Updating!");
-                        Runtime.getRuntime().exec("~/huskbot/update.sh");
+                        Runtime.getRuntime().exec("./update.sh");
                         HuskyIRC.shutdown();
                     } catch (IOException exception) {
                         exception.printStackTrace();
