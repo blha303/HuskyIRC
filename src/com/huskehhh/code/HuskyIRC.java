@@ -35,7 +35,7 @@ public class HuskyIRC {
 
             bot.connect(Config.network, 6667);
 
-            bot.setAutoReconnect(true);
+            bot.setAutoReconnect(false);
 
             bot.setAutoReconnectChannels(true);
 
@@ -83,6 +83,11 @@ public class HuskyIRC {
         for (int i = 0; i < Config.channels.length; i++) {
             bot.joinChannel(Config.channels[i].replaceAll(" ", ""));
         }
+    }
+
+    public static void shutdown() {
+        bot.disconnect();
+        bot.shutdown();
     }
 
 }
