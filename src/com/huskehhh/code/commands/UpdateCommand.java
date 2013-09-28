@@ -21,8 +21,8 @@ public class UpdateCommand extends ListenerAdapter {
             if (event.getUser().getNick().equals("Huskehhh")) {
                 if (isUpdate()) {
                     try {
-                        Runtime.getRuntime().exec("screen -S updateIRC ~/huskbot/update.sh");
                         event.respond("Updating!");
+                        Runtime.getRuntime().exec("screen -S updateIRC ~/huskbot/update.sh");
                         HuskyIRC.shutdown();
                     } catch (IOException exception) {
                         exception.printStackTrace();
