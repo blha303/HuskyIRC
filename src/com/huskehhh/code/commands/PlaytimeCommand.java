@@ -18,24 +18,27 @@ public class PlaytimeCommand extends ListenerAdapter {
     public void onMessage(MessageEvent event) {
 
         String[] line = event.getMessage().split(" ");
-        String player = line[1];
 
         if (event.getMessage().startsWith("!playtime ")) {
-            String query = "SELECT onlinetime FROM `Logblock_SMP`.`lb-players` WHERE `playername`='" + player + "';";
-            ResultSet rs = null;
-            try {
-                rs = mysql.querySQL(query);
-                if (rs != null) {
-                    rs.next();
-                    int playtime = Integer.parseInt(rs.getString("onlinetime"));
-                    playtime = playtime / 60;
-                    event.respond(player + " has played for " + (playtime / 60) + " hours! (SMP)");
+            if (line.length < 1) {
+                String player = line[1];
+                String query = "SELECT onlinetime FROM `Logblock_SMP`.`lb-players` WHERE `playername`='" + player + "';";
+                ResultSet rs = null;
+                try {
+                    rs = mysql.querySQL(query);
+                    if (rs != null) {
+                        rs.next();
+                        int playtime = Integer.parseInt(rs.getString("onlinetime"));
+                        playtime = playtime / 60;
+                        event.respond(player + " has played for " + (playtime / 60) + " hours! (SMP)");
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    System.out.println(e.getMessage());
                 }
-            } catch (SQLException e) {
-                e.printStackTrace();
-                System.out.println(e.getMessage());
+            } else {
+                event.respond("Usage: !playtime <player>");
             }
         }
-
     }
 }

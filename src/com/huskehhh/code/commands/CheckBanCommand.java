@@ -1,15 +1,12 @@
 package com.huskehhh.code.commands;
 
-import java.sql.ResultSet;
-
-import java.sql.SQLException;
-
+import code.husky.mysql.MySQL;
+import com.huskehhh.code.Config;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 
-import com.huskehhh.code.Config;
-
-import code.husky.mysql.MySQL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 @SuppressWarnings("rawtypes")
 public class CheckBanCommand extends ListenerAdapter {
@@ -23,21 +20,24 @@ public class CheckBanCommand extends ListenerAdapter {
         String[] line = event.getMessage().split(" ");
 
         if (event.getMessage().startsWith("!checkban ")) {
-            String player = line[1];
-            String server = line[2];
-            if(server.equalsIgnoreCase("battle")) {
-                event.respond(battleBan(player));
-            } else if (server.equalsIgnoreCase("smp")) {
-                event.respond(smpBan(player));
-            } else if (server.equalsIgnoreCase("onslaught")) {
-                event.respond(onslaughtBan(player));
-            } else if (server.equalsIgnoreCase("all")) {
-                event.respond(battleBan(player));
-                event.respond(smpBan(player));
-                event.respond(onslaughtBan(player));
+            if (line.length < 2) {
+                String player = line[1];
+                String server = line[2];
+                if (server.equalsIgnoreCase("battles")) {
+                    event.respond(battleBan(player));
+                } else if (server.equalsIgnoreCase("smp")) {
+                    event.respond(smpBan(player));
+                } else if (server.equalsIgnoreCase("onslaught")) {
+                    event.respond(onslaughtBan(player));
+                } else if (server.equalsIgnoreCase("all")) {
+                    event.respond(battleBan(player));
+                    event.respond(smpBan(player));
+                    event.respond(onslaughtBan(player));
+                }
+            } else {
+                event.respond("Usage: !checkban <player> <smp|onslaught|battles|all>");
             }
         }
-
     }
 
     private String onslaughtBan(String player) {
@@ -45,9 +45,9 @@ public class CheckBanCommand extends ListenerAdapter {
         String query = "SELECT * FROM `mb_bans_onslaught` WHERE `banned`='" + player + "';";
         try {
             rs = mysql.querySQL(query);
-            if(rs != null) {
+            if (rs != null) {
                 rs.next();
-                if(rs.getString("banned") == null) {
+                if (rs.getString("banned") == null) {
                     return player + " is not banned from Onslaught.";
                 } else {
                     return player + " is banned from Onslaught, banned by " + rs.getString("banned_by") + " for the reason of '" + rs.getString("ban_reason") + "'.";
@@ -66,9 +66,9 @@ public class CheckBanCommand extends ListenerAdapter {
         String query = "SELECT * FROM `mb_bans_smp` WHERE `banned`='" + player + "';";
         try {
             rs = mysql.querySQL(query);
-            if(rs != null) {
+            if (rs != null) {
                 rs.next();
-                if(rs.getString("banned") == null) {
+                if (rs.getString("banned") == null) {
                     return player + " is not banned from SMP.";
                 } else {
                     return player + " is banned from SMP, banned by " + rs.getString("banned_by") + " for the reason of '" + rs.getString("ban_reason") + "'.";
@@ -88,9 +88,9 @@ public class CheckBanCommand extends ListenerAdapter {
         String query = "SELECT * FROM `mb_bans_battles` WHERE `banned`='" + player + "';";
         try {
             rs = mysql.querySQL(query);
-            if(rs != null) {
+            if (rs != null) {
                 rs.next();
-                if(rs.getString("banned") == null) {
+                if (rs.getString("banned") == null) {
                     return player + " is not banned from Battles.";
                 } else {
                     return player + " is banned from Battles, banned by " + rs.getString("banned_by") + " for the reason of '" + rs.getString("ban_reason") + "'.";

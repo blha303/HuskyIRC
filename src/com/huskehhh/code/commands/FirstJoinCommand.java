@@ -18,22 +18,24 @@ public class FirstJoinCommand extends ListenerAdapter {
     public void onMessage(MessageEvent event) {
 
         String[] line = event.getMessage().split(" ");
-        String player = line[1];
 
         if (event.getMessage().startsWith("!firstjoin ")) {
-            String query = "SELECT firstjoin FROM `Logblock_SMP`.`lb-players` WHERE `playername`='" + player + "';";
-            ResultSet rs = null;
-            try {
-                rs = mysql.querySQL(query);
-                if (rs != null) {
-                    rs.next();
-                    event.respond(player + " first joined " + rs + " (SMP)");
+            if (line.length < 1) {
+                String query = "SELECT firstjoin FROM `Logblock_SMP`.`lb-players` WHERE `playername`='" + line[1] + "';";
+                ResultSet rs = null;
+                try {
+                    rs = mysql.querySQL(query);
+                    if (rs != null) {
+                        rs.next();
+                        event.respond(line[1] + " first joined " + rs + " (SMP)");
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    System.out.println(e.getMessage());
                 }
-            } catch (SQLException e) {
-                e.printStackTrace();
-                System.out.println(e.getMessage());
+            } else {
+                event.respond("Usage: !firstjoin <player>"); //TODO: Add Battles support;
             }
         }
-
     }
 }
