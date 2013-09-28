@@ -20,7 +20,7 @@ public class CheckBanCommand extends ListenerAdapter {
         String[] line = event.getMessage().split(" ");
 
         if (event.getMessage().startsWith("!checkban ")) {
-            if (line.length < 2) {
+            if (line.length > 2) {
                 String player = line[1];
                 String server = line[2];
                 if (server.equalsIgnoreCase("battles")) {

@@ -18,7 +18,7 @@ public class RapCommand extends ListenerAdapter {
         String[] line = event.getMessage().split(" ");
 
         if (event.getMessage().startsWith("!rap ")) {
-            if (line.length < 2) {
+            if (line.length > 2) {
                 String player = line[1];
                 String server = line[2];
 

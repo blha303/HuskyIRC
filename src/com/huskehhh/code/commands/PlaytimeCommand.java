@@ -20,7 +20,7 @@ public class PlaytimeCommand extends ListenerAdapter {
         String[] line = event.getMessage().split(" ");
 
         if (event.getMessage().startsWith("!playtime ")) {
-            if (line.length < 1) {
+            if (line.length > 1) {
                 String player = line[1];
                 String query = "SELECT onlinetime FROM `Logblock_SMP`.`lb-players` WHERE `playername`='" + player + "';";
                 ResultSet rs = null;

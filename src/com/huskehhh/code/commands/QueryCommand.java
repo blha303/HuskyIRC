@@ -17,7 +17,7 @@ public class QueryCommand extends ListenerAdapter {
         String[] line = event.getMessage().split(" ");
 
         if (event.getMessage().startsWith("!query ")) {
-            if (line.length < 3) {
+            if (line.length > 3) {
 
                 String[] admin = Config.admins;
 

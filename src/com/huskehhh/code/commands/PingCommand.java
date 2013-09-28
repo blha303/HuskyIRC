@@ -13,7 +13,7 @@ public class PingCommand extends ListenerAdapter {
         if (event.getMessage().split(" ").length >= 1) {
             String[] lines = event.getMessage().split(" ");
             if (event.getMessage().startsWith("!ping ")) {
-                if (lines.length < 1) {
+                if (lines.length > 1) {
                     event.respond("Testing ping...");
                     try {
                         Process ping = Runtime.getRuntime().exec("ping -c 5 " + lines[1]);
