@@ -75,6 +75,7 @@ public class HuskyIRC {
         bot.getListenerManager().addListener(new QueryCommand());
         bot.getListenerManager().addListener(new PingCommand());
         bot.getListenerManager().addListener(new FirstJoinCommand());
+        bot.getListenerManager().addListener(new UpdateCommand());
     }
 
 
