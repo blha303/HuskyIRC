@@ -12,7 +12,7 @@ public class PingCommand extends ListenerAdapter {
     public void onMessage(MessageEvent event) throws Exception {
         if (event.getMessage().split(" ").length >= 1) {
             String[] lines = event.getMessage().split(" ");
-            if (line[0].startsWith("!ping")) {
+            if (lines[0].equalsIgnoreCase("!ping")) {
                 if (lines.length > 1) {
                     event.respond("Testing ping...");
                     try {

@@ -12,37 +12,37 @@ public class MiscCommands extends ListenerAdapter {
         if (event.getMessage().length() >= 1) {
             String[] line = event.getMessage().split(" ");
 
-            if (line[0].startsWith("!c")) {
+            if (line[0].equalsIgnoreCase("!c")) {
                 if (line.length > 1) {
                     event.getBot().sendAction(event.getChannel(), "gives " + line[1] + " a cookie!");
                 } else {
                     event.respond("You need to actually have a parameter after the command! >.<");
                 }
-            } else if (line[0].startsWith("!pizza")) {
+            } else if (line[0].equalsIgnoreCase("!pizza")) {
                 if (line.length > 1) {
                     event.getBot().sendAction(event.getChannel(), "gives " + line[1] + " a pizza!");
                 } else {
                     event.respond("You need to actually have a parameter after the command! >.<");
                 }
-            } else if (line[0].startsWith("!slap")) {
+            } else if (line[0].equalsIgnoreCase("!slap")) {
                 if (line.length > 1) {
                     event.getBot().sendAction(event.getChannel(), "slaps " + line[1] + "!");
                 } else {
                     event.respond("You need to actually have a parameter after the command! >.<");
                 }
-            } else if (line[0].startsWith("!slay")) {
+            } else if (line[0].equalsIgnoreCase("!slay")) {
                 if (line.length > 1) {
                     event.getBot().sendAction(event.getChannel(), "slays " + line[1] + "!");
                 } else {
                     event.respond("You need to actually have a parameter after the command! >.<");
                 }
-            } else if (line[0].startsWith("!eat")) {
+            } else if (line[0].equalsIgnoreCase("!eat")) {
                 if (line.length > 1) {
                     event.getBot().sendAction(event.getChannel(), "eats " + line[1] + "!");
                 } else {
                     event.respond("You need to actually have a parameter after the command! >.<");
                 }
-            } else if (line[0].startsWith("!hf")) {
+            } else if (line[0].equalsIgnoreCase("!hf")) {
                 if (line.length > 1) {
                     event.getBot().sendAction(event.getChannel(), "gives " + line[1] + " a hi-five!");
                 } else {
@@ -59,7 +59,7 @@ public class MiscCommands extends ListenerAdapter {
                 event.respond("The End!");
             } else if (line[0].equalsIgnoreCase("HuskBot: Do you like OresomeBot?")) {
                 event.respond("He's okay I guess...But it wouldn't bother me if it had a bug and was taken out of action.");
-            } else if (line[0].startsWith("!roll")) {
+            } else if (line[0].equalsIgnoreCase("!roll")) {
                 if (line.length > 1) {
                     event.getBot().sendAction(event.getChannel(), "*rolls*");
                     Random rand = new Random();
