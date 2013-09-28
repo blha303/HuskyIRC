@@ -35,8 +35,6 @@ public class HuskyIRC {
 
             bot.connect(Config.network, 6667);
 
-            bot.setMessageDelay(1000);
-
             bot.setAutoReconnect(true);
 
             bot.setAutoReconnectChannels(true);
