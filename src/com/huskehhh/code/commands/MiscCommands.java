@@ -12,37 +12,37 @@ public class MiscCommands extends ListenerAdapter {
         if (event.getMessage().length() >= 1) {
             String[] line = event.getMessage().split(" ");
 
-            if (event.getMessage().startsWith("!c ")) {
+            if (event.getMessage().startsWith("!c")) {
                 if (line.length > 1) {
                     event.getBot().sendAction(event.getChannel(), "gives " + line[1] + " a cookie!");
                 } else {
                     event.respond("You need to actually have a paramater after the command! >.<");
                 }
-            } else if (event.getMessage().startsWith("!pizza ")) {
+            } else if (event.getMessage().startsWith("!pizza")) {
                 if (line.length > 1) {
                     event.getBot().sendAction(event.getChannel(), "gives " + line[1] + " a pizza!");
                 } else {
                     event.respond("You need to actually have a parameter after the command! >.<");
                 }
-            } else if (event.getMessage().startsWith("!slap ")) {
+            } else if (event.getMessage().startsWith("!slap")) {
                 if (line.length > 1) {
                     event.getBot().sendAction(event.getChannel(), "slaps " + line[1] + "!");
                 } else {
                     event.respond("You need to actually have a parameter after the command! >.<");
                 }
-            } else if (event.getMessage().startsWith("!slay ")) {
+            } else if (event.getMessage().startsWith("!slay")) {
                 if (line.length > 1) {
                     event.getBot().sendAction(event.getChannel(), "slays " + line[1] + "!");
                 } else {
                     event.respond("You need to actually have a parameter after the command! >.<");
                 }
-            } else if (event.getMessage().startsWith("!eat ")) {
+            } else if (event.getMessage().startsWith("!eat")) {
                 if (line.length > 1) {
                     event.getBot().sendAction(event.getChannel(), "eats " + line[1] + "!");
                 } else {
                     event.respond("You need to actually have a parameter after the command! >.<");
                 }
-            } else if (event.getMessage().startsWith("!hf ")) {
+            } else if (event.getMessage().startsWith("!hf")) {
                 if (line.length > 1) {
                     event.getBot().sendAction(event.getChannel(), "gives " + line[1] + " a hi-five!");
                 } else {

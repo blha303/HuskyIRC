@@ -19,7 +19,7 @@ public class FirstJoinCommand extends ListenerAdapter {
 
         String[] line = event.getMessage().split(" ");
 
-        if (event.getMessage().startsWith("!firstjoin ")) {
+        if (event.getMessage().startsWith("!firstjoin")) {
             if (line.length > 1) {
                 String query = "SELECT firstjoin FROM `Logblock_SMP`.`lb-players` WHERE `playername`='" + line[1] + "';";
                 ResultSet rs = null;
@@ -27,7 +27,7 @@ public class FirstJoinCommand extends ListenerAdapter {
                     rs = mysql.querySQL(query);
                     if (rs != null) {
                         rs.next();
-                        event.respond(line[1] + " first joined " + rs + " (SMP)");
+                        event.respond(line[1] + " first joined " + rs.getString("firstjoin") + " (SMP)");
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();

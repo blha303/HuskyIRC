@@ -13,7 +13,7 @@ public class CheckCommand extends ListenerAdapter {
 
         String[] line = event.getMessage().split(" ");
 
-        if (event.getMessage().contains("!check ")) {
+        if (event.getMessage().contains("!check")) {
             if (line.length > 1) {
                 try {
                     InetAddress checkme = InetAddress.getByName(line[1]);
