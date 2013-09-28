@@ -12,11 +12,11 @@ public class MiscCommands extends ListenerAdapter {
         if (event.getMessage().length() >= 1) {
             String[] line = event.getMessage().split(" ");
 
-            if (event.getMessage().startsWith("!c")) {
+            if (line[0].startsWith("!c")) {
                 if (line.length > 1) {
                     event.getBot().sendAction(event.getChannel(), "gives " + line[1] + " a cookie!");
                 } else {
-                    event.respond("You need to actually have a paramater after the command! >.<");
+                    event.respond("You need to actually have a parameter after the command! >.<");
                 }
             } else if (event.getMessage().startsWith("!pizza")) {
                 if (line.length > 1) {
