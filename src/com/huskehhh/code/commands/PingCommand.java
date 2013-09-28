@@ -10,8 +10,10 @@ import java.io.InputStreamReader;
 public class PingCommand extends ListenerAdapter {
 
     public void onMessage(MessageEvent event) throws Exception {
-        if (event.getMessage().split(" ").length >= 1) {
-            String[] lines = event.getMessage().split(" ");
+
+        String[] lines = event.getMessage().split(" ");
+
+        if (lines.length >= 1) {
             if (lines[0].equalsIgnoreCase("!ping")) {
                 if (lines.length > 1) {
                     event.respond("Testing ping...");
