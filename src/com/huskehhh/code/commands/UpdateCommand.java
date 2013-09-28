@@ -18,15 +18,13 @@ public class UpdateCommand extends ListenerAdapter {
         String[] line = event.getMessage().split(" ");
 
         if (line[0].equalsIgnoreCase("!update")) {
-            if (line.length == 1) {
-                if (event.getUser().getNick().equals("Huskehhh")) {
-                    if (isUpdate()) {
-                        try {
-                            Runtime.getRuntime().exec("sh update.sh");
-                            HuskyIRC.end();
-                        } catch (IOException exception) {
-                            exception.printStackTrace();
-                        }
+            if (event.getUser().getNick().equals("Huskehhh")) {
+                if (isUpdate()) {
+                    try {
+                        Runtime.getRuntime().exec("sh update.sh");
+                        HuskyIRC.end();
+                    } catch (IOException exception) {
+                        exception.printStackTrace();
                     }
                 }
             }
