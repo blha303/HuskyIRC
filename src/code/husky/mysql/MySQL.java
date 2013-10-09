@@ -23,7 +23,7 @@ public class MySQL extends Database {
      * Creates a new MySQL instance
      *
      * @param hostname Name of the host
-     * @param port Port number
+     * @param port     Port number
      * @param database Database name
      * @param username Username
      * @param password Password
@@ -76,7 +76,7 @@ public class MySQL extends Database {
     }
 
     public ResultSet querySQL(String query) {
-        Connection c = getConnection();
+        Connection c = openConnection();
         Statement s = null;
         try {
             s = c.createStatement();
@@ -89,11 +89,12 @@ public class MySQL extends Database {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        closeConnection();
         return ret;
     }
 
     public void updateSQL(String update) {
-        Connection c = getConnection();
+        Connection c = openConnection();
         Statement s = null;
         try {
             s = c.createStatement();
@@ -101,6 +102,7 @@ public class MySQL extends Database {
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
+        closeConnection();
     }
 
 }
