@@ -89,7 +89,6 @@ public class MySQL extends Database {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        closeConnection();
         return ret;
     }
 
@@ -102,7 +101,6 @@ public class MySQL extends Database {
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
-        closeConnection();
     }
 
 }
