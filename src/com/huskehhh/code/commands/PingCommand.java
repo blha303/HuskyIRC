@@ -1,5 +1,6 @@
 package com.huskehhh.code.commands;
 
+import com.huskehhh.code.HuskyIRC;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 
@@ -25,8 +26,8 @@ public class PingCommand extends ListenerAdapter {
                         while ((line = br.readLine()) != null) {
                             sb.append(line);
                             sb.append("\n");
+                            event.respond(sb.toString());
                         }
-                        event.respond(sb.toString());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
