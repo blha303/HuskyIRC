@@ -19,14 +19,14 @@ public class PingCommand extends ListenerAdapter {
                 if (lines.length > 1) {
                     event.respond("Testing ping...");
                     try {
-                        Process ping = Runtime.getRuntime().exec("ping -c 5 " + lines[1]);
+                        Process ping = Runtime.getRuntime().exec("ping -c 3 " + lines[1]);
                         BufferedReader br = new BufferedReader(new InputStreamReader(ping.getInputStream()));
                         StringBuilder sb = new StringBuilder();
                         String line;
                         while ((line = br.readLine()) != null) {
                             sb.append(line);
                             sb.append("\n");
-                            event.respond(sb.toString());
+                            HuskyIRC.bot.sendMessage(event.getChannel(), sb.toString());
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
