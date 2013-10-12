@@ -57,8 +57,12 @@ public class MySQL extends Database {
 
     @Override
     public Connection getConnection() {
-        if (!checkConnection()) {
-            return openConnection();
+        try {
+            if (connection.isClosed()) {
+                return openConnection();
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
         }
         return connection;
     }
