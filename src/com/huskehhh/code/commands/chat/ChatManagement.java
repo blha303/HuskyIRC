@@ -1,12 +1,14 @@
-package com.huskehhh.code.commands;
+package com.huskehhh.code.commands.chat;
 
+import com.huskehhh.code.HuskyIRC;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 
 import java.util.Random;
+import java.util.Scanner;
 
 @SuppressWarnings("rawtypes")
-public class MiscCommands extends ListenerAdapter {
+public class ChatManagement extends ListenerAdapter {
 
     public void onMessage(MessageEvent event) {
         if (event.getMessage().length() >= 1) {
@@ -69,6 +71,17 @@ public class MiscCommands extends ListenerAdapter {
                     event.respond("Usage: !roll <Highest Number>");
                 }
             }
+        }
+    }
+
+    public static void end() {
+        Scanner reader = new Scanner(System.in);
+        String command = reader.nextLine();
+        if (command.equals("end")) {
+            System.out.println("Bot shutting down! Cya!");
+            HuskyIRC.bot.disconnect();
+            HuskyIRC.bot.shutdown();
+            System.exit(0);
         }
     }
 

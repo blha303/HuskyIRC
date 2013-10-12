@@ -1,6 +1,5 @@
-package com.huskehhh.code.commands;
+package com.huskehhh.code.commands.network;
 
-import com.huskehhh.code.HuskyIRC;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 
@@ -8,7 +7,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class PingCommand extends ListenerAdapter {
+public class Ping extends ListenerAdapter {
 
     public void onMessage(MessageEvent event) throws Exception {
 

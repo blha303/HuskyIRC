@@ -1,4 +1,4 @@
-package com.huskehhh.code.commands;
+package com.huskehhh.code.commands.network;
 
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
@@ -7,7 +7,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 @SuppressWarnings("rawtypes")
-public class CheckCommand extends ListenerAdapter {
+public class Check extends ListenerAdapter {
 
     public void onMessage(MessageEvent event) {
 

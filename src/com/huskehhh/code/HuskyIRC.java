@@ -1,17 +1,27 @@
 package com.huskehhh.code;
 
-import com.huskehhh.code.commands.*;
+import com.huskehhh.code.commands.chat.ChatManagement;
+import com.huskehhh.code.commands.core.Join;
+import com.huskehhh.code.commands.core.Part;
+import com.huskehhh.code.commands.misc.Update;
+import com.huskehhh.code.commands.network.Check;
+import com.huskehhh.code.commands.network.Ping;
+import com.huskehhh.code.commands.oresomecraft.*;
+import com.huskehhh.code.config.Config;
 import org.pircbotx.PircBotX;
 import org.pircbotx.exception.IrcException;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 public class HuskyIRC {
 
     public static PircBotX bot = new PircBotX();
 
     public static void main(String[] args) {
+        load();
+    }
+
+    private static void load() {
 
         try {
             Config.loadConfiguration();
@@ -22,60 +32,39 @@ public class HuskyIRC {
         try {
 
             bot.setAutoNickChange(true);
-
             bot.setVersion("HuskyIRC Bot - Kudos to Zachoz for some code.");
-
             bot.setLogin(Config.ircuser);
-
             bot.setName(Config.ircuser);
-
             bot.identify(Config.nickPass);
-
             bot.setVerbose(true);
-
             bot.connect(Config.network, 6667);
-
             bot.setAutoReconnect(false);
-
             bot.setAutoReconnectChannels(true);
 
-            joinChannels();
-
         } catch (IrcException e) {
-            // do nothing
+            System.out.println(e.getMessage());
         } catch (IOException e) {
-            // do nothing
+            System.out.println(e.getMessage());
         }
+
+        joinChannels();
 
         loadListeners();
 
-        end();
     }
-
-    public static void end() {
-        Scanner reader = new Scanner(System.in);
-        String command = reader.nextLine();
-        if (command.equals("end")) {
-            System.out.println("Bot shutting down! Cya!");
-            bot.disconnect();
-            bot.shutdown();
-            System.exit(0);
-        }
-    }
-
 
     private static void loadListeners() {
-        bot.getListenerManager().addListener(new CheckBanCommand());
-        bot.getListenerManager().addListener(new CheckCommand());
-        bot.getListenerManager().addListener(new PartCommand());
-        bot.getListenerManager().addListener(new JoinCommand());
-        bot.getListenerManager().addListener(new MiscCommands());
-        bot.getListenerManager().addListener(new PlaytimeCommand());
-        bot.getListenerManager().addListener(new RapCommand());
-        bot.getListenerManager().addListener(new QueryCommand());
-        bot.getListenerManager().addListener(new PingCommand());
-        bot.getListenerManager().addListener(new FirstJoinCommand());
-        bot.getListenerManager().addListener(new UpdateCommand());
+        bot.getListenerManager().addListener(new CheckBan());
+        bot.getListenerManager().addListener(new Check());
+        bot.getListenerManager().addListener(new Part());
+        bot.getListenerManager().addListener(new Join());
+        bot.getListenerManager().addListener(new ChatManagement());
+        bot.getListenerManager().addListener(new Playtime());
+        bot.getListenerManager().addListener(new Rap());
+        bot.getListenerManager().addListener(new Query());
+        bot.getListenerManager().addListener(new Ping());
+        bot.getListenerManager().addListener(new FirstJoin());
+        bot.getListenerManager().addListener(new Update());
     }
 
 
