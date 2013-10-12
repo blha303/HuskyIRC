@@ -21,12 +21,9 @@ public class PingCommand extends ListenerAdapter {
                     try {
                         Process ping = Runtime.getRuntime().exec("ping -c 3 " + lines[1]);
                         BufferedReader br = new BufferedReader(new InputStreamReader(ping.getInputStream()));
-                        StringBuilder sb = new StringBuilder();
                         String line;
                         while ((line = br.readLine()) != null) {
-                            sb.append(line);
-                            sb.append("\n");
-                            HuskyIRC.bot.sendMessage(event.getChannel(), sb.toString());
+                            event.respond(line);
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
