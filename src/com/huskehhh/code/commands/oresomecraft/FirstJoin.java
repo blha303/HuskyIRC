@@ -1,7 +1,7 @@
 package com.huskehhh.code.commands.oresomecraft;
 
 import com.huskehhh.code.config.Config;
-import com.huskehhh.database.database.MySQL;
+import com.huskehhh.database.mysql.MySQL;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 
