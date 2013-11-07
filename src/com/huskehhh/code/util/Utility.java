@@ -10,6 +10,8 @@ import java.util.Iterator;
 
 public class Utility {
 
+    private static Utility util = new Utility();
+
     public static boolean isUpdate() {
 
         String u = "https://raw.github.com/Huskehhh/HuskyIRC/master/VERSION";
@@ -21,13 +23,9 @@ public class Utility {
             BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             BufferedReader fileVERSION = null;
 
-            try {
+            InputStream inputStream = util.getClass().getResourceAsStream("/VERSION");
 
-                fileVERSION = new BufferedReader(new FileReader("VERSION.txt"));
-
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+            fileVERSION = new BufferedReader(new InputStreamReader(inputStream));
 
             if (!in.readLine().equals(fileVERSION.readLine())) {
                 return true;
@@ -61,13 +59,9 @@ public class Utility {
 
         BufferedReader fileVERSION = null;
 
-        try {
+        InputStream in = util.getClass().getResourceAsStream("/VERSION");
 
-            fileVERSION = new BufferedReader(new FileReader("VERSION.txt"));
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        fileVERSION = new BufferedReader(new InputStreamReader(in));
 
         try {
 
