@@ -23,7 +23,7 @@ public class Utility {
 
             try {
 
-                fileVERSION = new BufferedReader(new FileReader("VERSION"));
+                fileVERSION = new BufferedReader(new FileReader("VERSION.txt"));
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -63,7 +63,7 @@ public class Utility {
 
         try {
 
-            fileVERSION = new BufferedReader(new FileReader("VERSION"));
+            fileVERSION = new BufferedReader(new FileReader("VERSION.txt"));
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
