@@ -3,6 +3,7 @@ package com.huskehhh.code.commands.core;
 import com.huskehhh.code.HuskyIRC;
 import com.huskehhh.code.auth.AuthCheck;
 import com.huskehhh.code.config.Config;
+import com.huskehhh.code.tasks.UpdateCheck;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 
@@ -30,6 +31,8 @@ public class Part extends ListenerAdapter {
                         }
 
                     }
+
+                    new UpdateCheck();
 
                 }
 

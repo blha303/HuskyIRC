@@ -4,10 +4,12 @@ import com.huskehhh.code.commands.chat.ChatManagement;
 import com.huskehhh.code.commands.core.Join;
 import com.huskehhh.code.commands.core.Part;
 import com.huskehhh.code.commands.misc.Update;
+import com.huskehhh.code.commands.misc.Version;
 import com.huskehhh.code.commands.network.Check;
 import com.huskehhh.code.commands.network.Ping;
 import com.huskehhh.code.commands.oresomecraft.*;
 import com.huskehhh.code.config.Config;
+import com.huskehhh.code.tasks.UpdateCheck;
 import org.pircbotx.PircBotX;
 import org.pircbotx.exception.IrcException;
 
@@ -18,7 +20,9 @@ public class HuskyIRC {
     public static PircBotX bot = new PircBotX();
 
     public static void main(String[] args) {
+
         load();
+
     }
 
     private static void load() {
@@ -32,7 +36,7 @@ public class HuskyIRC {
         try {
 
             bot.setAutoNickChange(true);
-            bot.setVersion("HuskyIRC Bot - Kudos to Zachoz for some code.");
+            bot.setVersion("HuskyIRC Bot - Kudos to Zachoz for some code. :)");
             bot.setLogin(Config.ircuser);
             bot.setName(Config.ircuser);
             bot.identify(Config.nickPass);
@@ -40,6 +44,8 @@ public class HuskyIRC {
             bot.connect(Config.network, 6667);
             bot.setAutoReconnect(false);
             bot.setAutoReconnectChannels(true);
+
+            new UpdateCheck();
 
         } catch (IrcException e) {
             System.out.println(e.getMessage());
@@ -70,14 +76,20 @@ public class HuskyIRC {
 
 
     private static void joinChannels() {
+
         for (int i = 0; i < Config.channels.length; i++) {
+
             bot.joinChannel(Config.channels[i].replaceAll(" ", ""));
+
         }
+
     }
 
     public static void shutdown() {
+
         bot.disconnect();
         bot.shutdown();
+
     }
 
 }

@@ -3,6 +3,7 @@ package com.huskehhh.code.commands.core;
 import com.huskehhh.code.HuskyIRC;
 import com.huskehhh.code.auth.AuthCheck;
 import com.huskehhh.code.config.Config;
+import com.huskehhh.code.tasks.UpdateCheck;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 
@@ -18,6 +19,7 @@ public class Join extends ListenerAdapter {
                 if (event.getMessage().equals("!join")) {
 
                     event.respond("Please specify a channel to join.");
+
                 }
 
                 String channelarg = event.getMessage().split(" ")[1];
@@ -35,6 +37,8 @@ public class Join extends ListenerAdapter {
                         }
 
                     }
+
+                    new UpdateCheck();
 
                 }
 
