@@ -12,9 +12,9 @@ public class UpdateCheckTask extends TimerTask {
 
         if (Utility.isUpdate()) {
 
-            HuskyIRC.bot.sendMessage(Utility.getUser("Husk", "#oresomecraft"), "There is an update available!");
-            HuskyIRC.bot.sendMessage(Utility.getUser("Husk", "#oresomecraft"), "Current version: " + Utility.getVersion());
-            HuskyIRC.bot.sendMessage(Utility.getUser("Husk", "#oresomecraft"), "New version: " + Utility.newVersion());
+            Utility.getUser("Husk", "#oresomecraft").sendMessage("There is an update available!");
+            Utility.getUser("Husk", "#oresomecraft").sendMessage("Current version: " + Utility.getVersion());
+            Utility.getUser("Husk", "#oresomecraft").sendMessage("New version: " + Utility.newVersion());
 
         }
 
