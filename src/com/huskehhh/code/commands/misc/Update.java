@@ -34,6 +34,8 @@ public class Update extends ListenerAdapter {
                     event.respond("No update available!");
                 }
 
+            } else {
+                event.respond("Sorry, you don't have the correct permission to use this feature!");
             }
 
         }

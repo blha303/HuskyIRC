@@ -34,6 +34,8 @@ public class Join extends ListenerAdapter {
                         if (admin[i].replaceAll(" ", "").equals(event.getUser().getNick())) {
                             HuskyIRC.bot.sendRawLineNow("join" + " " + channelarg);
                             event.respond("Attempted to join channel " + channelarg);
+                        } else {
+                            event.respond("Sorry, you don't have the correct permission to use this feature!");
                         }
 
                     }
@@ -44,6 +46,8 @@ public class Join extends ListenerAdapter {
 
             }
 
+        } else {
+            event.respond("Sorry, you don't have the correct permission to use this feature!");
         }
 
     }

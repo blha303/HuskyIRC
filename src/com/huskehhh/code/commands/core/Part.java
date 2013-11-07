@@ -28,6 +28,8 @@ public class Part extends ListenerAdapter {
                         if (admin[i].replaceAll(" ", "").equals(event.getUser().getNick())) {
                             event.respond("Ciao! " + channel);
                             HuskyIRC.bot.sendRawLineNow("part" + " " + channel);
+                        } else {
+                            event.respond("Sorry, you don't have the correct permission to use this feature!");
                         }
 
                     }
@@ -38,6 +40,8 @@ public class Part extends ListenerAdapter {
 
             }
 
+        } else {
+            event.respond("Sorry, you don't have the correct permission to use this feature!");
         }
 
     }
