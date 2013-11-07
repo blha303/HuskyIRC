@@ -1,6 +1,7 @@
 package com.huskehhh.code.commands.misc;
 
 import com.huskehhh.code.tasks.UpdateCheck;
+import com.huskehhh.code.util.Utility;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 
@@ -19,11 +20,8 @@ public class Version extends ListenerAdapter {
 
             try {
 
-                URL url = new URL("https://raw.github.com/Huskehhh/HuskyIRC/master/VERSION");
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-                event.respond("Version: " + in.readLine());
+                event.respond("Local version: " + Utility.getVersion());
+                event.respond("External version: " + Utility.newVersion());
 
             } catch (Exception ex) {
                 ex.printStackTrace();
