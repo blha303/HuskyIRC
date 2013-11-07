@@ -15,7 +15,7 @@ local.properties
 .classpath
 .settings/
 .
-/target
+target/
 /dependency-reduced-pom.xml
 
 # intellij
