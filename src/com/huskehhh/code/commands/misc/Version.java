@@ -20,7 +20,7 @@ public class Version extends ListenerAdapter {
                 URL url = new URL("https://raw.github.com/Huskehhh/HuskyIRC/master/VERSION");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-				event.getBot().sendMessage(event.getChannel(),"Version: "+in.readLine());
+		event.respond("Version: " + in.readLine());
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
