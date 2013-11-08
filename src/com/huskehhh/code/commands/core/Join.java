@@ -12,18 +12,19 @@ public class Join extends ListenerAdapter {
 
     public void onMessage(MessageEvent event) throws Exception {
 
-        if (AuthCheck.authCheck(event.getUser().getNick())) {
 
-            if (event.getMessage().split(" ").length > 1) {
+        if (event.getMessage().split(" ").length > 1) {
 
-                if (event.getMessage().equals("!join")) {
+            if (event.getMessage().equals("!join")) {
 
-                    event.respond("Please specify a channel to join.");
+                event.respond("Please specify a channel to join.");
 
-                }
+            }
 
-                String channelarg = event.getMessage().split(" ")[1];
-                if (event.getMessage().startsWith("!join ") && event.getMessage().contains(channelarg)) {
+            String channelarg = event.getMessage().split(" ")[1];
+            if (event.getMessage().startsWith("!join ") && event.getMessage().contains(channelarg)) {
+
+                if (AuthCheck.authCheck(event.getUser().getNick())) {
 
                     String[] admin = Config.admins;
 
@@ -32,7 +33,7 @@ public class Join extends ListenerAdapter {
                         if (admin[i] == null) return;
 
                         if (admin[i].replaceAll(" ", "").equals(event.getUser().getNick())) {
-                            HuskyIRC.bot.sendRawLineNow("join" + " " + channelarg);
+                            HuskyIRC.bot.sendRawLineNow("join " + channelarg);
                             event.respond("Attempted to join channel " + channelarg);
                         }
 
@@ -40,12 +41,12 @@ public class Join extends ListenerAdapter {
 
                     new UpdateCheck();
 
+                } else {
+                    event.respond("Sorry, you don't have the correct permission to use this feature!");
                 }
 
             }
 
-        } else {
-            event.respond("Sorry, you don't have the correct permission to use this feature!");
         }
 
     }

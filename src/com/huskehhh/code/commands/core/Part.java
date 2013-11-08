@@ -12,12 +12,12 @@ public class Part extends ListenerAdapter {
 
     public void onMessage(MessageEvent event) throws Exception {
 
-        if (AuthCheck.authCheck(event.getUser().getNick())) {
+        if (event.getMessage().split(" ").length > 1) {
 
-            if (event.getMessage().split(" ").length > 1) {
+            String channel = event.getMessage().split(" ")[1];
+            if (event.getMessage().startsWith("!part ") && event.getMessage().contains(channel)) {
 
-                String channel = event.getMessage().split(" ")[1];
-                if (event.getMessage().startsWith("!part ") && event.getMessage().contains(channel)) {
+                if (AuthCheck.authCheck(event.getUser().getNick())) {
 
                     String[] admin = Config.admins;
 
@@ -27,19 +27,19 @@ public class Part extends ListenerAdapter {
 
                         if (admin[i].replaceAll(" ", "").equals(event.getUser().getNick())) {
                             event.respond("Ciao! " + channel);
-                            HuskyIRC.bot.sendRawLineNow("part" + " " + channel);
+                            HuskyIRC.bot.sendRawLineNow("part " + channel);
                         }
 
                     }
 
                     new UpdateCheck();
 
+                } else {
+                    event.respond("Sorry, you don't have the correct permission to use this feature!");
                 }
 
             }
 
-        } else {
-            event.respond("Sorry, you don't have the correct permission to use this feature!");
         }
 
     }
