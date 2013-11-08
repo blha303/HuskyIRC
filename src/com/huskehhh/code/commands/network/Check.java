@@ -14,16 +14,24 @@ public class Check extends ListenerAdapter {
         String[] line = event.getMessage().split(" ");
 
         if (line[0].equalsIgnoreCase("!check")) {
+
             if (line.length > 1) {
+
                 try {
+
                     InetAddress checkme = InetAddress.getByName(line[1]);
                     event.respond("Host name : " + checkme.getCanonicalHostName());
+
                 } catch (UnknownHostException e) {
                     event.respond("Either you're retarded or this guy has hacks.");
                 }
+
             } else {
                 event.respond("Usage: !check <ip>");
             }
+
         }
+
     }
+
 }
