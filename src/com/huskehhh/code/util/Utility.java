@@ -65,8 +65,10 @@ public class Utility {
 
         try {
 
-            while (fileVERSION.readLine() != null) {
-                return fileVERSION.readLine();
+            String v = fileVERSION.readLine();
+
+            if (v != null) {
+                return v;
             }
 
         } catch (IOException e) {
@@ -86,8 +88,10 @@ public class Utility {
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
-            while (in.readLine() != null) {
-                return in.readLine();
+            String v = in.readLine();
+
+            if (v != null) {
+                return v;
             }
 
         } catch (IOException e) {
