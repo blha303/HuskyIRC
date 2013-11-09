@@ -17,7 +17,6 @@ local.properties
 .
 /target
 /dependency-reduced-pom.xml
-/modules/OresomeBattles-API/target
 
 # intellij
 *.iml
