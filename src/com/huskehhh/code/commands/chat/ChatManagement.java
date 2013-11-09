@@ -68,14 +68,14 @@ public class ChatManagement extends ListenerAdapter {
                 event.respond("o/");
             } else if (line[0].startsWith("o/")) {
                 event.respond("\\o");
-            } else if (event.getMessage().equalsIgnoreCase("HuskBot: Is Smithey someone's bitch?")) {
+            } else if (event.getMessage().equalsIgnoreCase("HuskBot: Is Smithey someone's bitch?") || event.getMessage().equalsIgnoreCase("HuskBot, Is Smithey someone's bitch?")) {
 
                 event.respond("Once upon a there was a person named Smithey, He went around saying he would finish stuff, but in actual fact he didn't.");
                 event.respond("One day the almighty Zachoz learned that incentives would make him become his bitch.");
                 event.respond("And to this day he is still the bitch of the almighty Zachoz!");
                 event.respond("The End!");
 
-            } else if (event.getMessage().equalsIgnoreCase("HuskBot: Do you like OresomeBot?")) {
+            } else if (event.getMessage().equalsIgnoreCase("HuskBot: Do you like OresomeBot?") || event.getMessage().equalsIgnoreCase("HuskBot, Do you like OresomeBot?")) {
 
                 event.respond("He's okay I guess...But it wouldn't bother me if it had a bug and was taken out of action.");
 
