@@ -92,6 +92,12 @@ public class ChatManagement extends ListenerAdapter {
                     event.respond("Usage: !roll <Highest Number>");
                 }
 
+            } else if (line[0].equalsIgnoreCase("!gc")) {
+
+                event.respond("Max memory: " + (Runtime.getRuntime().maxMemory() / 1024 / 1024) + "MB");
+                event.respond("Allocated memory: " + (Runtime.getRuntime().totalMemory() / 1024 / 1024) + "MB");
+                event.respond("Free memory: " + (Runtime.getRuntime().freeMemory() / 1024 / 1024) + "MB");
+
             }
 
         }
