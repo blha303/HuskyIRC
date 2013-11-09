@@ -23,9 +23,7 @@ public class Utility {
             BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             BufferedReader fileVERSION = null;
 
-            InputStream inputStream = util.getClass().getResourceAsStream("/VERSION");
-
-            fileVERSION = new BufferedReader(new InputStreamReader(inputStream));
+            fileVERSION = new BufferedReader(new FileReader("VERSION"));
 
             if (!in.readLine().equals(fileVERSION.readLine())) {
                 return true;
@@ -59,9 +57,11 @@ public class Utility {
 
         BufferedReader fileVERSION = null;
 
-        InputStream in = util.getClass().getResourceAsStream("/VERSION");
-
-        fileVERSION = new BufferedReader(new InputStreamReader(in));
+        try {
+            fileVERSION = new BufferedReader(new FileReader("VERSION"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
         try {
 
