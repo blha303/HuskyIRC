@@ -16,29 +16,49 @@ public class Update extends ListenerAdapter {
 
         if (line[0].equalsIgnoreCase("!update")) {
 
-            if (event.getUser().getNick().equals("Husk") && AuthCheck.authCheck(event.getUser().getNick())) {
+            if (line[1] == null) {
 
-                if (Utility.isUpdate()) {
+                if (event.getUser().getNick().equals("Husk") && AuthCheck.authCheck(event.getUser().getNick())) {
 
-                    try {
+                    if (Utility.isUpdate()) {
 
-                        event.respond("Updating!");
-                        Runtime.getRuntime().exec("./update.sh");
+                        try {
 
-                        HuskyIRC.bot.disconnect();
-                        HuskyIRC.bot.shutdown();
-                        System.exit(0);
+                            event.respond("Updating!");
+                            Runtime.getRuntime().exec("./update.sh");
+                            System.exit(0);
 
-                    } catch (IOException exception) {
-                        exception.printStackTrace();
+                        } catch (IOException exception) {
+                            exception.printStackTrace();
+                        }
+
+                    } else {
+                        event.respond("No update available!");
                     }
 
                 } else {
-                    event.respond("No update available!");
+                    event.respond("Sorry, you don't have the correct permission to use this feature!");
                 }
 
             } else {
-                event.respond("Sorry, you don't have the correct permission to use this feature!");
+
+                if (line[1].equalsIgnoreCase("repo")) {
+
+                    if (event.getUser().getNick().equals("Husk") && AuthCheck.authCheck(event.getUser().getNick())) {
+
+                        event.respond("Updating local map repo!");
+
+                        try {
+                            Runtime.getRuntime().exec("./updateMapREPO.sh");
+                        } catch (IOException exception) {
+                            exception.printStackTrace();
+                            event.respond("Error updating! Check console!");
+                        }
+
+                    }
+
+                }
+
             }
 
         }
