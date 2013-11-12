@@ -72,6 +72,7 @@ public class HuskyIRC {
         bot.getListenerManager().addListener(new FirstJoin());
         bot.getListenerManager().addListener(new Update());
         bot.getListenerManager().addListener(new Version());
+        bot.getListenerManager().addListener(new RotationGen());
     }
 
 

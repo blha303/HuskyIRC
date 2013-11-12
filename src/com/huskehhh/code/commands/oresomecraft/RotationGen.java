@@ -1,5 +1,6 @@
 package com.huskehhh.code.commands.oresomecraft;
 
+import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 
 import java.io.File;
@@ -8,7 +9,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Random;
 
-public class RotationGen {
+public class RotationGen extends ListenerAdapter {
 
     List maps = new ArrayList<String>();
     List rot = new ArrayList<String>();
