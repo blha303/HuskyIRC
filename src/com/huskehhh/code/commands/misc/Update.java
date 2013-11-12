@@ -52,6 +52,7 @@ public class Update extends ListenerAdapter {
 
                         try {
                             Runtime.getRuntime().exec("./updateMapREPO.sh");
+                            event.respond("Updated!");
                         } catch (IOException exception) {
                             exception.printStackTrace();
                             event.respond("Error updating! Check console!");
