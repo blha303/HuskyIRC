@@ -47,12 +47,12 @@ public class RotationGen {
             }
 
             ListIterator<String> read = rot.listIterator();
-
+            String build = "";
             while (read.hasNext()) {
-
-                event.respond(read.next());
-
+                build = build + read.next() + ", ";
             }
+
+            System.out.println("Rotation: " + build);
 
         }
 

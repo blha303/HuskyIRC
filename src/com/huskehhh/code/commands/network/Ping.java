@@ -23,7 +23,7 @@ public class Ping extends ListenerAdapter {
 
                     try {
 
-                        Process ping = Runtime.getRuntime().exec("ping -c 3 " + lines[1]);
+                        Process ping = Runtime.getRuntime().exec("ping -c 1 " + lines[1]);
                         BufferedReader br = new BufferedReader(new InputStreamReader(ping.getInputStream()));
                         String line;
 

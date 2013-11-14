@@ -1,6 +1,7 @@
 package com.huskehhh.code;
 
 import com.huskehhh.code.commands.chat.ChatManagement;
+import com.huskehhh.code.commands.core.Channels;
 import com.huskehhh.code.commands.core.Join;
 import com.huskehhh.code.commands.core.Part;
 import com.huskehhh.code.commands.misc.Update;
@@ -12,8 +13,11 @@ import com.huskehhh.code.config.Config;
 import com.huskehhh.code.tasks.UpdateCheck;
 import org.pircbotx.PircBotX;
 import org.pircbotx.exception.IrcException;
+import org.pircbotx.hooks.ListenerAdapter;
 
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 public class HuskyIRC {
 
@@ -72,6 +76,7 @@ public class HuskyIRC {
         bot.getListenerManager().addListener(new FirstJoin());
         bot.getListenerManager().addListener(new Update());
         bot.getListenerManager().addListener(new Version());
+        bot.getListenerManager().addListener(new Channels());
     }
 
 
