@@ -76,11 +76,8 @@ public class HuskyIRC {
         bot.getListenerManager().addListener(new FirstJoin());
         bot.getListenerManager().addListener(new Update());
         bot.getListenerManager().addListener(new Version());
-<<<<<<< HEAD
         bot.getListenerManager().addListener(new Channels());
-=======
         bot.getListenerManager().addListener(new RotationGen());
->>>>>>> 7260b24f339e39016e62a0d9f762fecf248d7e49
     }
 
 
