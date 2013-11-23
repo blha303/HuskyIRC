@@ -25,10 +25,7 @@ public class Update extends ListenerAdapter {
                         try {
 
                             event.respond("Updating!");
-                            Runtime.getRuntime().exec("./update.sh");
-
-                            HuskyIRC.shutdown();
-                            System.exit(0);
+                            Runtime.getRuntime().exec("screen -S UpdateHuskBot ./update.sh");
 
                         } catch (IOException exception) {
                             exception.printStackTrace();
