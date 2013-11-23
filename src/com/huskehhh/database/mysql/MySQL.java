@@ -97,7 +97,7 @@ public class MySQL extends Database {
             e.printStackTrace();
         }
 
-        //closeConnection();
+        closeConnection();
 
         return ret;
     }
@@ -121,7 +121,7 @@ public class MySQL extends Database {
             e1.printStackTrace();
         }
 
-        //closeConnection();
+        closeConnection();
 
     }
 
