@@ -75,6 +75,8 @@ public class MySQL extends Database {
     public ResultSet querySQL(String query) {
         Connection c = null;
 
+        closeConnection();  // kill previous connections
+
         c = openConnection();
 
         Statement s = null;
@@ -93,8 +95,7 @@ public class MySQL extends Database {
             e.printStackTrace();
         }
 
-        closeConnection();
-        c = null;
+        //closeConnection(); //can't do this because otherwise resultset is closed, throwing a nullpointer from the method trying to use it.
 
         return ret;
     }
