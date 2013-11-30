@@ -75,11 +75,7 @@ public class MySQL extends Database {
     public ResultSet querySQL(String query) {
         Connection c = null;
 
-        if (checkConnection()) {
-            c = getConnection();
-        } else {
-            c = openConnection();
-        }
+        c = openConnection();
 
         Statement s = null;
 
@@ -98,6 +94,7 @@ public class MySQL extends Database {
         }
 
         closeConnection();
+        c = null;
 
         return ret;
     }
@@ -106,11 +103,7 @@ public class MySQL extends Database {
 
         Connection c = null;
 
-        if (checkConnection()) {
-            c = getConnection();
-        } else {
-            c = openConnection();
-        }
+        c = openConnection();
 
         Statement s = null;
 
@@ -122,6 +115,7 @@ public class MySQL extends Database {
         }
 
         closeConnection();
+        c = null;
 
     }
 
