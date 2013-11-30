@@ -1,8 +1,11 @@
 package com.huskehhh.database.mysql;
 
+import com.huskehhh.code.tasks.ConnectionKill;
 import com.huskehhh.database.Database;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Connects to and uses a MySQL database
@@ -18,6 +21,8 @@ public class MySQL extends Database {
     private final String hostname;
 
     private Connection connection;
+
+    private static List<Connection> connections = new ArrayList<Connection>();
 
     /**
      * Creates a new MySQL instance
@@ -75,8 +80,6 @@ public class MySQL extends Database {
     public ResultSet querySQL(String query) {
         Connection c = null;
 
-        closeConnection();  // kill previous connections
-
         c = openConnection();
 
         Statement s = null;
@@ -96,6 +99,9 @@ public class MySQL extends Database {
         }
 
         //closeConnection(); //can't do this because otherwise resultset is closed, throwing a nullpointer from the method trying to use it.
+        connections.add(c);
+        new ConnectionKill(); // instead, we'll run a task in 10 seconds to clean this up for us!
+
 
         return ret;
     }
@@ -115,9 +121,13 @@ public class MySQL extends Database {
             e1.printStackTrace();
         }
 
-        closeConnection();
-        c = null;
+        connections.add(c);
+        new ConnectionKill();
 
+    }
+
+    public static List<Connection> getConnections() {
+        return connections;
     }
 
 }
