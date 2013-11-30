@@ -18,7 +18,7 @@ public class Channels extends ListenerAdapter {
             String ret = "";
 
             while (iterator.hasNext()) {
-                ret = ret + iterator.next() + ", ";
+                ret = ret + iterator.next().getName() + ", ";
             }
 
             event.respond("Channels: " + ret);
