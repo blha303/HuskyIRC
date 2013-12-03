@@ -1,6 +1,7 @@
 package com.huskehhh.code.commands.oresomecraft;
 
 import com.huskehhh.code.config.Config;
+import com.huskehhh.code.util.Utility;
 import com.huskehhh.database.mysql.MySQL;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
@@ -23,9 +24,9 @@ public class Rap extends ListenerAdapter {
                 String player = line[1];
                 String server = line[2];
 
-                String smp = "SELECT * FROM `mb_ban_records_smp` WHERE `banned`='" + player + "';";
-                String battles = "SELECT * FROM `mb_ban_records_battles` WHERE `banned`='" + player + "';";
-                String onslaught = "SELECT * FROM `mb_ban_records_onslaught` WHERE `banned`='" + player + "';";
+                String smp = "SELECT * FROM `mb_ban_records_smp` WHERE `banned` LIKE '" + player + "';";
+                String battles = "SELECT * FROM `mb_ban_records_battles` WHERE `banned` LIKE '" + player + "';";
+                String onslaught = "SELECT * FROM `mb_ban_records_onslaught` WHERE `banned` LIKE '" + player + "';";
 
                 ResultSet rs = null;
 
@@ -50,6 +51,8 @@ public class Rap extends ListenerAdapter {
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
+
+                    event.respond("More information over at: " + Utility.returnWebURL(player, server));
 
                 }
 

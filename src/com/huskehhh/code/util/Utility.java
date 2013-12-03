@@ -101,4 +101,27 @@ public class Utility {
         return null;
     }
 
+    public static String returnWebURL(String player, String server) {
+
+        String url = "http://mc.oresomecraft.com/bans/index.php";
+
+        if (player != null) url = url + "?player=" + player;
+
+        int id = 0;
+
+        if (server.equalsIgnoreCase("battle")) {
+            id = 1;
+        } else if (server.equalsIgnoreCase("arcade")) {
+            id = 1;
+        } else if (server.equalsIgnoreCase("smp")) {
+            id = 0;
+        } else if (server.equalsIgnoreCase("onslaught")) {
+            id = 2;
+        }
+
+        if (server != null) url = url + "&server=" + id;
+
+        return url;
+    }
+
 }

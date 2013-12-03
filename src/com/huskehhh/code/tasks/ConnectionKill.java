@@ -9,7 +9,7 @@ public class ConnectionKill {
     public ConnectionKill() {
 
         timer = new Timer();
-        timer.schedule(new ConnectionKillTask(), (10 * 1000));
+        timer.schedule(new ConnectionKillTask(), (30 * 1000));
 
     }
 

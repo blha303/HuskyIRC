@@ -1,6 +1,7 @@
 package com.huskehhh.code.commands.oresomecraft;
 
 import com.huskehhh.code.config.Config;
+import com.huskehhh.code.util.Utility;
 import com.huskehhh.database.mysql.MySQL;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
@@ -27,16 +28,18 @@ public class CheckBan extends ListenerAdapter {
                 String server = line[2];
 
                 if (server.equalsIgnoreCase("smp")) {
-                    event.respond(parseResultSet(player, "SMP", mysql.querySQL("SELECT * FROM `mb_bans_smp` WHERE `banned`='" + player + "'")));
+                    event.respond(parseResultSet(player, "SMP", mysql.querySQL("SELECT * FROM `mb_bans_smp` WHERE `banned` LIKE '" + player + "'")));
                 } else if (server.equalsIgnoreCase("battles")) {
-                    event.respond(parseResultSet(player, "Battle", mysql.querySQL("SELECT * FROM `mb_bans_battles` WHERE `banned`='" + player + "';")));
+                    event.respond(parseResultSet(player, "Battle", mysql.querySQL("SELECT * FROM `mb_bans_battles` WHERE `banned` LIKE '" + player + "';")));
                 } else if (server.equalsIgnoreCase("onslaught")) {
-                    event.respond(parseResultSet(player, "Onslaught", mysql.querySQL("SELECT * FROM `mb_bans_onslaught` WHERE `banned`='" + player + "';")));
+                    event.respond(parseResultSet(player, "Onslaught", mysql.querySQL("SELECT * FROM `mb_bans_onslaught` WHERE `banned` LIKE '" + player + "';")));
                 } else if (server.equalsIgnoreCase("all")) {
-                    event.respond(parseResultSet(player, "SMP", mysql.querySQL("SELECT * FROM `mb_bans_smp` WHERE `banned`='" + player + "'")));
-                    event.respond(parseResultSet(player, "Battle", mysql.querySQL("SELECT * FROM `mb_bans_battles` WHERE `banned`='" + player + "';")));
-                    event.respond(parseResultSet(player, "Onslaught", mysql.querySQL("SELECT * FROM `mb_bans_onslaught` WHERE `banned`='" + player + "';")));
+                    event.respond(parseResultSet(player, "SMP", mysql.querySQL("SELECT * FROM `mb_bans_smp` WHERE `banned` LIKE '" + player + "'")));
+                    event.respond(parseResultSet(player, "Battle", mysql.querySQL("SELECT * FROM `mb_bans_battles` WHERE `banned` LIKE '" + player + "';")));
+                    event.respond(parseResultSet(player, "Onslaught", mysql.querySQL("SELECT * FROM `mb_bans_onslaught` WHERE `banned` LIKE '" + player + "';")));
                 }
+
+                event.respond("More information over at: " + Utility.returnWebURL(player, server));
 
             } else {
 
@@ -67,6 +70,7 @@ public class CheckBan extends ListenerAdapter {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
+
         return player + " is not banned from " + server + "!";
     }
 

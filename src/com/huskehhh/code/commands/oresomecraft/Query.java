@@ -16,11 +16,12 @@ public class Query extends ListenerAdapter {
 
     public void onMessage(MessageEvent event) throws Exception {
 
-        if (AuthCheck.authCheck(event.getUser().getNick())) {
+        String[] line = event.getMessage().split(" ");
 
-            String[] line = event.getMessage().split(" ");
+        if (line[0].equalsIgnoreCase("!query")) {
 
-            if (line[0].equalsIgnoreCase("!query")) {
+            if (AuthCheck.authCheck(event.getUser().getNick())) {
+
                 if (line.length > 3) {
 
                     String[] admin = Config.admins;
