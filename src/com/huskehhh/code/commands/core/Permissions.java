@@ -12,7 +12,7 @@ public class Permissions extends ListenerAdapter {
 
         String[] line = event.getMessage().split(" ");
 
-        if (line[0].equalsIgnoreCase("!op") && AuthCheck.authCheck(event.getUser().getNick())) {
+        if (line[0].equalsIgnoreCase("!op") && AuthCheck.authCheck(event.getUser().getNick()) && Utility.isAdmin(event.getUser().getNick())) {
 
             HuskyIRC.bot.op(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
 

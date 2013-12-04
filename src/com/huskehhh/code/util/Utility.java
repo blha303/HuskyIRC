@@ -1,6 +1,7 @@
 package com.huskehhh.code.util;
 
 import com.huskehhh.code.HuskyIRC;
+import com.huskehhh.code.config.Config;
 import org.pircbotx.User;
 
 import java.io.*;
@@ -122,6 +123,23 @@ public class Utility {
         if (server != null) url = url + "&server=" + id;
 
         return url;
+    }
+
+    public static boolean isAdmin(String user) {
+
+        String[] admin = Config.admins;
+
+        for (int i = 0; i <= admin.length; i++) {
+
+            if (admin[i] == null) return false;
+
+            if (admin[i].replaceAll(" ", "").equals(user)) {
+                return true;
+            }
+
+        }
+
+        return false;
     }
 
 }
