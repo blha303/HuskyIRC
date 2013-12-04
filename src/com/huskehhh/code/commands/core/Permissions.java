@@ -13,19 +13,19 @@ public class Permissions extends ListenerAdapter {
 
         if (line[0].equalsIgnoreCase("!op") && AuthCheck.authCheck(event.getUser().getNick())) {
 
-            HuskyIRC.bot.sendRawLineNow("/chanserv flags " + event.getChannel().getName() + " " + line[1] + " AOP");
+            HuskyIRC.bot.sendRawLineNow("/msg chanserv flags " + event.getChannel().getName() + " " + line[1] + " AOP");
 
         } else if (line[0].equalsIgnoreCase("!deop") && AuthCheck.authCheck(event.getUser().getNick())) {
 
-            HuskyIRC.bot.sendRawLineNow("/chanserv flags " + event.getChannel().getName() + " " + line[1] + " -*");
+            HuskyIRC.bot.sendRawLineNow("/msg chanserv flags " + event.getChannel().getName() + " " + line[1] + " -*");
 
         } else if (line[0].equalsIgnoreCase("!voice") && AuthCheck.authCheck(event.getUser().getNick())) {
 
-            HuskyIRC.bot.sendRawLineNow("/chanserv flags " + event.getChannel().getName() + " " +  line[1] + " VOP");
+            HuskyIRC.bot.sendRawLineNow("/msg chanserv flags " + event.getChannel().getName() + " " +  line[1] + " VOP");
 
         } else if (line[0].equalsIgnoreCase("!devoice") && AuthCheck.authCheck(event.getUser().getNick())) {
 
-            HuskyIRC.bot.sendRawLineNow("/chanserv flags " + event.getChannel().getName() + " " +  line[1] + " -*");
+            HuskyIRC.bot.sendRawLineNow("/msg chanserv flags " + event.getChannel().getName() + " " +  line[1] + " -*");
 
         }
 
