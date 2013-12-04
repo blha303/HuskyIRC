@@ -1,10 +1,7 @@
 package com.huskehhh.code;
 
 import com.huskehhh.code.commands.chat.ChatManagement;
-import com.huskehhh.code.commands.core.Channels;
-import com.huskehhh.code.commands.core.Join;
-import com.huskehhh.code.commands.core.Part;
-import com.huskehhh.code.commands.core.Permissions;
+import com.huskehhh.code.commands.core.*;
 import com.huskehhh.code.commands.misc.Update;
 import com.huskehhh.code.commands.misc.Version;
 import com.huskehhh.code.commands.network.Check;
@@ -77,6 +74,7 @@ public class HuskyIRC {
         bot.getListenerManager().addListener(new Channels());
         bot.getListenerManager().addListener(new RotationGen());
         bot.getListenerManager().addListener(new Permissions());
+        bot.getListenerManager().addListener(new Punishment());
     }
 
 
