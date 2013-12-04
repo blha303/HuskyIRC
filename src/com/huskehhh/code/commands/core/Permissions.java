@@ -16,15 +16,15 @@ public class Permissions extends ListenerAdapter {
 
             HuskyIRC.bot.op(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
 
-        } else if (line[0].equalsIgnoreCase("!deop") && AuthCheck.authCheck(event.getUser().getNick())) {
+        } else if (line[0].equalsIgnoreCase("!deop") && AuthCheck.authCheck(event.getUser().getNick()) && Utility.isAdmin(event.getUser().getNick())) {
 
             HuskyIRC.bot.deOp(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
 
-        } else if (line[0].equalsIgnoreCase("!voice") && AuthCheck.authCheck(event.getUser().getNick())) {
+        } else if (line[0].equalsIgnoreCase("!voice") && AuthCheck.authCheck(event.getUser().getNick()) && Utility.isAdmin(event.getUser().getNick())) {
 
             HuskyIRC.bot.voice(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
 
-        } else if (line[0].equalsIgnoreCase("!devoice") && AuthCheck.authCheck(event.getUser().getNick())) {
+        } else if (line[0].equalsIgnoreCase("!devoice") && AuthCheck.authCheck(event.getUser().getNick()) && Utility.isAdmin(event.getUser().getNick())) {
 
             HuskyIRC.bot.deVoice(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
 
