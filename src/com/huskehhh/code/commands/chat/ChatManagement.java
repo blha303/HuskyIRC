@@ -98,6 +98,9 @@ public class ChatManagement extends ListenerAdapter {
                 event.respond("Allocated memory: " + (Runtime.getRuntime().totalMemory() / 1024 / 1024) + "MB");
                 event.respond("Free memory: " + (Runtime.getRuntime().freeMemory() / 1024 / 1024) + "MB");
 
+            } else if (line[0].equalsIgnoreCase("!ci")) {
+                event.respond("http://ci.drtshock.com/view/Huskehhh/");
+                event.respond("Kindly provided by drtshock and blha303! :D");
             }
 
         }
