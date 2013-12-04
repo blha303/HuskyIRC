@@ -59,7 +59,7 @@ public class ChatManagement extends ListenerAdapter {
             } else if (line[0].equalsIgnoreCase("!hf")) {
 
                 if (line.length > 1) {
-                    event.getBot().sendAction(event.getChannel(), "gives " + line[1] + " a hi-five!");
+                    event.getBot().sendAction(event.getChannel(), " hi-fives " + line[1] + "!");
                 } else {
                     event.respond("You need to actually have a parameter after the command! >.<");
                 }
