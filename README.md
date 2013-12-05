@@ -22,8 +22,8 @@ The End!
 HuskBot: Do you like OresomeBot? -- Responds with
 > He's okay I guess...But it wouldn't bother me if it had a bug and was taken out of action.
 
-!roll \<number\> -- Picks a random number between 0 and \<number\>.
-!gc -- Responds with information about how much memory its using.
+!roll \<number\> -- Picks a random number between 0 and \<number\>.  
+!gc -- Responds with information about how much memory its using.  
 !ci -- Responds with  
 > http://ci.drtshock.com/view/Huskehhh/  
 Kindly provided by drtshock and blha303! :D
