@@ -18,6 +18,7 @@ public class Punishment extends ListenerAdapter {
         if (line[0].equalsIgnoreCase("!ban") && AuthCheck.authCheck(event.getUser().getNick()) && Utility.isAdmin(event.getUser().getNick())) {
 
             HuskyIRC.bot.ban(event.getChannel(), line[1]);
+            HuskyIRC.bot.kick(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
             event.respond("Banning " + line[1]);
 
         } else if (line[0].equalsIgnoreCase("!mute") && AuthCheck.authCheck(event.getUser().getNick()) && Utility.isAdmin(event.getUser().getNick())) {
@@ -34,6 +35,8 @@ public class Punishment extends ListenerAdapter {
 
             HuskyIRC.bot.setMode(event.getChannel(), "-m", Utility.getUser(line[1], event.getChannel().getName()));
             event.respond("Unmuted " + line[1]);
+
+        } else if (line[0].equalsIgnoreCase("!kick") && AuthCheck.authCheck(event.getUser().getNick())) {
 
         }
 

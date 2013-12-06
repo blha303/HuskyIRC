@@ -25,7 +25,7 @@ public class Update extends ListenerAdapter {
                         try {
 
                             event.respond("Updating!");
-                            Runtime.getRuntime().exec("screen -S UpdateHuskBot ./update.sh");
+                            Runtime.getRuntime().exec("./update.sh");
 
                         } catch (IOException exception) {
                             exception.printStackTrace();
