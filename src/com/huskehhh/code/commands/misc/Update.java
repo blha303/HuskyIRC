@@ -16,7 +16,7 @@ public class Update extends ListenerAdapter {
 
         if (line[0].equalsIgnoreCase("!update")) {
 
-            if (line.length == 0) {
+            if (line.length == 1) {
 
                 if (event.getUser().getNick().equals("Husk") && AuthCheck.authCheck(event.getUser().getNick())) {
 
