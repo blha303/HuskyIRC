@@ -64,9 +64,9 @@ public class ChatManagement extends ListenerAdapter {
                     event.respond("You need to actually have a parameter after the command! >.<");
                 }
 
-            } else if (line[0].startsWith("\\o")) {
+            } else if (line[0].startsWith("\\o") && !event.getUser().getNick().equals("Willie")) {
                 event.respond("o/");
-            } else if (line[0].startsWith("o/")) {
+            } else if (line[0].startsWith("o/") && !event.getUser().getNick().equals("Willie")) {
                 event.respond("\\o");
             } else if (event.getMessage().equalsIgnoreCase("HuskBot: Is Smithey someone's bitch?") || event.getMessage().equalsIgnoreCase("HuskBot, Is Smithey someone's bitch?")) {
 
