@@ -1,6 +1,5 @@
 package com.huskehhh.database.mysql;
 
-import com.huskehhh.code.tasks.ConnectionKill;
 import com.huskehhh.database.Database;
 
 import java.sql.*;
@@ -14,6 +13,7 @@ import java.util.List;
  * @author tips48
  */
 public class MySQL extends Database {
+
     private final String user;
     private final String database;
     private final String password;
@@ -21,8 +21,6 @@ public class MySQL extends Database {
     private final String hostname;
 
     private Connection connection;
-
-    private static List<Connection> connections = new ArrayList<Connection>();
 
     /**
      * Creates a new MySQL instance
@@ -44,14 +42,18 @@ public class MySQL extends Database {
 
     @Override
     public Connection openConnection() {
+
         try {
+
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://" + this.hostname + ":" + this.port + "/" + this.database, this.user, this.password);
+
         } catch (SQLException e) {
             System.out.println("Could not connect to MySQL server! because: " + e.getMessage());
         } catch (ClassNotFoundException e) {
             System.out.println("JDBC Driver not found!");
         }
+
         return connection;
     }
 
@@ -78,14 +80,17 @@ public class MySQL extends Database {
     }
 
     public ResultSet querySQL(String query) {
-        Connection c = null;
-
-        c = openConnection();
 
         Statement s = null;
 
         try {
+
+            Connection c = getConnection();
+
+            if (c.isClosed()) c = openConnection();
+
             s = c.createStatement();
+
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
@@ -98,36 +103,26 @@ public class MySQL extends Database {
             e.printStackTrace();
         }
 
-        //closeConnection(); //can't do this because otherwise resultset is closed, throwing a nullpointer from the method trying to use it.
-        connections.add(c);
-        new ConnectionKill(); // instead, we'll run a task in 10 seconds to clean this up for us!
-
-
         return ret;
     }
 
     public void updateSQL(String update) {
 
-        Connection c = null;
-
-        c = openConnection();
-
-        Statement s = null;
-
         try {
+
+            Connection c = getConnection();
+
+            if (c.isClosed()) c = openConnection();
+
+            Statement s = null;
+
             s = c.createStatement();
             s.executeUpdate(update);
+
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
 
-        connections.add(c);
-        new ConnectionKill();
-
-    }
-
-    public static List<Connection> getConnections() {
-        return connections;
     }
 
 }
