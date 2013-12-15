@@ -3,8 +3,6 @@ package com.huskehhh.database.mysql;
 import com.huskehhh.database.Database;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Connects to and uses a MySQL database
@@ -85,9 +83,13 @@ public class MySQL extends Database {
 
         try {
 
-            Connection c = getConnection();
+            Connection c;
 
-            if (c.isClosed()) c = openConnection();
+            if (getConnection() != null) {
+                c = getConnection();
+            } else {
+                c = openConnection();
+            }
 
             s = c.createStatement();
 
@@ -110,9 +112,13 @@ public class MySQL extends Database {
 
         try {
 
-            Connection c = getConnection();
+            Connection c;
 
-            if (c.isClosed()) c = openConnection();
+            if (getConnection() != null) {
+                c = getConnection();
+            } else {
+                c = openConnection();
+            }
 
             Statement s = null;
 
