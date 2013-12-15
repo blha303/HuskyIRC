@@ -106,7 +106,7 @@ public class Utility {
 
         String url = "http://mc.oresomecraft.com/bans/index.php";
 
-        if (player != null) url = url + "?player=" + player;
+        if (player != null) url = url + "?action=viewplayer&player=" + player;
 
         int id = 0;
 
