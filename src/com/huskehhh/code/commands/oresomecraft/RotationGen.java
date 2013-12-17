@@ -49,11 +49,14 @@ public class RotationGen extends ListenerAdapter {
 
             ListIterator<String> read = rot.listIterator();
             String build = "";
+            
             while (read.hasNext()) {
                 build = build + read.next() + ", ";
             }
 
             event.respond("Rotation: " + build);
+            
+            rot = new ArrayList<String>();
 
         }
 
