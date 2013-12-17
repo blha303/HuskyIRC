@@ -53,7 +53,7 @@ public class RotationGen extends ListenerAdapter {
                 build = build + read.next() + ", ";
             }
 
-            System.out.println("Rotation: " + build);
+            event.respond("Rotation: " + build);
 
         }
 
