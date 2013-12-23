@@ -18,6 +18,7 @@ public class Config {
     public static String nickPass;
     public static String ircuser;
     public static String version;
+    public static String siteURL;
 
     public static void loadConfiguration() throws FileNotFoundException, IOException {
 
@@ -30,6 +31,7 @@ public class Config {
         ircuser = config.getProperty("ircuser");
         admins = config.getProperty("admin").split(",");
         version = config.getProperty("version");
+        siteURL = config.getProperty("siteURL");
 
         Ohostname = config.getProperty("OMySQL-host");
         Oport = config.getProperty("OMySQL-port");
