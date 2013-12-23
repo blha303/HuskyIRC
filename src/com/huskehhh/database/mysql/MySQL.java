@@ -83,11 +83,9 @@ public class MySQL extends Database {
 
         try {
 
-            Connection c;
+            Connection c = getConnection();
 
-            if (getConnection() != null) {
-                c = getConnection();
-            } else {
+            if (c.isClosed()) {
                 c = openConnection();
             }
 
@@ -112,11 +110,9 @@ public class MySQL extends Database {
 
         try {
 
-            Connection c;
+            Connection c = getConnection();
 
-            if (getConnection() != null) {
-                c = getConnection();
-            } else {
+            if (c.isClosed()) {
                 c = openConnection();
             }
 

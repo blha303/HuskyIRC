@@ -110,7 +110,7 @@ public class Utility {
 
         int id = 0;
 
-        if (server.equalsIgnoreCase("battle")) {
+        if (server.equalsIgnoreCase("battles")) {
             id = 1;
         } else if (server.equalsIgnoreCase("arcade")) {
             id = 1;
