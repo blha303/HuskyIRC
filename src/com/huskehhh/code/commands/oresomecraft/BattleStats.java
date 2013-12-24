@@ -21,7 +21,7 @@ public class BattleStats extends ListenerAdapter {
     public void onMessage(MessageEvent event) {
 
         String[] args = event.getMessage().split(" ");
-        if (event.getMessage().startsWith(".stats ")) {
+        if (event.getMessage().startsWith("!stats ")) {
             if (args.length >= 2) {
                 try {
                     URL url = new URL(Config.siteURL + "/battleapi.php?name=" + args[1].replaceAll("'", ""));
