@@ -24,7 +24,7 @@ public class BattleStats extends ListenerAdapter {
         if (event.getMessage().startsWith("!stats ")) {
             if (args.length >= 2) {
                 try {
-                    URL url = new URL(Config.siteURL + "/battleapi.php?name=" + args[1].replaceAll("'", ""));
+                    URL url = new URL("http://" + Config.siteURL + "/battleapi.php?name=" + args[1].replaceAll("'", ""));
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection(); // Open URL connection
                     BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
