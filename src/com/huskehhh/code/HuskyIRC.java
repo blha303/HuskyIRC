@@ -75,6 +75,7 @@ public class HuskyIRC {
         bot.getListenerManager().addListener(new RotationGen());
         bot.getListenerManager().addListener(new Permissions());
         bot.getListenerManager().addListener(new Punishment());
+        bot.getListenerManager().addListener(new BattleStats());
     }
 
 
