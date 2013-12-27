@@ -43,4 +43,8 @@ public class Help extends ListenerAdapter {
             event.getBot().sendMessage(event.getUser().getNick(), "** - Husk only.");
         }
     }
+    public void onMessage(MessageEvent event) {
+        
+        event.respond("Sorry, but commands don't work here!")
+    }
 }
