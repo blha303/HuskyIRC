@@ -35,6 +35,8 @@ public class FirstJoin extends ListenerAdapter {
                         rs.next();
                         event.respond(line[1] + " first joined " + rs.getString("firstlogin") + " (SMP)");
 
+                    } else {
+                        event.respond("This user hasn't been seen!");
                     }
 
                 } catch (SQLException e) {
