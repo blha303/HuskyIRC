@@ -1,6 +1,6 @@
 package com.huskehhh.code;
 
-import com.huskehhh.code.commands.chat.ChatManagement;
+import com.huskehhh.code.commands.chat.*;
 import com.huskehhh.code.commands.core.*;
 import com.huskehhh.code.commands.misc.Update;
 import com.huskehhh.code.commands.misc.Version;
