@@ -45,6 +45,6 @@ public class Help extends ListenerAdapter {
     }
     public void onMessage(MessageEvent event) {
         
-        event.respond("Sorry, but commands don't work here!")
+        event.respond("Sorry, but commands don't work here!");
     }
 }
