@@ -2,6 +2,7 @@ package com.huskehhh.code.commands.chat;
 
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
+import org.pircbotx.hooks.events.PrivateMessageEvent;
 
 public class Help extends ListenerAdapter {
 
@@ -43,7 +44,7 @@ public class Help extends ListenerAdapter {
             event.getBot().sendMessage(event.getUser().getNick(), "** - Husk only.");
         }
     }
-    public void onMessage(MessageEvent event) {
+    public void onPrivateMessage(PrivateMessageEvent event) {
         
         event.respond("Sorry, but commands don't work here!");
     }
