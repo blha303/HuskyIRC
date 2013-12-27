@@ -32,15 +32,15 @@ Kindly provided by drtshock and blha303! :D
 !channels -- Responds with a list of all the connected channels.  
 \*!join \<channel\> -- Attempts to join \<channel\>.  
 \*!part \<channel\> -- Leaves \<channel\>.  
-\*!op \<user\> -- Attemps to op \<user\>.  
-\*!deop \<user\> -- Attemps to deop \<user\>.  
-\*!voice \<user\> -- Attemps to voice \<user\>.  
-\*!devoice \<user\> -- Attemps to devoice \<user\>.  
-\*!ban \<user\> -- Attemps to ban \<user\>.  
-\*!unban \<user\> -- Attemps to unban \<user\>.  
-\*!mute \<user\> -- Attemps to mute \<user\>.  
-\*!unmute \<user\> -- Attemps to umute \<user\>.  
-\*\*!update [repo] -- Attemps to update the bot. (Never works! :P)  
+\*!op \<user\> -- Attempts to op \<user\>.  
+\*!deop \<user\> -- Attempts to deop \<user\>.  
+\*!voice \<user\> -- Attempts to voice \<user\>.  
+\*!devoice \<user\> -- Attempts to devoice \<user\>.  
+\*!ban \<user\> -- Attempts to ban \<user\>.  
+\*!unban \<user\> -- Attempts to unban \<user\>.  
+\*!mute \<user\> -- Attempts to mute \<user\>.  
+\*!unmute \<user\> -- Attempts to umute \<user\>.  
+\*\*!update [repo] -- Attempts to update the bot. (Never works! :P)  
 !version -- Responds bot and online versions.  
 !check \<ip\> -- Responds with host name of \<ip\>.  
 !ping \<ip\> -- Responds with the results of the ping.  
