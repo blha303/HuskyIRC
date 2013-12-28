@@ -46,6 +46,6 @@ public class Help extends ListenerAdapter {
     }
     public void onPrivateMessage(PrivateMessageEvent event) {
         
-        event.respond("Sorry, but commands don't work here!");
+        event.respond("Sorry, but nothing works here!");
     }
 }
