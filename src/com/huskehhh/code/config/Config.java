@@ -12,6 +12,7 @@ public class Config {
     public static String Ouser;
     public static String Opassword;
     public static String Odatabase;
+
     public static String[] channels;
     public static String[] admins;
     public static String network;
@@ -19,6 +20,12 @@ public class Config {
     public static String ircuser;
     public static String version;
     public static String siteURL;
+
+    public static String mumbleserver;
+    public static int mumbleport;
+    public static String mumbleusername;
+    public static String mumblepassword;
+
 
     public static void loadConfiguration() throws FileNotFoundException, IOException {
 
@@ -38,6 +45,11 @@ public class Config {
         Ouser = config.getProperty("OMySQL-user");
         Opassword = config.getProperty("OMySQL-password");
         Odatabase = config.getProperty("OMySQL-database");
+
+        mumbleserver = config.getProperty("mumble-server");
+        mumbleport = Integer.parseInt(config.getProperty("mumble-port"));
+        mumbleusername = config.getProperty("mumble-username");
+        mumblepassword = config.getProperty("mumble-password");
 
 
     }
