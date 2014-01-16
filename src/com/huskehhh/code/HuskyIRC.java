@@ -5,6 +5,7 @@ import com.huskehhh.code.commands.core.*;
 import com.huskehhh.code.commands.misc.Update;
 import com.huskehhh.code.commands.misc.Version;
 import com.huskehhh.code.commands.network.Check;
+import com.huskehhh.code.commands.network.MumblePing;
 import com.huskehhh.code.commands.network.Ping;
 import com.huskehhh.code.commands.oresomecraft.*;
 import com.huskehhh.code.config.Config;
@@ -77,6 +78,7 @@ public class HuskyIRC {
         bot.getListenerManager().addListener(new Punishment());
         bot.getListenerManager().addListener(new BattleStats());
         bot.getListenerManager().addListener(new Help());
+        bot.getListenerManager().addListener(new MumblePing());
     }
 
 
