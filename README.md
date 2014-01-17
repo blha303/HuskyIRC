@@ -1,7 +1,6 @@
-HuskyIRC
+HuskyIRC [![Build Status](http://ci.drtshock.net/view/Huskehhh/job/HuskBot/badge/icon)](http://ci.drtshock.net/view/Huskehhh/job/HuskBot/)
 ========
 
-[![Build Status](http://ci.drtshock.net/view/Huskehhh/job/HuskBot/badge/icon)](http://ci.drtshock.net/view/Huskehhh/job/HuskBot/)  
 Private IRC Bot for Husky. :)
 
 ## Usage
