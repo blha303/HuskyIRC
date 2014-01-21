@@ -2,6 +2,7 @@ package com.huskehhh.code.tasks;
 
 import com.huskehhh.code.HuskyIRC;
 import com.huskehhh.code.util.TwitterUtil;
+import com.huskehhh.code.util.Utility;
 import twitter4j.*;
 import twitter4j.conf.ConfigurationBuilder;
 
@@ -35,6 +36,8 @@ public class TwitterCheckTask extends TimerTask {
             if (!TwitterUtil.lastPost.equals(li.next().toString())) {
                 HuskyIRC.bot.sendMessage("#oresomecraft", Color.GREEN + "OresomeCraft Twitter: " + li.next().toString());
                 TwitterUtil.lastPost = li.next().toString();
+            } else {
+                Utility.getUser("Husk", "Debug: " + li.next().toString() + " || " + TwitterUtil.lastPost);
             }
         }
         new TwitterCheck();
