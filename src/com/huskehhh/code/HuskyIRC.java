@@ -9,6 +9,7 @@ import com.huskehhh.code.commands.network.MumblePing;
 import com.huskehhh.code.commands.network.Ping;
 import com.huskehhh.code.commands.oresomecraft.*;
 import com.huskehhh.code.config.Config;
+import com.huskehhh.code.tasks.TwitterCheck;
 import com.huskehhh.code.tasks.UpdateCheck;
 import org.pircbotx.PircBotX;
 import org.pircbotx.exception.IrcException;
@@ -46,6 +47,7 @@ public class HuskyIRC {
             bot.setAutoReconnectChannels(true);
 
             new UpdateCheck();
+            new TwitterCheck();
 
         } catch (IrcException e) {
             System.out.println(e.getMessage());

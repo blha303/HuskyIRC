@@ -20,6 +20,11 @@
             <type>jar</type>
         </dependency>
         <dependency>
+            <groupId>org.twitter4j</groupId>
+            <artifactId>twitter4j-core</artifactId>
+            <version>[3.0,)</version>
+        </dependency>
+        <dependency>
             <groupId>org.pircbotx</groupId>
             <artifactId>pircbotx</artifactId>
             <version>1.9</version>
@@ -34,6 +39,17 @@
         </dependency>
     </dependencies>
     <repositories>
+        <repository>
+            <id>twitter4j.org</id>
+            <name>twitter4j.org Repository</name>
+            <url>http://twitter4j.org/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
         <repository>
             <id>OresomeCraft</id>
             <url>http://assets.oresomecraft.com/maven</url>
