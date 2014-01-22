@@ -37,8 +37,9 @@ public class TwitterCheckTask extends TimerTask {
         ListIterator li = tweet.listIterator();
 
         while (li.hasNext()) {
-            if (!TwitterUtil.lastPost.equals(li.next().toString())) {
-                HuskyIRC.bot.sendMessage("#oresomecraft", Color.GREEN + "OresomeCraft Twitter: " + li.next().toString());
+            String next = li.next().toString();
+            if (!TwitterUtil.lastPost.equals(next)) {
+                HuskyIRC.bot.sendMessage("#oresomecraft", Color.GREEN + "OresomeCraft Twitter: " + next);
                 TwitterUtil.lastPost = li.next().toString();
             } else {
                 Utility.getUser("Husk", "Debug: " + li.next().toString() + " || " + TwitterUtil.lastPost);
