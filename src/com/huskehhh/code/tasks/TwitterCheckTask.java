@@ -1,6 +1,7 @@
 package com.huskehhh.code.tasks;
 
 import com.huskehhh.code.HuskyIRC;
+import com.huskehhh.code.config.Config;
 import com.huskehhh.code.util.TwitterUtil;
 import com.huskehhh.code.util.Utility;
 import twitter4j.*;
@@ -16,7 +17,10 @@ public class TwitterCheckTask extends TimerTask {
     public void run() {
 
         ConfigurationBuilder cb = new ConfigurationBuilder();
-        cb.setDebugEnabled(true);
+        cb.setDebugEnabled(true).setOAuthConsumerKey(Config.consumerKey)
+                .setOAuthConsumerSecret(Config.consumerSecret)
+                .setOAuthAccessToken(Config.oAuthToken)
+                .setOAuthAccessTokenSecret(Config.oAuthTokenSecret);
         TwitterFactory tf = new TwitterFactory(cb.build());
         Twitter twitter = tf.getInstance();
         int tweetCount = 1;

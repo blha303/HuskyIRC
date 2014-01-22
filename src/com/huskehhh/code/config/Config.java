@@ -21,6 +21,11 @@ public class Config {
     public static String version;
     public static String siteURL;
 
+    public static String consumerKey;
+    public static String consumerSecret;
+    public static String oAuthToken;
+    public static String oAuthTokenSecret;
+
     public static String mumbleserver;
     public static int mumbleport;
     public static String mumbleusername;
@@ -39,6 +44,11 @@ public class Config {
         admins = config.getProperty("admin").split(",");
         version = config.getProperty("version");
         siteURL = config.getProperty("siteURL");
+
+        consumerKey = config.getProperty("consumerKey");
+        consumerSecret = config.getProperty("consumerSecret");
+        oAuthToken = config.getProperty("oAuthToken");
+        oAuthTokenSecret = config.getProperty("oAuthTokenSecret");
 
         Ohostname = config.getProperty("OMySQL-host");
         Oport = config.getProperty("OMySQL-port");
