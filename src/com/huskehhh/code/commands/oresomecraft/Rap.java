@@ -45,7 +45,9 @@ public class Rap extends ListenerAdapter {
                         event.respond(player + " has been banned previously from " + server + " for:");
 
                         while (rs.next()) {
-                            event.respond(rs.getString("ban_reason") + " (" + rs.getString("banned_by") + ").");
+                            if (rs.getString("ban_reason") != null) {
+                                event.respond(rs.getString("ban_reason") + " (" + rs.getString("banned_by") + ").");
+                            }
                         }
 
                     } catch (SQLException e) {
