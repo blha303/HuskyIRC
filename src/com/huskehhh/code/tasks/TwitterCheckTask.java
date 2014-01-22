@@ -34,12 +34,12 @@ public class TwitterCheckTask extends TimerTask {
             e.printStackTrace();
         }
 
-        ListIterator li = tweet.listIterator();
+        ListIterator<Status> li = tweet.listIterator();
 
         while (li.hasNext()) {
-            String next = li.next().toString();
+            Status next = li.next();
             if (!TwitterUtil.lastPost.equals(next)) {
-                HuskyIRC.bot.sendMessage("#oresomecraft", "OresomeCraft Twitter: " + next);
+                HuskyIRC.bot.sendMessage("#oresomecraft", "OresomeCraft Twitter: " + next.getText());
                 TwitterUtil.lastPost = li.next().toString();
             } else {
                 Utility.getUser("Husk", "Debug: " + li.next().toString() + " || " + TwitterUtil.lastPost);
