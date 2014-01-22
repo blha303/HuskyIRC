@@ -2,6 +2,6 @@ package com.huskehhh.code.util;
 
 public class TwitterUtil {
 
-    public static String lastPost;
+    public static String lastPost = "";
 
 }
