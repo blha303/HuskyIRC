@@ -19,6 +19,7 @@ public class Help extends ListenerAdapter {
         }
     }
     public void onPrivateMessage(PrivateMessageEvent event) {
+        String[] line = event.getMessage().split(" ");
         if (line[0].equalsIgnoreCase("!help") && line[1].equalsIgnoreCase("admin")) {
             event.respond("Check your private messages for admin help!");
             getAdminHelp(event.getUser().getNick());
@@ -39,11 +40,12 @@ public class Help extends ListenerAdapter {
         event.getBot().sendMessage(user, "\\o -- Responds with o/");
         event.getBot().sendMessage(user, "o/ -- Responds with \\o");
         event.getBot().sendMessage(user, "!roll <number> -- Picks a random number between 0 and <number>.");
-        event.getBot().sendMessage(user, "!gc -- Responds with information about how much memory its using.");
+        event.getBot().sendMessage(user, "!gc -- Responds with information about how much memory it's using.");
         event.getBot().sendMessage(user, "!channels -- Responds with a list of all the connected channels.");
         event.getBot().sendMessage(user, "!version -- Responds bot and online versions.");
         event.getBot().sendMessage(user, "!check <ip> -- Responds with host name of <ip>.");
         event.getBot().sendMessage(user, "!ping <ip> -- Responds with the results of the ping.");
+        event.getBot().sendMessage(user, "Do !help admin for admin help.");
     }
 
     public void getAdminHelp(String user) {
