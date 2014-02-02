@@ -26,6 +26,7 @@ public class Rap extends ListenerAdapter {
 
                 String smp = "SELECT * FROM `mb_ban_records_smp` WHERE `banned` LIKE '" + player + "';";
                 String battles = "SELECT * FROM `mb_ban_records_battles` WHERE `banned` LIKE '" + player + "';";
+                String tiot = "SELECT * FROM `mb_ban_records_tiot` WHERE `banned` LIKE '" + player + "';";
                 String onslaught = "SELECT * FROM `mb_ban_records_onslaught` WHERE `banned` LIKE '" + player + "';";
 
                 ResultSet rs = null;
@@ -34,6 +35,8 @@ public class Rap extends ListenerAdapter {
                     rs = mysql.querySQL(smp);
                 } else if (server.equalsIgnoreCase("battles")) {
                     rs = mysql.querySQL(battles);
+                } else if (server.equalsIgnoreCase("tiot")) {
+                    rs = mysql.querySQL(tiot);
                 } else if (server.equalsIgnoreCase("onslaught")) {
                     rs = mysql.querySQL(onslaught);
                 }
@@ -59,7 +62,7 @@ public class Rap extends ListenerAdapter {
                 }
 
             } else {
-                event.respond("Usage: !rap <player> <smp|onslaught|battles>");
+                event.respond("Usage: !rap <player> <smp|battles|tiot|onslaught>");
             }
 
         }

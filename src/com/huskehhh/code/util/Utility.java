@@ -118,6 +118,8 @@ public class Utility {
             id = 0;
         } else if (server.equalsIgnoreCase("onslaught")) {
             id = 2;
+        } else {
+            id = 3; // Just so it doesn't error
         }
 
         if (server != null) url = url + "&server=" + id;

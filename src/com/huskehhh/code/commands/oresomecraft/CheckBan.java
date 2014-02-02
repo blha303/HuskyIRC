@@ -33,9 +33,12 @@ public class CheckBan extends ListenerAdapter {
                     event.respond(parseResultSet(player, "Battle", mysql.querySQL("SELECT * FROM `mb_bans_battles` WHERE `banned` LIKE '" + player + "';")));
                 } else if (server.equalsIgnoreCase("onslaught")) {
                     event.respond(parseResultSet(player, "Onslaught", mysql.querySQL("SELECT * FROM `mb_bans_onslaught` WHERE `banned` LIKE '" + player + "';")));
+                } else if (server.equalsIgnoreCase("tiot")) {
+                    event.respond(parseResultSet(player, "TiOT", mysql.querySQL("SELECT * FROM `mb_bans_tiot` WHERE `banned` LIKE '" + player + "';")));
                 } else if (server.equalsIgnoreCase("all")) {
                     event.respond(parseResultSet(player, "SMP", mysql.querySQL("SELECT * FROM `mb_bans_smp` WHERE `banned` LIKE '" + player + "'")));
                     event.respond(parseResultSet(player, "Battle", mysql.querySQL("SELECT * FROM `mb_bans_battles` WHERE `banned` LIKE '" + player + "';")));
+                    event.respond(parseResultSet(player, "TiOT", mysql.querySQL("SELECT * FROM `mb_bans_tiot` WHERE `banned` LIKE '" + player + "';")));
                     event.respond(parseResultSet(player, "Onslaught", mysql.querySQL("SELECT * FROM `mb_bans_onslaught` WHERE `banned` LIKE '" + player + "';")));
                 }
 
@@ -43,7 +46,7 @@ public class CheckBan extends ListenerAdapter {
 
             } else {
 
-                event.respond("Usage: !checkban <player> <smp|onslaught|battles|all>");
+                event.respond("Usage: !checkban <player> <smp|battles|tiot|onslaught|all>");
 
             }
 
