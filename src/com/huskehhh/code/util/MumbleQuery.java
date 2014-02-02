@@ -22,23 +22,16 @@ public class MumbleQuery {
     private ServerStatus status = ServerStatus.INTERNAL_ERROR;
     private int currentusers = 0;
     private int maxusers = 0;
-    private Long resulttime = 0L;
-    private Long delayTime = 0L;
-
-    public MumbleQuery() {
-        this.resulttime = System.currentTimeMillis();
-    }
+    private Long reponseTime = 0L;
 
     public MumbleQuery(String ip, int clientport, int queryport, String username, String password) {
         this.ip = ip;
         this.clientport = clientport;
         this.username = username;
         this.password = password;
-        this.delayTime = 0L;
 
         DatagramSocket clientsocket = null;
         try {
-            Long start = System.currentTimeMillis();
             clientsocket = new DatagramSocket();
             clientsocket.setSoTimeout(5000);
 
@@ -49,10 +42,12 @@ public class MumbleQuery {
             byte[] sendData = "\000\000\000\000\000\000\000\000\000\000\000\000".getBytes();
             DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, ipaddress, clientport);
             clientsocket.send(sendPacket);
+            Long start = System.currentTimeMillis();
 
             byte[] receiveData = new byte[1024];
             DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
             clientsocket.receive(receivePacket);
+            Long end = System.currentTimeMillis();
             clientsocket.close();
 
             ByteArrayInputStream packets = new ByteArrayInputStream(receivePacket.getData());
@@ -65,8 +60,7 @@ public class MumbleQuery {
             this.maxusers = data.readInt();
 
             this.status = ServerStatus.OK;
-            Long end = System.currentTimeMillis();
-            delayTime = end - start;
+            reponseTime = end - start;
             if (this.currentusers == 0) {
                 this.status = ServerStatus.EMPTY;
             }
@@ -82,7 +76,6 @@ public class MumbleQuery {
         } catch (IOException ex) {
             this.status = ServerStatus.CONNECTION_REFUSED;
         }
-        this.resulttime = System.currentTimeMillis();
     }
 
     public String getIp() {
@@ -105,12 +98,8 @@ public class MumbleQuery {
         return maxusers;
     }
 
-    public Long getResultTime() {
-        return resulttime;
-    }
-
-    public Long getDelayTime() {
-        return delayTime;
+    public Long getResponseTime() {
+        return reponseTime;
     }
 
     public enum ServerStatus {

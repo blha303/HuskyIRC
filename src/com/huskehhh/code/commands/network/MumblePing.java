@@ -48,7 +48,7 @@ public class MumblePing extends ListenerAdapter {
 
             }
 
-            event.respond("The response time was: " + mumbleServer.getDelayTime() + "ms");
+            event.respond("The response time was: " + mumbleServer.getResponseTime() + "ms");
 
         }
     }
