@@ -24,32 +24,42 @@ public class Rap extends ListenerAdapter {
                 String player = line[1];
                 String server = line[2];
 
-                String smp = "SELECT * FROM `mb_ban_records_smp` WHERE `banned` LIKE '" + player + "';";
-                String battles = "SELECT * FROM `mb_ban_records_battles` WHERE `banned` LIKE '" + player + "';";
-                String tiot = "SELECT * FROM `mb_ban_records_tiot` WHERE `banned` LIKE '" + player + "';";
-                String onslaught = "SELECT * FROM `mb_ban_records_onslaught` WHERE `banned` LIKE '" + player + "';";
+                String ban_smp = "SELECT * FROM `mb_ban_records_smp` WHERE `banned` LIKE '" + player + "';";
+                String ban_battles = "SELECT * FROM `mb_ban_records_battles` WHERE `banned` LIKE '" + player + "';";
+//                String ban_tiot = "SELECT * FROM `mb_ban_records_tiot` WHERE `banned` LIKE '" + player + "';";
+                String ban_onslaught = "SELECT * FROM `mb_ban_records_onslaught` WHERE `banned` LIKE '" + player + "';";
 
-                ResultSet rs = null;
+                String mute_smp = "SELECT * FROM `mb_mutes_records_smp` WHERE `muted` LIKE '" + player + "';";
+                String mute_battles = "SELECT * FROM `mb_mutes_records_battles` WHERE `muted` LIKE '" + player + "';";
+//                String mute_tiot = "SELECT * FROM `mb_mutes_records_tiot` WHERE `muted` LIKE '" + player + "';";
+                String mute_onslaught = "SELECT * FROM `mb_mutes_records_onslaught` WHERE `muted` LIKE '" + player + "';";
+
+                ResultSet rsb = null;
+                ResultSet rsm = null;
 
                 if (server.equalsIgnoreCase("smp")) {
-                    rs = mysql.querySQL(smp);
+                    rsb = mysql.querySQL(ban_smp);
+                    rsm = mysql.querySQL(mute_smp);
                 } else if (server.equalsIgnoreCase("battles")) {
-                    rs = mysql.querySQL(battles);
-                } else if (server.equalsIgnoreCase("tiot")) {
-                    rs = mysql.querySQL(tiot);
-                } else if (server.equalsIgnoreCase("onslaught")) {
-                    rs = mysql.querySQL(onslaught);
+                    rsb = mysql.querySQL(ban_battles);
+                    rsm = mysql.querySQL(mute_battles);
+/*                } else if (server.equalsIgnoreCase("tiot")) {
+                    rsb = mysql.querySQL(ban_tiot);
+                    rsm = mysql.querySQL(mute_tiot);
+*/                } else if (server.equalsIgnoreCase("onslaught")) {
+                    rsb = mysql.querySQL(ban_onslaught);
+                    rsm = mysql.querySQL(mute_onslaught);
                 }
 
-                if (rs != null) {
+                if (rsb != null) {
 
                     try {
 
                         event.respond(player + " has been banned previously from " + server + " for:");
 
-                        while (rs.next()) {
-                            if (rs.getString("ban_reason") != null) {
-                                event.respond(rs.getString("ban_reason") + " (" + rs.getString("banned_by") + ").");
+                        while (rsb.next()) {
+                            if (rsb.getString("ban_reason") != null) {
+                                event.respond(rsb.getString("ban_reason") + " (" + rsb.getString("banned_by") + ")");
                             }
                         }
 
@@ -57,12 +67,30 @@ public class Rap extends ListenerAdapter {
                         e.printStackTrace();
                     }
 
-                    event.respond("More information over at: " + Utility.returnWebURL(player, server));
-
                 }
 
+                if (rsm != null) {
+
+                    try {
+
+                        event.respond(player + " has been muted previously from " + server + " for:");
+
+                        while (rsm.next()) {
+                            if (rsm.getString("mute_reason") != null) {
+                                event.respond(rsm.getString("mute_reason") + " (" + rsm.getString("muted_by") + ")");
+                            }
+                        }
+
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                event.respond("More information over at: " + Utility.returnWebURL(player, server));
+
             } else {
-                event.respond("Usage: !rap <player> <smp|battles|tiot|onslaught>");
+                event.respond("Usage: !rap <player> <smp|battles|onslaught>");
+//                event.respond("Usage: !rap <player> <smp|battles|tiot|onslaught>");
             }
 
         }
