@@ -33,7 +33,7 @@ public class CheckBan extends ListenerAdapter {
                     event.respond(parseResultSet(player, "Battle", mysql.querySQL("SELECT * FROM `mb_bans_battles` WHERE `banned` LIKE '" + player + "';")));
                 } else if (server.equalsIgnoreCase("onslaught")) {
                     event.respond(parseResultSet(player, "Onslaught", mysql.querySQL("SELECT * FROM `mb_bans_onslaught` WHERE `banned` LIKE '" + player + "';")));
-                } else if (server.equalsIgnoreCase("tiot")) {
+                } else if (server.equalsIgnoreCase("tiot")) { // I don't think this even works.
                     event.respond(parseResultSet(player, "TiOT", mysql.querySQL("SELECT * FROM `mb_bans_tiot` WHERE `banned` LIKE '" + player + "';")));
                 } else if (server.equalsIgnoreCase("all")) {
                     event.respond(parseResultSet(player, "SMP", mysql.querySQL("SELECT * FROM `mb_bans_smp` WHERE `banned` LIKE '" + player + "'")));
