@@ -144,4 +144,41 @@ public class Utility {
         return false;
     }
 
+    public static void downloadFile(String url, String output) {
+        BufferedInputStream in = null;
+        FileOutputStream fout = null;
+        try {
+            in = new BufferedInputStream(new URL(url).openStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            fout = new FileOutputStream(output);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        byte data[] = new byte[1024];
+        int count;
+        try {
+            while ((count = in.read(data, 0, 1024)) != -1) {
+                fout.write(data, 0, count);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (in != null)
+            try {
+                in.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        if (fout != null)
+            try {
+                fout.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+    }
 }
