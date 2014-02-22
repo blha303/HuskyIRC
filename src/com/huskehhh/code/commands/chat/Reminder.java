@@ -26,15 +26,10 @@ public class Reminder extends ListenerAdapter implements Runnable {
         HuskyIRC.bot.sendMessage(whoo, messagee);
     }
 
-    static Timer timer;
     String message;
     static String messageEdited;
     static String who;
     static int time;
-
-    public static void newTimer() {
-        timer = new Timer();
-    }
 
     public void onMessage(MessageEvent event) {
 
@@ -51,11 +46,15 @@ public class Reminder extends ListenerAdapter implements Runnable {
             messageEdited = messageEdited.replaceFirst(line[1], "");
             messageEdited = messageEdited.replace(" " + line[2] + " ", "");
 
-            if (time > 60000)
-            HuskyIRC.bot.sendMessage(event.getChannel().getName(), "After " + line[1] + " minutes your message will be sent to " + who);
+            String s = "";
+            if (time > 60000) s = "s";
+
+            HuskyIRC.bot.sendMessage(event.getChannel().getName(), "After " + line[1] + " minute" + s + " your message will be sent to " + who);
             Thread t = new Thread(new Reminder(), String.valueOf(System.currentTimeMillis()));
             t.start();
+
         } else if (line[0].equalsIgnoreCase("!remind") && !(line.length > 1)) {
+
             event.respond("Syntax: !remind <minute(s)> <User|Channel> <Message>");
         }
 

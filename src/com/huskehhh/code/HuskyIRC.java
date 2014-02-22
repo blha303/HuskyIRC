@@ -59,8 +59,6 @@ public class HuskyIRC {
 
         loadListeners();
 
-        Reminder.newTimer();
-
     }
 
     private static void loadListeners() {
