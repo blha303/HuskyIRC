@@ -81,6 +81,7 @@ public class HuskyIRC {
         bot.getListenerManager().addListener(new BattleStats());
         bot.getListenerManager().addListener(new Help());
         bot.getListenerManager().addListener(new MumblePing());
+        bot.getListenerManager().addListener(new Reminder());
     }
 
 
