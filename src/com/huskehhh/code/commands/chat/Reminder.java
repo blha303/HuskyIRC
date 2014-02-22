@@ -6,9 +6,6 @@ import org.pircbotx.hooks.events.MessageEvent;
 
 import java.util.Timer;
 
-/**
- * Created by Scott on 22/02/14.
- */
 public class Reminder extends ListenerAdapter implements Runnable {
 
     @Override
