@@ -1,58 +1,48 @@
 package com.huskehhh.code.util;
 
-import de.nava.informa.core.ChannelIF;
-import de.nava.informa.core.ItemIF;
-import de.nava.informa.impl.basic.ChannelBuilder;
-import de.nava.informa.parsers.FeedParser;
-
-import java.net.MalformedURLException;
+import java.io.IOException;
 import java.net.URL;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.List;
+import org.jdom.Element;
+import org.jdom.JDOMException;
+import org.jdom.input.SAXBuilder;
 
 public class BanAppealUtil {
 
     public static String lastTitle = "";
     
-    public static ItemIF getItem() {
-        
-        URL url = null;
+    public static Element getElement() {
+        SAXBuilder builder = new SAXBuilder();
+
         try {
-            
-            url = new URL("https://oresomecraft.com/forums/forums/ban-appeals.8/index.rss");
-        } catch (MalformedURLException e) {
-            
+
+            URL url = new URL("https://oresomecraft.com/forums/forums/ban-appeals.8/index.rss");
+            List channel = builder.build(url).getRootElement().getChildren("channel");
+            Element item = (Element) channel.get(0);
+            Element node = (Element) item.getChildren("item").get(0);
+
+            return node;
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JDOMException e) {
             e.printStackTrace();
         }
-    
-        ChannelIF channel = null;
-        try {
-            
-            channel = FeedParser.parse(new ChannelBuilder(), url);
-        } catch (Exception e) {
-
-            e.printStackTrace();
-        }
-    
-        Collection items = channel.getItems();
-        Iterator i=items.iterator();
-
-        return (ItemIF)i.next();
+        return null;
     }
 
     public static String getDate() {
-        return getItem().getDate().toString();
+        return getElement().getChildText("pubDate");
     }
 
     public static String getTitle() {
-        return getItem().getTitle();
+        return getElement().getChildText("title");
     }
 
     public static String getLink() {
-        return getItem().getLink().toString();
+        return getElement().getChildText("link");
     }
 
-    public static String getCreator() {
-        return getItem().getCreator();
+    public static String getAuthor() {
+        return getElement().getChildText("author");
     }
 }

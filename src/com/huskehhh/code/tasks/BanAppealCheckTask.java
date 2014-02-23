@@ -7,7 +7,7 @@ import java.util.TimerTask;
 
 public class BanAppealCheckTask extends TimerTask {
 
-    private String channel = "#oresomecraft-admin";
+    private String channel = "#ScruffyRules";
 
     @Override
     public void run() {
@@ -16,7 +16,7 @@ public class BanAppealCheckTask extends TimerTask {
 
             HuskyIRC.bot.joinChannel(channel);
             HuskyIRC.bot.sendMessage(channel, "New ban appeal!");
-            HuskyIRC.bot.sendMessage(channel, BanAppealUtil.getTitle() + " posted by " + BanAppealUtil.getCreator());
+            HuskyIRC.bot.sendMessage(channel, BanAppealUtil.getTitle() + " posted by " + BanAppealUtil.getAuthor());
             HuskyIRC.bot.sendMessage(channel, "Posted on: " + BanAppealUtil.getDate());
             HuskyIRC.bot.sendMessage(channel, "More info here: " + BanAppealUtil.getLink());
 
