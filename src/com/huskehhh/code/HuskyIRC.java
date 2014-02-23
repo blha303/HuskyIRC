@@ -9,6 +9,7 @@ import com.huskehhh.code.commands.network.MumblePing;
 import com.huskehhh.code.commands.network.Ping;
 import com.huskehhh.code.commands.oresomecraft.*;
 import com.huskehhh.code.config.Config;
+import com.huskehhh.code.tasks.BanAppealCheck;
 import com.huskehhh.code.tasks.TwitterCheck;
 import com.huskehhh.code.tasks.UpdateCheck;
 import org.pircbotx.PircBotX;
@@ -48,6 +49,7 @@ public class HuskyIRC {
 
             new UpdateCheck();
             new TwitterCheck();
+            new BanAppealCheck();
 
         } catch (IrcException e) {
             System.out.println(e.getMessage());

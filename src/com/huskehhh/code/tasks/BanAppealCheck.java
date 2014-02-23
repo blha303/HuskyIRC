@@ -9,7 +9,7 @@ public class BanAppealCheck {
     public BanAppealCheck() {
 
         timer = new Timer();
-        timer.schedule(new UpdateCheckTask(), (5 * 1000));
+        timer.schedule(new BanAppealCheckTask(), (30 * 1000));
 
     }
 }
