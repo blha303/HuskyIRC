@@ -31,10 +31,7 @@ public class BanAppealUtil {
         try {
             
             channel = FeedParser.parse(new ChannelBuilder(), url);
-        } catch (IOException e) {
-            
-            e.printStackTrace();
-        } catch (ParseException e) {
+        } catch (Exception e) {
 
             e.printStackTrace();
         }
