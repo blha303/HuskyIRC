@@ -39,7 +39,7 @@
             <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>jdom</groupId>
+            <groupId>org.jdom</groupId>
             <artifactId>jdom</artifactId>
             <version>1.1</version>
         </dependency>
@@ -101,7 +101,7 @@
                                     <include>mysql:mysql-connector-java</include>
                                     <include>com.google.code.gson:gson</include>
                                     <include>org.twitter4j:twitter4j-core</include>
-                                    <include>jdom:jdom:1.1</include>
+                                    <include>org.jdom:jdom</include>
                                 </includes>
                             </artifactSet>
                         </configuration>
