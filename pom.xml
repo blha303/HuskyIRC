@@ -38,6 +38,11 @@
             <type>jar</type>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>informa</groupId>
+            <artifactId>informa</artifactId>
+            <version>0.6.0</version>
+        </dependency>
     </dependencies>
 
     <repositories>
