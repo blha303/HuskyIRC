@@ -48,7 +48,7 @@
     <repositories>
         <repository>
             <id>informa.sourceforge.net</id>
-            <url>http://cvs.sourceforge.net/viewcvs.py/informa/informa/</url>
+            <url>http://informa.cvs.sourceforge.net/informa/</url>
         </repository>
         <repository>
             <id>twitter4j.org</id>
