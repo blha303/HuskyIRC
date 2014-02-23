@@ -39,9 +39,9 @@
             <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>informa</groupId>
-            <artifactId>informa</artifactId>
-            <version>0.6.0</version>
+            <groupId>jdom</groupId>
+            <artifactId>jdom</artifactId>
+            <version>1.1</version>
         </dependency>
     </dependencies>
 
@@ -101,7 +101,7 @@
                                     <include>mysql:mysql-connector-java</include>
                                     <include>com.google.code.gson:gson</include>
                                     <include>org.twitter4j:twitter4j-core</include>
-                                    <include>informa:informa:0.6.0</include>
+                                    <include>jdom:jdom:1.1</include>
                                 </includes>
                             </artifactSet>
                         </configuration>
