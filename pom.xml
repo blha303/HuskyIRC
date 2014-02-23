@@ -101,6 +101,7 @@
                                     <include>mysql:mysql-connector-java</include>
                                     <include>com.google.code.gson:gson</include>
                                     <include>org.twitter4j:twitter4j-core</include>
+                                    <include>informa:informa:0.6.0</include>
                                 </includes>
                             </artifactSet>
                         </configuration>
