@@ -2,11 +2,9 @@ package com.huskehhh.code.util;
 
 import de.nava.informa.core.ChannelIF;
 import de.nava.informa.core.ItemIF;
-import de.nava.informa.core.ParseException;
 import de.nava.informa.impl.basic.ChannelBuilder;
 import de.nava.informa.parsers.FeedParser;
 
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collection;
@@ -38,9 +36,8 @@ public class BanAppealUtil {
     
         Collection items = channel.getItems();
         Iterator i=items.iterator();
-        ItemIF item = (ItemIF)i.next();
 
-        return item;
+        return (ItemIF)i.next();
     }
 
     public static String getDate() {
