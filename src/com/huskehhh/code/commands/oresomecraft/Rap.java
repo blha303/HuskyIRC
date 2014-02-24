@@ -46,7 +46,8 @@ public class Rap extends ListenerAdapter {
 /*                } else if (server.equalsIgnoreCase("tiot")) {
                     rsb = mysql.querySQL(ban_tiot);
                     rsm = mysql.querySQL(mute_tiot);
-*/                } else if (server.equalsIgnoreCase("onslaught")) {
+*/
+                } else if (server.equalsIgnoreCase("onslaught")) {
                     rsb = mysql.querySQL(ban_onslaught);
                     rsm = mysql.querySQL(mute_onslaught);
                 }
