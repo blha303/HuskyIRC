@@ -3,6 +3,8 @@ package com.huskehhh.code.util;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+
+import com.huskehhh.code.config.Config;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
@@ -16,7 +18,7 @@ public class BanAppealUtil {
 
         try {
 
-            URL url = new URL("https://oresomecraft.com/forums/forums/ban-appeals.8/index.rss");
+            URL url = new URL("https://" + Config.siteURL + "/forums/forums/ban-appeals.8/index.rss");
             List channel = builder.build(url).getRootElement().getChildren("channel");
             Element item = (Element) channel.get(0);
             Element node = (Element) item.getChildren("item").get(0);
