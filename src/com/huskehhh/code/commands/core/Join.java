@@ -28,7 +28,7 @@ public class Join extends ListenerAdapter {
 
                     String[] admin = Config.admins;
 
-                    for (int i = 0; i <= admin.length; i++) {
+                    for (int i = 0; i <= admin.length - 1; i++) {
 
                         if (admin[i] == null) return;
 
