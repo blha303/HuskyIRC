@@ -18,7 +18,7 @@ public class BanAppealUtil {
 
         try {
 
-            URL url = new URL("https://" + Config.siteURL + "/forums/forums/ban-appeals.8/index.rss");
+            URL url = new URL("http://" + Config.siteURL + "/forums/forums/ban-appeals.8/index.rss");
             List channel = builder.build(url).getRootElement().getChildren("channel");
             Element item = (Element) channel.get(0);
             Element node = (Element) item.getChildren("item").get(0);
