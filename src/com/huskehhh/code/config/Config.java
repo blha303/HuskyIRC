@@ -20,6 +20,7 @@ public class Config {
     public static String ircuser;
     public static String version;
     public static String siteURL;
+    public static String battlesSiteURL;
 
     public static String consumerKey;
     public static String consumerSecret;
@@ -44,6 +45,7 @@ public class Config {
         admins = config.getProperty("admin").split(",");
         version = config.getProperty("version");
         siteURL = config.getProperty("siteURL");
+        battlesSiteURL = config.getProperty("battlesSiteURL");
 
         consumerKey = config.getProperty("consumerKey");
         consumerSecret = config.getProperty("consumerSecret");
