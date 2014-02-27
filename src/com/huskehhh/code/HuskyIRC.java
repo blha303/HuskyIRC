@@ -12,6 +12,8 @@ import com.huskehhh.code.config.Config;
 import com.huskehhh.code.tasks.BanAppealCheck;
 import com.huskehhh.code.tasks.TwitterCheck;
 import com.huskehhh.code.tasks.UpdateCheck;
+import com.huskehhh.code.util.BanAppealUtil;
+import com.huskehhh.code.util.Utility;
 import org.pircbotx.PircBotX;
 import org.pircbotx.exception.IrcException;
 
@@ -23,6 +25,7 @@ public class HuskyIRC {
 
     public static void main(String[] args) {
 
+        Utility.loadLastFile();
         load();
 
     }

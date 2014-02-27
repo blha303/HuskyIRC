@@ -8,10 +8,12 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Iterator;
+import java.util.Properties;
 
 public class Utility {
 
     private static Utility util = new Utility();
+    public static Properties lastFile;
 
     public static boolean isUpdate() {
 
@@ -180,5 +182,33 @@ public class Utility {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+    }
+
+    public static void saveLastFile() {
+        try {
+            lastFile.store(new PrintWriter("Last.txt"), "Last Post/Title");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void loadLastFile() {
+
+        lastFile = new Properties();
+        try {
+            lastFile.load(new FileInputStream("Last.txt"));
+            System.out.println("File loaded");
+        } catch (IOException e) {
+            System.out.println("File not found!");
+            PrintWriter writer = null;
+            try {
+                writer = new PrintWriter("Last.txt");
+            } catch (FileNotFoundException e1) {
+                e1.printStackTrace();
+            }
+            writer.close();
+            saveLastFile();
+//			e.printStackTrace();
+        }
     }
 }

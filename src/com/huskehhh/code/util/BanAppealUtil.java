@@ -1,8 +1,12 @@
 package com.huskehhh.code.util;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.List;
+import java.util.Properties;
 
 import com.huskehhh.code.config.Config;
 import org.jdom.Element;
@@ -11,8 +15,6 @@ import org.jdom.input.SAXBuilder;
 
 public class BanAppealUtil {
 
-    public static String lastTitle = "";
-    
     public static Element getElement() {
         SAXBuilder builder = new SAXBuilder();
 
@@ -46,5 +48,19 @@ public class BanAppealUtil {
 
     public static String getAuthor() {
         return getElement().getChildText("author");
+    }
+
+    public static String getLastTitle() {
+        if (Utility.lastFile.get("lastTitle") == null) {
+            return "";
+        } else {
+            return Utility.lastFile.get("lastTitle").toString();
+        }
+    }
+
+    public static void setLastTitle(String title) {
+
+        Utility.lastFile.put("lastTitle", title);
+        Utility.saveLastFile();
     }
 }

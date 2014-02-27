@@ -12,7 +12,8 @@ public class BanAppealCheckTask extends TimerTask {
     @Override
     public void run() {
 
-        if (!BanAppealUtil.getTitle().equals(BanAppealUtil.lastTitle)) {
+        String title =  BanAppealUtil.getTitle();
+        if (!title.equals(BanAppealUtil.getLastTitle())) {
 
             HuskyIRC.bot.joinChannel(channel);
             HuskyIRC.bot.sendMessage(channel, "New ban appeal!");
@@ -22,7 +23,7 @@ public class BanAppealCheckTask extends TimerTask {
 
             HuskyIRC.bot.sendMessage("Scruffeh","Check #OresomeCraft-Admin!");
 
-            BanAppealUtil.lastTitle = BanAppealUtil.getTitle();
+            BanAppealUtil.setLastTitle(title);
         }
         new BanAppealCheck();
     }
