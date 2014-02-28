@@ -61,13 +61,6 @@ public class Update extends ListenerAdapter {
 
             }
 
-        } else if (line[0].equalsIgnoreCase("!test!")) {
-            event.respond("Ohai");
-            try {
-                Runtime.getRuntime().exec("./test.sh");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
 
     }
