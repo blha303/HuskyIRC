@@ -18,14 +18,14 @@ public class Update extends ListenerAdapter {
 
             if (line.length == 1) {
 
-                if (event.getUser().getNick().equals("Husk") && AuthCheck.authCheck(event.getUser().getNick())) {
+                if ((event.getUser().getNick().equals("Husk") || event.getUser().getNick().equals("Scruffeh"))&& AuthCheck.authCheck(event.getUser().getNick())) {
 
                     if (Utility.isUpdate()) {
 
                         try {
 
                             event.respond("Updating!");
-                            Runtime.getRuntime().exec("./update.sh");
+                            Runtime.getRuntime().exec("./oldupdate.sh");
 
                         } catch (IOException exception) {
                             exception.printStackTrace();
