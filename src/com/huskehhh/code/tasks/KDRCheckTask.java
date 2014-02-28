@@ -7,12 +7,10 @@ import java.util.TimerTask;
 public class KDRCheckTask extends TimerTask {
     @Override
     public void run() {
-        String KD = KDRUtil.getKD("ScruffyRules");
 
-        if (!KD.equals(KDRUtil.getLastKD("ScruffyRules"))) {
-            HuskyIRC.bot.sendMessage("Scruffeh","You have a new KDR: " + KD + ", Previous: " + KDRUtil.getLastKD("ScruffyRules"));
-            KDRUtil.setLastKD(KD,"ScruffyRules");
-        }
+        KDRUtil.sendKD("ScruffyRules", "Scruffeh");
+        KDRUtil.sendKD("_Husky_", "Husk");
+        KDRUtil.sendKD("123Oblivious", "Obbehhh");
         new KDRCheck();
     }
 }
