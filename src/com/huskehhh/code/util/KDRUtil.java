@@ -29,12 +29,12 @@ public class KDRUtil {
             return KD;
         } catch (Exception ex) {
             ex.printStackTrace();
-            return "0.0000";
+            return "0.000";
         }
     }
 
     private static double roundDouble(double d) {
-        DecimalFormat format = new DecimalFormat("#.####");
+        DecimalFormat format = new DecimalFormat("#.###");
         try {
             return Double.valueOf(format.format(d));
         } catch (NumberFormatException e) {
@@ -44,7 +44,7 @@ public class KDRUtil {
 
     private static String getLastKD(String user) {
         if (Utility.lastFile.get(user + "KD") == null) {
-            return "0.0000";
+            return "0.000";
         } else {
             return Utility.lastFile.get(user + "KD").toString();
         }
@@ -57,7 +57,7 @@ public class KDRUtil {
 
     public static void sendKD(String username, String IRCUsername) {
         String KD = KDRUtil.getKD(username);
-        if (!KD.equals("0.0000")) {
+        if (!KD.equals("0.000")) {
             if (!KD.equals(getLastKD(username))) {
                 HuskyIRC.bot.sendMessage(IRCUsername,"You have a new KDR: " + KD + ", Previous: " + getLastKD(username));
                 setLastKD(KD,username);
