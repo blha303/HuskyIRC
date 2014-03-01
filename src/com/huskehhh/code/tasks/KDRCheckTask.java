@@ -8,6 +8,7 @@ public class KDRCheckTask extends TimerTask {
     @Override
     public void run() {
 
+      //KDRUtil.sendKD("MinecraftUsername", "IRCUsername");
         KDRUtil.sendKD("ScruffyRules", "Scruffeh");
         KDRUtil.sendKD("_Husky_", "Husk");
         KDRUtil.sendKD("123Oblivious", "Obbehhh");
