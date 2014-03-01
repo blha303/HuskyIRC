@@ -45,4 +45,22 @@ Kindly provided by drtshock and blha303! :D
 !ping \<ip\> -- Responds with the results of the ping.  
 
 \* - Bot admins only.  
-\*\* - Husk only.  
+\*\* - Husk only.
+
+## Compiling
+
+HuskyIRC uses [Apache Maven 3](http://maven.apache.org/) to compile!
+
+To compile HuskyIRC, simply install [Apache Maven](http://maven.apache.org/), and run:
+```mvn -f pom.xml clean install -P shade```
+or
+```mvn clean install -U```
+
+
+## Contributing
+
+Would you like to contribute to HuskyIRC?
+Do you have an awesome feature you'd like implemented?
+
+If you'd like a feature added, please [open a new issue](https://github.com/Huskehhh/HuskyIRC/issues/new).
+Otherwise, check out [CONTRIBUTING.md](https://github.com/Huskehhh/HuskyIRC/blob/master/CONTRIBUTING.md) to find out how to add your code!
