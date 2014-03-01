@@ -41,6 +41,8 @@ public class Utility {
     }
 
     public static User getUser(String name, String channel) {
+        // I 80% sure this checks through all connect channels for name
+        // HuskyIRC.bot.userExists(name)
 
         Iterator<User> li = HuskyIRC.bot.getChannel(channel).getUsers().iterator();
 
@@ -50,7 +52,6 @@ public class Utility {
             if (user.getNick().equals(name)) {
                 return user;
             }
-
         }
 
         return null;

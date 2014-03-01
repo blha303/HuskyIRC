@@ -21,7 +21,7 @@ public class BattleStats extends ListenerAdapter {
     public void onMessage(MessageEvent event) {
 
         String[] args = event.getMessage().split(" ");
-        if (event.getMessage().startsWith("!stats ")) {
+        if (args[0].equalsIgnoreCase("!stats")) {
             if (args.length >= 2) {
                 try {
                     URL url = new URL("http://" + Config.battlesSiteURL + "/battleapi.php?name=" + args[1].replaceAll("'", ""));
@@ -41,10 +41,10 @@ public class BattleStats extends ListenerAdapter {
                     String message = ("Battle stats for: " + jsonStats.get("username").toString() +
                             " - Kills: " + jsonStats.get("kills").toString() +
                             " | Deaths: " + jsonStats.get("deaths").toString() +
-                            " | K/D: " + (roundDouble(Double.parseDouble(jsonStats.get("kills").toString().replace('"', '/').replaceAll("/", ""))
-                            / roundDouble(Double.parseDouble(jsonStats.get("deaths").toString().replace('"', '/').replaceAll("/", "")))) +
+                            " | K/D: " + (roundDouble(Double.parseDouble(jsonStats.get("kills").toString().replace("\"", ""))
+                            / roundDouble(Double.parseDouble(jsonStats.get("deaths").toString().replace("\"", "")))) +
                             " | FFA wins: " + jsonStats.get("ffa_wins").toString() +
-                            " | Infection wins: " + jsonStats.get("infection_wins").toString())).replace('"', '/').replaceAll("/", "");
+                            " | Infection wins: " + jsonStats.get("infection_wins").toString())).replace("\"", "");
 
                     event.respond(message);
                 } catch (Exception ex) {
@@ -53,6 +53,28 @@ public class BattleStats extends ListenerAdapter {
 
             } else {
                 event.respond("Please specific a user!");
+            }
+        } else if (args[0].equalsIgnoreCase("!kd")) {
+            try {
+                URL url = new URL("http://" + Config.battlesSiteURL + "/battleapi.php?name=" + args[1].replaceAll("'", ""));
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection(); // Open URL connection
+                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+                StringBuilder sb1 = new StringBuilder();
+                String inputLine;
+                while ((inputLine = in.readLine()) != null) sb1.append(inputLine);
+
+                if (!new JsonParser().parse(sb1.toString()).getAsJsonObject().get("user_exists").toString().equals("true")) {
+                    event.respond("User not found!");
+                    return;
+                }
+
+                JsonObject jsonStats = new JsonParser().parse(sb1.toString()).getAsJsonObject().getAsJsonObject("stats");
+                String message = "K/D: " + Double.parseDouble(jsonStats.get("kills").toString().replace("\"", "")) / Double.parseDouble(jsonStats.get("deaths").toString().replace("\"", ""));
+
+                event.respond(message);
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
         }
     }
@@ -65,6 +87,4 @@ public class BattleStats extends ListenerAdapter {
             return 0;
         }
     }
-
-
 }

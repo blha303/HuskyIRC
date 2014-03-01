@@ -56,11 +56,15 @@ public class KDRUtil {
     }
 
     public static void sendKD(String username, String IRCUsername) {
-        String KD = KDRUtil.getKD(username);
-        if (!KD.equals("0.000")) {
-            if (!KD.equals(getLastKD(username))) {
-                HuskyIRC.bot.sendMessage(IRCUsername,"You have a new KDR: " + KD + ", Previous: " + getLastKD(username));
-                setLastKD(KD,username);
+        for (String user : username.split(",")) {
+            String KD = KDRUtil.getKD(user);
+            if (!KD.equals("0.000")) {
+                for (String str : IRCUsername.split(",")) {
+                    if (!KD.equals(getLastKD(user)) && HuskyIRC.bot.userExists(str))  {
+                        HuskyIRC.bot.sendMessage(str, user + " has a new KDR: " + KD + ", Previous: " + getLastKD(user));
+                        setLastKD(KD,user);
+                    }
+                }
             }
         }
     }

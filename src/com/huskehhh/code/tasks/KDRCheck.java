@@ -9,7 +9,7 @@ public class KDRCheck {
     public KDRCheck() {
 
         timer = new Timer();
-        timer.schedule(new KDRCheckTask(), (2 * 60000));
+        timer.schedule(new KDRCheckTask(), (3 * 60000));
 
     }
 }
