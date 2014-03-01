@@ -14,6 +14,8 @@ public class KDRCheckTask extends TimerTask {
         KDRUtil.sendKD("123Oblivious", "Obbehhh");
         KDRUtil.sendKD("SuperDuckFace", "SuperDuckFace_");
         KDRUtil.sendKD("psgs", "psgs");
+        KDRUtil.sendKD("dutchy336", "SuperDuckFace_");
+        KDRUtil.sendKD("dutchy336", "Scruffeh");
         new KDRCheck();
     }
 }
