@@ -8,12 +8,12 @@ public class DownloadFile extends ListenerAdapter {
 
     public void onMessage(MessageEvent event) throws Exception {
 
-        String[] line = event.getMessage().split("");
+        String[] line = event.getMessage().split(" ");
 
         if (line.length > 2) {
             if (Utility.isAdmin(event.getUser().getNick())) {
 
-                event.respond("Downloading " + line[1]);
+                event.respond("Downloading " + line[1] + "!");
                 long startTime = System.currentTimeMillis();
                 Utility.downloadFile(line[1], line[2]);
                 long endTime = System.currentTimeMillis();
