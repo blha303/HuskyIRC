@@ -147,6 +147,15 @@ public class Utility {
         return false;
     }
 
+    public static boolean isAdminV2(String username) {
+        for (String i : Config.admins) {
+            if (i.replace(" ", "").equals(username)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void downloadFile(String url, String output) {
         BufferedInputStream in = null;
         FileOutputStream fout = null;
