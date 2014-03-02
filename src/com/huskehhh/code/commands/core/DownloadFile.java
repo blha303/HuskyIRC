@@ -14,7 +14,7 @@ public class DownloadFile extends ListenerAdapter {
 
             if (line.length > 2) {
 
-                if (Utility.isAdminV2(event.getUser().getNick())) {
+                if (Utility.isAdmin(event.getUser().getNick())) {
 
                     event.respond("Downloading " + line[1] + "!");
 

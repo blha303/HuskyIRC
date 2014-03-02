@@ -102,10 +102,6 @@ public class ChatManagement extends ListenerAdapter {
             } else if (line[0].equalsIgnoreCase("!ci")) {
                 event.respond("http://ci.drtshock.com/view/Huskehhh/");
                 event.respond("Kindly provided by drtshock and blha303! :D");
-            } else if (line[0].equalsIgnoreCase("!dl")) {
-                if (line.length > 2) {
-                    Utility.downloadFile(line[1], line[2]);
-                }
             }
 
         }
