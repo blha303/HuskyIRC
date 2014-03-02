@@ -1,5 +1,6 @@
 package com.huskehhh.code.commands.core;
 
+import com.huskehhh.code.config.Config;
 import com.huskehhh.code.util.Utility;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
@@ -12,27 +13,24 @@ public class DownloadFile extends ListenerAdapter {
 
         if (line[0].equalsIgnoreCase("!dl")) {
 
-            if (line.length > 2) {
+            for (String admin : Config.admins) {
 
-                if (Utility.isAdmin(event.getUser().getNick())) {
+                if (event.getUser().getNick().equals(admin)) {
 
-                    event.respond("Downloading " + line[1] + "!");
-                    long startTime = System.currentTimeMillis();
-                    Utility.downloadFile(line[1], line[2]);
-                    long endTime = System.currentTimeMillis();
-                    event.respond("Download finished!");
-                    event.respond("Downloaded in " + (endTime - startTime) + "ms");
-                } else {
+                    if (line.length > 2) {
 
-                    event.respond("Sorry you can't use this!");
+                        event.respond("Downloading " + line[1] + "!");
+                        long startTime = System.currentTimeMillis();
+                        Utility.downloadFile(line[1], line[2]);
+                        long endTime = System.currentTimeMillis();
+                        event.respond("Download finished!");
+                        event.respond("Saved as: " + line[2] + ", Downloaded in " + (endTime - startTime) + "ms");
+                    } else {
+                        
+                        event.respond("Syntax: !dl <url> <filename>.<ext>");
+                    }
                 }
-            } else {
-
-                event.respond("Syntax: !dl <url> <filename>.<ext>");
             }
-
         }
-
     }
-
 }
