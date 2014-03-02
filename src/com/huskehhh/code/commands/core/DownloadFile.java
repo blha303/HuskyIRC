@@ -13,23 +13,27 @@ public class DownloadFile extends ListenerAdapter {
 
         if (line[0].equalsIgnoreCase("!dl")) {
 
-            for (String admin : Config.admins) {
+            if (line.length > 2) {
 
-                if (event.getUser().getNick().equals(admin)) {
+                for (String admin : Config.admins) {
 
-                    if (line.length > 2) {
+                    if (admin.equals(event.getUser().getNick())) {
 
                         event.respond("Downloading " + line[1] + "!");
+
                         long startTime = System.currentTimeMillis();
+
                         Utility.downloadFile(line[1], line[2]);
+
                         long endTime = System.currentTimeMillis();
+
                         event.respond("Download finished!");
                         event.respond("Saved as: " + line[2] + ", Downloaded in " + (endTime - startTime) + "ms");
-                    } else {
-                        
-                        event.respond("Syntax: !dl <url> <filename>.<ext>");
                     }
                 }
+            } else {
+
+                event.respond("Syntax: !dl <url> <filename>.<ext>");
             }
         }
     }
