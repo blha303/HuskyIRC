@@ -149,7 +149,7 @@ public class Utility {
 
     public static boolean isAdminV2(String username) {
         for (String i : Config.admins) {
-            if (i.equals(username)) {
+            if (i.replace(" ", "").equals(username)) {
                 return true;
             }
         }
