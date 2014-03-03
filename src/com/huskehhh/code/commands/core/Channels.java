@@ -11,7 +11,9 @@ public class Channels extends ListenerAdapter {
 
     public void onMessage(MessageEvent event) throws Exception {
 
-        if (event.getMessage().equalsIgnoreCase("!channels") && event.getMessage().split(" ")[1].equals("scruff")) {
+        String[] line = event.getMessage().split(" ");
+
+        if (line[0].equalsIgnoreCase("!channels") && line.length > 1) {
             String s = "";
             for (int i = 0; i < event.getBot().getChannels().toArray().length; i++) {
                 if (i == event.getBot().getChannels().toArray().length -1) {
@@ -21,7 +23,7 @@ public class Channels extends ListenerAdapter {
                 }
             }
             event.respond("Channels: " + s);
-        } else if (event.getMessage().equalsIgnoreCase("!channels")) {
+        } else if (line[0].equalsIgnoreCase("!channels")) {
 
             Set<Channel> channels = event.getBot().getChannels();
             Iterator<Channel> iterator = channels.iterator();
@@ -31,7 +33,7 @@ public class Channels extends ListenerAdapter {
                 ret = ret + iterator.next().getName() + ", ";
             }
 
-            event.respond("Channels: " + ret);
+            event.respond("Channels: " + ret.substring(0,ret.length()-2));
 
         }
 
