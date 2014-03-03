@@ -13,17 +13,7 @@ public class Channels extends ListenerAdapter {
 
         String[] line = event.getMessage().split(" ");
 
-        if (line[0].equalsIgnoreCase("!channels") && line.length > 1) {
-            String s = "";
-            for (int i = 0; i < event.getBot().getChannels().toArray().length; i++) {
-                if (i == event.getBot().getChannels().toArray().length -1) {
-                    s = s.replaceFirst(", ", "") + " and " + event.getBot().getChannels().toArray()[i];
-                } else {
-                    s += ", " + event.getBot().getChannels().toArray()[i];
-                }
-            }
-            event.respond("Channels: " + s);
-        } else if (line[0].equalsIgnoreCase("!channels")) {
+        if (line[0].equalsIgnoreCase("!channels")) {
 
             Set<Channel> channels = event.getBot().getChannels();
             Iterator<Channel> iterator = channels.iterator();
