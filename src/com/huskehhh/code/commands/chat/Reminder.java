@@ -32,10 +32,9 @@ public class Reminder extends ListenerAdapter implements Runnable {
 
         String[] line = event.getMessage().split(" ");
 
-        if (line[0].equalsIgnoreCase("!remind") && line.length > 1) {
+        if (line[0].equalsIgnoreCase("!remind") && line.length > 2) {
 
             message = event.getMessage();
-            String user = event.getUser().getNick();
 
             time = Integer.valueOf(line[1]) * 60000;
             who = line[2];
