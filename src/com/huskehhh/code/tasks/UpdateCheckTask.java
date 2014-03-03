@@ -1,6 +1,5 @@
 package com.huskehhh.code.tasks;
 
-import com.huskehhh.code.HuskyIRC;
 import com.huskehhh.code.util.Utility;
 
 import java.util.TimerTask;

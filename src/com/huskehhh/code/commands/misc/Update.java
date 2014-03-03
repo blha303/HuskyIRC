@@ -1,6 +1,5 @@
 package com.huskehhh.code.commands.misc;
 
-import com.huskehhh.code.HuskyIRC;
 import com.huskehhh.code.auth.AuthCheck;
 import com.huskehhh.code.util.Utility;
 import org.pircbotx.hooks.ListenerAdapter;

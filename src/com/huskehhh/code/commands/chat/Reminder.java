@@ -35,6 +35,7 @@ public class Reminder extends ListenerAdapter implements Runnable {
         if (line[0].equalsIgnoreCase("!remind") && line.length > 2) {
 
             message = event.getMessage();
+            //!remind <time> <user/channel> <message>
 
             time = Integer.valueOf(line[1]) * 60000;
             who = line[2];
