@@ -55,13 +55,19 @@ public class KDRUtil {
         Utility.saveLastFile();
     }
 
-    public static void sendKD(String username, String IRCUsername) {
-        for (String user : username.split(",")) {
-            String KD = KDRUtil.getKD(user);
+    public static void sendKD(String username, String ircUsername) {
+        for (String userSplit : username.split(",")) {
+            String KD = KDRUtil.getKD(userSplit);
             if (!KD.equals("0.000")) {
-                if (!KD.equals(getLastKD(user))) {
-                    HuskyIRC.bot.sendMessage(IRCUsername, user + " has a new KDR: " + KD + ", Previous: " + getLastKD(user));
-                    setLastKD(KD,user);
+                for (String ircUser : ircUsername.split(",")) {
+                    if (!KD.equals(getLastKD(userSplit)) && (HuskyIRC.bot.userExists(ircUser) || HuskyIRC.bot.channelExists(ircUser)))  {
+                        if (getLastKD(userSplit).equals("0.000")) {
+                            HuskyIRC.bot.sendMessage(ircUser, userSplit + " has a new K/D: " + KD + "!");
+                        } else {
+                            HuskyIRC.bot.sendMessage(ircUser, userSplit + " has a new K/D: " + KD + ", Previous: " + getLastKD(userSplit));
+                        }
+                        setLastKD(KD,userSplit);
+                    }
                 }
             }
         }

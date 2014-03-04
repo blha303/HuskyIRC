@@ -8,12 +8,12 @@ public class KDRCheckTask extends TimerTask {
     public void run() {
 
       //KDRUtil.sendKD("MinecraftUsername,etc", "IRCUsername,etc");
-        KDRUtil.sendKD("ScruffyRules,_Husky_,dutchy336,psgs,SuperDuckFace,zachoz", "Scruffeh");
+        KDRUtil.sendKD("ScruffyRules,_Husky_,dutchy336,psgs,SuperDuckFace,zachoz", "Scruffeh,Scruff,ScruffDoge");
         KDRUtil.sendKD("_Husky_", "Husk");
         KDRUtil.sendKD("123Oblivious", "Obby");
         KDRUtil.sendKD("SuperDuckFace,dutchy336", "SuperDuckFace_");
         KDRUtil.sendKD("psgs", "psgs");
-        KDRUtil.sendKD("xCreeeeepz", "#OresomeCraft-Battles");
+        KDRUtil.sendKD("xCreeeeepz", "#OresomeCraft-Battles,Scruffeh,Husk");
 
         new KDRCheck();
     }

@@ -196,7 +196,7 @@ public class Utility {
 
     public static void saveLastFile() {
         try {
-            lastFile.store(new PrintWriter("Last.txt"), "Last Post/Title");
+            lastFile.store(new PrintWriter("Last.txt"), "Last file");
         } catch (IOException e) {
             e.printStackTrace();
         }
