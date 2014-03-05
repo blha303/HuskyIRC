@@ -12,6 +12,10 @@ import java.net.URL;
 import java.text.DecimalFormat;
 
 public class KDRUtil {
+
+    private static String updateUser = "";
+    private static String updateUserKD = "";
+
     private static String getKD(String username) {
         try {
             URL url = new URL("http://" + Config.battlesSiteURL + "/battleapi.php?name=" + username);
@@ -23,8 +27,8 @@ public class KDRUtil {
             while ((inputLine = in.readLine()) != null) sb1.append(inputLine);
 
             JsonObject jsonStats = new JsonParser().parse(sb1.toString()).getAsJsonObject().getAsJsonObject("stats");
-            String KD = (roundDouble(Double.parseDouble(jsonStats.get("kills").toString().replace('"', '/').replaceAll("/", ""))
-                    / roundDouble(Double.parseDouble(jsonStats.get("deaths").toString().replace('"', '/').replaceAll("/", "")))) + "");
+            String KD = (roundDouble(Double.parseDouble(jsonStats.get("kills").toString().replace("\"", ""))
+                    / roundDouble(Double.parseDouble(jsonStats.get("deaths").toString().replace("\"", "")))) + "");
 
             return KD;
         } catch (Exception ex) {
@@ -66,8 +70,18 @@ public class KDRUtil {
                         } else {
                             HuskyIRC.bot.sendMessage(ircUser, userSplit + " has a new K/D: " + KD + ", Previous: " + getLastKD(userSplit));
                         }
-                        setLastKD(KD,userSplit);
                     }
+                }
+            }
+        }
+    }
+
+    public static void updateUserKD(String usernames) {
+        for (String userSplit : usernames.split(",")) {
+            String KD = KDRUtil.getKD(userSplit);
+            if (!KD.equals("0.000")) {
+                if (!KD.equals(getLastKD(userSplit)))  {
+                    setLastKD(KD, userSplit);
                 }
             }
         }

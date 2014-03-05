@@ -4,6 +4,7 @@ import com.huskehhh.code.util.KDRUtil;
 import java.util.TimerTask;
 
 public class KDRCheckTask extends TimerTask {
+
     @Override
     public void run() {
 
@@ -14,6 +15,8 @@ public class KDRCheckTask extends TimerTask {
         KDRUtil.sendKD("SuperDuckFace,dutchy336", "SuperDuckFace_");
         KDRUtil.sendKD("psgs", "psgs");
         KDRUtil.sendKD("xCreeeeepz", "#OresomeCraft-Battles,Scruffeh,Husk");
+
+        KDRUtil.updateUserKD("ScruffyRules,_Husky_,dutchy336,psgs,SuperDuckFace,zachoz,psgs,123Oblivious,xCreeeeepz");
 
         new KDRCheck();
     }

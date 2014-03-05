@@ -27,6 +27,8 @@ public class Help extends ListenerAdapter {
         } else if (line[0].equalsIgnoreCase("!help")) {
             event.respond("Check your private messages for help!");
             getHelp(event.getUser().getNick());
+        } else {
+            HuskyIRC.bot.sendMessage("Husk",event.getUser().getNick() + ": " + event.getMessage());
         }
     }
 
