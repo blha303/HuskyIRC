@@ -33,24 +33,25 @@ public class Reminder extends ListenerAdapter implements Runnable {
         if (line[0].equalsIgnoreCase("!remind") && line.length > 2) {
 
             message = event.getMessage();
-            time = Integer.valueOf(line[1].replace("s", "").replace("m", "").replace("h", ""));
+            String timeStripped = line[1].replace("s", "").replace("m", "").replace("h", "");
+            time = Integer.valueOf(timeStripped);
 
             String s = "";
             if (time > 1) s = "s";
 
-            String timeString;
+            String timeUnit;
             if (line[1].endsWith("s")) {
                 time *= 1000;
-                timeString = "second";
+                timeUnit = "second";
             } else if (line[1].endsWith("m")) {
                 time *= 60000;
-                timeString = "minute";
+                timeUnit = "minute";
             } else if (line[1].endsWith("h")) {
                 time *= 360000;
-                timeString = "hour";
+                timeUnit = "hour";
             } else {
                 time *= 60000;
-                timeString = "minute";
+                timeUnit = "minute";
             }
 
             who = line[2];
@@ -58,7 +59,7 @@ public class Reminder extends ListenerAdapter implements Runnable {
             messageEdited = messageEdited.replaceFirst(line[1], "");
             messageEdited = messageEdited.replace(" " + line[2] + " ", "");
 
-            HuskyIRC.bot.sendMessage(event.getChannel().getName(), "After " + time + " " + timeString + s +" your message will be sent to " + who);
+            HuskyIRC.bot.sendMessage(event.getChannel().getName(), "After " + timeStripped + " " + timeUnit + s +" your message will be sent to " + who);
             Thread t = new Thread(new Reminder(), String.valueOf(System.currentTimeMillis()));
             t.start();
 
