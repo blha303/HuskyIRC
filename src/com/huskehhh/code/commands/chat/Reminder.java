@@ -58,7 +58,7 @@ public class Reminder extends ListenerAdapter implements Runnable {
             messageEdited = messageEdited.replaceFirst(line[1], "");
             messageEdited = messageEdited.replace(" " + line[2] + " ", "");
 
-            HuskyIRC.bot.sendMessage(event.getChannel().getName(), "After " + line[1] + " " + timeString + s +" your message will be sent to " + who);
+            HuskyIRC.bot.sendMessage(event.getChannel().getName(), "After " + time + " " + timeString + s +" your message will be sent to " + who);
             Thread t = new Thread(new Reminder(), String.valueOf(System.currentTimeMillis()));
             t.start();
 
