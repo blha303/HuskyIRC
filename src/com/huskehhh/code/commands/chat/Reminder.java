@@ -47,7 +47,7 @@ public class Reminder extends ListenerAdapter implements Runnable {
                 time *= 60000;
                 timeUnit = "minute";
             } else if (line[1].endsWith("h")) {
-                time *= 360000;
+                time *= 3600000;
                 timeUnit = "hour";
             } else {
                 time *= 60000;
