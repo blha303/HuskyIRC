@@ -14,7 +14,7 @@ public class Reminder extends ListenerAdapter implements Runnable {
         String messagee = messageEdited;
         String whoo = who;
         int timee = time;
-        System.out.println("Sleeping! " + timee/60000);
+
         try {
             Thread.sleep(timee);
         } catch (InterruptedException e) {
@@ -36,23 +36,35 @@ public class Reminder extends ListenerAdapter implements Runnable {
 
             message = event.getMessage();
             //!remind <time> <user/channel> <message>
+            time = Integer.valueOf(line[1]);
+            String s = "";
+            if (time > 1) s = "s";
+            String timeString = "";
+            if (line[1].endsWith("s")) {
+                timeString = "second";
+            } else if (line[1].endsWith("m")) {
+                time *= 60000;
+                timeString = "minute";
+            } else if (line[1].endsWith("h")) {
+                time *= 360000;
+                timeString = "hour";
+            } else {
+                time *= 60000;
+                timeString = "minute";
+            }
 
-            time = Integer.valueOf(line[1]) * 60000;
             who = line[2];
             messageEdited = message.replace("!remind ", "");
             messageEdited = messageEdited.replaceFirst(line[1], "");
             messageEdited = messageEdited.replace(" " + line[2] + " ", "");
 
-            String s = "";
-            if (time > 60000) s = "s";
-
-            HuskyIRC.bot.sendMessage(event.getChannel().getName(), "After " + line[1] + " minute" + s + " your message will be sent to " + who);
+            HuskyIRC.bot.sendMessage(event.getChannel().getName(), "After " + line[1] + " " + timeString + s +" your message will be sent to " + who);
             Thread t = new Thread(new Reminder(), String.valueOf(System.currentTimeMillis()));
             t.start();
 
         } else if (line[0].equalsIgnoreCase("!remind") && !(line.length > 1)) {
 
-            event.respond("Syntax: !remind <minute(s)> <User|Channel> <Message>");
+            event.respond("Syntax: !remind <Second|Minute|Hour(s)> <User|Channel> <Message>");
         }
 
     }
