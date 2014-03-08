@@ -7,7 +7,7 @@ import java.util.TimerTask;
 
 public class BanAppealCheckTask extends TimerTask {
 
-    private String channel = "#OresomeCraft-Admin";
+    String channel = "#OresomeCraft-Admin";
 
     @Override
     public void run() {

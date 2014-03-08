@@ -3,7 +3,6 @@ package com.huskehhh.code.tasks;
 import com.huskehhh.code.HuskyIRC;
 import com.huskehhh.code.config.Config;
 import com.huskehhh.code.util.TwitterUtil;
-import com.huskehhh.code.util.Utility;
 import twitter4j.*;
 import twitter4j.conf.ConfigurationBuilder;
 

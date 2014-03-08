@@ -4,8 +4,6 @@ import com.huskehhh.code.HuskyIRC;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 
-import java.util.Timer;
-
 public class Reminder extends ListenerAdapter implements Runnable {
 
     @Override

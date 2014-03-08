@@ -13,9 +13,6 @@ import java.text.DecimalFormat;
 
 public class KDRUtil {
 
-    private static String updateUser = "";
-    private static String updateUserKD = "";
-
     private static String getKD(String username) {
         try {
             URL url = new URL("http://" + Config.battlesSiteURL + "/battleapi.php?name=" + username);

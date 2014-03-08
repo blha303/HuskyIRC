@@ -12,7 +12,6 @@ import java.util.Properties;
 
 public class Utility {
 
-    private static Utility util = new Utility();
     public static Properties lastFile;
 
     public static boolean isUpdate() {
