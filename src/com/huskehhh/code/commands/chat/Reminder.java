@@ -33,11 +33,12 @@ public class Reminder extends ListenerAdapter implements Runnable {
         if (line[0].equalsIgnoreCase("!remind") && line.length > 2) {
 
             message = event.getMessage();
-            //!remind <time> <user/channel> <message>
             time = Integer.valueOf(line[1]);
+
             String s = "";
             if (time > 1) s = "s";
-            String timeString = "";
+
+            String timeString;
             if (line[1].endsWith("s")) {
                 timeString = "second";
             } else if (line[1].endsWith("m")) {
@@ -62,7 +63,7 @@ public class Reminder extends ListenerAdapter implements Runnable {
 
         } else if (line[0].equalsIgnoreCase("!remind") && !(line.length > 1)) {
 
-            event.respond("Syntax: !remind <Second|Minute|Hour(s)> <User|Channel> <Message>");
+            event.respond("Usage: !remind <Number>[s|m|h] <User|Channel> <Message>");
         }
 
     }
