@@ -33,7 +33,7 @@ public class Reminder extends ListenerAdapter implements Runnable {
         if (line[0].equalsIgnoreCase("!remind") && line.length > 2) {
 
             message = event.getMessage();
-            time = Integer.valueOf(line[1]);
+            time = Integer.valueOf(line[1].replace("s", "").replace("m", "").replace("h", ""));
 
             String s = "";
             if (time > 1) s = "s";
