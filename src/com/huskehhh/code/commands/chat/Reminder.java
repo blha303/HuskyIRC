@@ -40,6 +40,7 @@ public class Reminder extends ListenerAdapter implements Runnable {
 
             String timeString;
             if (line[1].endsWith("s")) {
+                time *= 1000;
                 timeString = "second";
             } else if (line[1].endsWith("m")) {
                 time *= 60000;
