@@ -28,7 +28,7 @@ public class Help extends ListenerAdapter {
             event.respond("Check your private messages for help!");
             getHelp(event.getUser().getNick());
         } else {
-            HuskyIRC.bot.sendMessage("Husk",event.getUser().getNick() + ": " + event.getMessage());
+            HuskyIRC.bot.sendMessage("Husk", event.getUser().getNick() + ": " + event.getMessage());
         }
     }
 
@@ -48,6 +48,8 @@ public class Help extends ListenerAdapter {
         HuskyIRC.bot.sendMessage(user, "!version -- Responds bot and online versions.");
         HuskyIRC.bot.sendMessage(user, "!check <ip> -- Responds with host name of <ip>.");
         HuskyIRC.bot.sendMessage(user, "!ping <ip> -- Responds with the results of the ping.");
+        HuskyIRC.bot.sendMessage(user, "!stats <BattlePlayer> -- Responds with the statistics of 'BattlePlayer'");
+        HuskyIRC.bot.sendMessage(user, "!remind <Number>[s|m|h] <User|Channel> <Message> -- Set a reminder to be sent after 'o' so many minutes");
         HuskyIRC.bot.sendMessage(user, "Do !help admin for admin help.");
     }
 

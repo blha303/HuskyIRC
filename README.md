@@ -42,7 +42,9 @@ Kindly provided by drtshock and blha303! :D
 \*\*!update [repo] -- Attempts to update the bot. (Never works! :P)  
 !version -- Responds bot and online versions.  
 !check \<ip\> -- Responds with host name of \<ip\>.  
-!ping \<ip\> -- Responds with the results of the ping.  
+!ping \<ip\> -- Responds with the results of the ping.
+!stats \<BattlePlayer\> -- Responds with the statistics of 'BattlePlayer'
+!remind \<Number\>[s|m|h] \<User|Channel\> \<Message\> -- Set a reminder to be sent after 'o' so many minutes
 
 \* - Bot admins only.  
 \*\* - Husk only.
