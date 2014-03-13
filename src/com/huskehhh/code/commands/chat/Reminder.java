@@ -9,16 +9,16 @@ public class Reminder extends ListenerAdapter implements Runnable {
     @Override
     public void run() {
 
-        String messagee = messageEdited;
-        String whoo = who;
-        int timee = time;
+        String messageThreaded = messageEdited;
+        String whoThreaded = who;
+        int timeThreaded = time;
 
         try {
-            Thread.sleep(timee);
+            Thread.sleep(timeThreaded);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        HuskyIRC.bot.sendMessage(whoo, messagee);
+        HuskyIRC.bot.sendMessage(whoThreaded, messageThreaded);
     }
 
     String message;
@@ -58,6 +58,7 @@ public class Reminder extends ListenerAdapter implements Runnable {
             messageEdited = message.replace("!remind ", "");
             messageEdited = messageEdited.replaceFirst(line[1], "");
             messageEdited = messageEdited.replace(" " + line[2] + " ", "");
+            messageEdited += " [" + event.getUser().getNick() + "]";
 
             HuskyIRC.bot.sendMessage(event.getChannel().getName(), "After " + timeStripped + " " + timeUnit + s +" your message will be sent to " + who);
             Thread t = new Thread(new Reminder(), String.valueOf(System.currentTimeMillis()));
