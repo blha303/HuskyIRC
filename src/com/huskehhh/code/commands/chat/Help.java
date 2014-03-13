@@ -49,7 +49,7 @@ public class Help extends ListenerAdapter {
         HuskyIRC.bot.sendMessage(user, "!check <ip> -- Responds with host name of <ip>.");
         HuskyIRC.bot.sendMessage(user, "!ping <ip> -- Responds with the results of the ping.");
         HuskyIRC.bot.sendMessage(user, "!stats <BattlePlayer> -- Responds with the statistics of 'BattlePlayer'");
-        HuskyIRC.bot.sendMessage(user, "!remind <Number>[s|m|h] <User|Channel> <Message> -- Set a reminder to be sent after 'o' so many minutes");
+        HuskyIRC.bot.sendMessage(user, "!remind <User|Channel> <Number>[s|m|h] <Message> -- Set a reminder to be sent after 'o' so many minutes");
         HuskyIRC.bot.sendMessage(user, "Do !help admin for admin help.");
     }
 

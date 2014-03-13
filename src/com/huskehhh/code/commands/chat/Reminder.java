@@ -33,7 +33,7 @@ public class Reminder extends ListenerAdapter implements Runnable {
         if (line[0].equalsIgnoreCase("!remind") && line.length > 2) {
 
             message = event.getMessage();
-            String timeStripped = line[1].replace("s", "").replace("m", "").replace("h", "");
+            String timeStripped = line[2].replace("s", "").replace("m", "").replace("h", "");
             time = Integer.valueOf(timeStripped);
 
             String s = "";
@@ -54,10 +54,10 @@ public class Reminder extends ListenerAdapter implements Runnable {
                 timeUnit = "minute";
             }
 
-            who = line[2];
+            who = line[1];
             messageEdited = message.replace("!remind ", "");
-            messageEdited = messageEdited.replaceFirst(line[1], "");
-            messageEdited = messageEdited.replace(" " + line[2] + " ", "");
+            messageEdited = messageEdited.replaceFirst(line[2], "");
+            messageEdited = messageEdited.replace(" " + line[1] + " ", "");
             messageEdited += " [" + event.getUser().getNick() + "]";
 
             HuskyIRC.bot.sendMessage(event.getChannel().getName(), "After " + timeStripped + " " + timeUnit + s +" your message will be sent to " + who);
@@ -66,7 +66,7 @@ public class Reminder extends ListenerAdapter implements Runnable {
 
         } else if (line[0].equalsIgnoreCase("!remind") && !(line.length > 1)) {
 
-            event.respond("Usage: !remind <Number>[s|m|h] <User|Channel> <Message>");
+            event.respond("Usage: !remind <User|Channel> <Number>[s|m|h] <Message>");
         }
 
     }
