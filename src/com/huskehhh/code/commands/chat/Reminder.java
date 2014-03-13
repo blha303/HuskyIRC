@@ -30,7 +30,7 @@ public class Reminder extends ListenerAdapter implements Runnable {
 
         String[] line = event.getMessage().split(" ");
 
-        if (line[0].equalsIgnoreCase("!remind") && line.length > 2) {
+        if (line[0].equalsIgnoreCase("!remind") && line.length > 3) {
 
             message = event.getMessage();
             String timeStripped = line[2].replace("s", "").replace("m", "").replace("h", "");
@@ -40,13 +40,13 @@ public class Reminder extends ListenerAdapter implements Runnable {
             if (time > 1) s = "s";
 
             String timeUnit;
-            if (line[1].endsWith("s")) {
+            if (line[2].endsWith("s")) {
                 time *= 1000;
                 timeUnit = "second";
-            } else if (line[1].endsWith("m")) {
+            } else if (line[2].endsWith("m")) {
                 time *= 60000;
                 timeUnit = "minute";
-            } else if (line[1].endsWith("h")) {
+            } else if (line[2].endsWith("h")) {
                 time *= 3600000;
                 timeUnit = "hour";
             } else {
@@ -64,7 +64,7 @@ public class Reminder extends ListenerAdapter implements Runnable {
             Thread t = new Thread(new Reminder(), String.valueOf(System.currentTimeMillis()));
             t.start();
 
-        } else if (line[0].equalsIgnoreCase("!remind") && !(line.length > 1)) {
+        } else if (line[0].equalsIgnoreCase("!remind") && !(line.length > 3)) {
 
             event.respond("Usage: !remind <User|Channel> <Number>[s|m|h] <Message>");
         }
