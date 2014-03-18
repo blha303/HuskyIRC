@@ -40,7 +40,8 @@ public class Reminder extends ListenerAdapter implements Runnable {
                 try {
                     time = Integer.valueOf(timeStripped);
                 } catch (Exception e) {
-                    event.respond(e.getMessage());
+                    event.respond(timeStripped + " is not a number!");
+                    return;
                 }
             }
 
@@ -63,7 +64,7 @@ public class Reminder extends ListenerAdapter implements Runnable {
             }
 
             who = line[1];
-            // Trololololol
+
             messageEdited = message.replace("!remind ", "");
             messageEdited = messageEdited.replace(who, "");
             messageEdited = messageEdited.replace(" " + line[2] + " ", "");
