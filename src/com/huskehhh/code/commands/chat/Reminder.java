@@ -36,11 +36,12 @@ public class Reminder extends ListenerAdapter implements Runnable {
             String timeStripped = line[2].replace("s", "").replace("m", "").replace("h", "");
             if (timeStripped.equals("")) {
                 time = 1;
+                timeStripped = "1";
             } else {
                 try {
                     time = Integer.valueOf(timeStripped);
                 } catch (Exception e) {
-                    event.respond(timeStripped + " is not a number!");
+                    event.respond("\"" + timeStripped + "\" is not a number!");
                     return;
                 }
             }
