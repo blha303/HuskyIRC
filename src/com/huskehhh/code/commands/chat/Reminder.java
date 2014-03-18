@@ -34,7 +34,15 @@ public class Reminder extends ListenerAdapter implements Runnable {
 
             message = event.getMessage();
             String timeStripped = line[2].replace("s", "").replace("m", "").replace("h", "");
-            time = Integer.valueOf(timeStripped);
+            if (timeStripped.equals("")) {
+                time = 1;
+            } else {
+                try {
+                    time = Integer.valueOf(timeStripped);
+                } catch (Exception e) {
+                    event.respond(e.getMessage());
+                }
+            }
 
             String s = "";
             if (time > 1) s = "s";
@@ -60,6 +68,12 @@ public class Reminder extends ListenerAdapter implements Runnable {
             messageEdited = messageEdited.replace(who, "");
             messageEdited = messageEdited.replace(" " + line[2] + " ", "");
             messageEdited += " [" + event.getUser().getNick() + "]";
+
+            if (HuskyIRC.bot.channelExists(who) || HuskyIRC.bot.userExists(who)) {
+
+            } else {
+                event.respond("Please check that \"" + who + "\" is a real channel or user unless this is intended.");
+            }
 
             HuskyIRC.bot.sendMessage(event.getChannel().getName(), "After " + timeStripped + " " + timeUnit + s +" your message will be sent to " + who);
             Thread t = new Thread(new Reminder(), String.valueOf(System.currentTimeMillis()));
