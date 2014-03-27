@@ -2,6 +2,7 @@ package com.huskehhh.code.commands.core;
 
 import com.huskehhh.code.HuskyIRC;
 import com.huskehhh.code.auth.AuthCheck;
+import com.huskehhh.code.config.Config;
 import com.huskehhh.code.util.Utility;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
@@ -27,6 +28,11 @@ public class Permissions extends ListenerAdapter {
         } else if (line[0].equalsIgnoreCase("!devoice") && AuthCheck.authCheck(event.getUser().getNick()) && Utility.isAdmin(event.getUser().getNick())) {
 
             HuskyIRC.bot.deVoice(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
+
+        } else if (line[0].equalsIgnoreCase("!reload") && AuthCheck.authCheck(event.getUser().getNick()) && Utility.isAdmin(event.getUser().getNick())) {
+
+            Config.loadConfiguration();
+            event.respond("Config reloaded!");
 
         }
 

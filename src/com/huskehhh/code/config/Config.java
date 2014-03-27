@@ -1,7 +1,6 @@
 package com.huskehhh.code.config;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -32,16 +31,17 @@ public class Config {
     public static String mumbleusername;
     public static String mumblepassword;
 
-    public static String arcadeIP;
-    public static String battlesIP;
-    public static String developmentIP;
-    public static String hubIP;
-    public static String kartIP;
-    public static String smpIP;
-    public static String tiotIP;
+    public static String mainIP;
+    public static int arcadePort;
+    public static int battlesPort;
+    public static int developmentPort;
+    public static int hubPort;
+    public static int kartPort;
+    public static int smpPort;
+    public static int tiotPort;
 
 
-    public static void loadConfiguration() throws FileNotFoundException, IOException {
+    public static void loadConfiguration() throws IOException {
 
         Properties config = new Properties();
         config.load(new FileInputStream("HuskyIRC.properties"));
@@ -71,14 +71,14 @@ public class Config {
         mumbleusername = config.getProperty("mumble-username");
         mumblepassword = config.getProperty("mumble-password");
 
-        arcadeIP = config.getProperty("arcadeIP");
-        battlesIP = config.getProperty("battlesIP");
-        developmentIP = config.getProperty("developmentIP");
-        hubIP = config.getProperty("hubIP");
-        kartIP = config.getProperty("kartIP");
-        smpIP = config.getProperty("smpIP");
-        tiotIP = config.getProperty("tiotIP");
-
+        mainIP = config.getProperty("mainIP");
+        arcadePort = Integer.parseInt(config.getProperty("arcadePort"));
+        battlesPort = Integer.parseInt(config.getProperty("battlesPort"));
+        developmentPort = Integer.parseInt(config.getProperty("developmentPort"));
+        hubPort = Integer.parseInt(config.getProperty("hubPort"));
+        kartPort = Integer.parseInt(config.getProperty("kartPort"));
+        smpPort = Integer.parseInt(config.getProperty("smpPort"));
+        tiotPort = Integer.parseInt(config.getProperty("tiotPort"));
 
     }
 
