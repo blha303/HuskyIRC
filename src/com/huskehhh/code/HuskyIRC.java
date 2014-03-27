@@ -86,6 +86,7 @@ public class HuskyIRC {
         bot.getListenerManager().addListener(new MumblePing());
         bot.getListenerManager().addListener(new Reminder());
         bot.getListenerManager().addListener(new DownloadFile());
+        bot.getListenerManager().addListener(new GlobalCount());
     }
 
 

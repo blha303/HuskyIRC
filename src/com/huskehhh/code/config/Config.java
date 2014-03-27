@@ -32,6 +32,14 @@ public class Config {
     public static String mumbleusername;
     public static String mumblepassword;
 
+    public static String arcadeIP;
+    public static String battlesIP;
+    public static String developmentIP;
+    public static String hubIP;
+    public static String kartIP;
+    public static String smpIP;
+    public static String tiotIP;
+
 
     public static void loadConfiguration() throws FileNotFoundException, IOException {
 
@@ -62,6 +70,14 @@ public class Config {
         mumbleport = Integer.parseInt(config.getProperty("mumble-port"));
         mumbleusername = config.getProperty("mumble-username");
         mumblepassword = config.getProperty("mumble-password");
+
+        arcadeIP = config.getProperty("arcadeIP");
+        battlesIP = config.getProperty("battlesIP");
+        developmentIP = config.getProperty("developmentIP");
+        hubIP = config.getProperty("hubIP");
+        kartIP = config.getProperty("kartIP");
+        smpIP = config.getProperty("smpIP");
+        tiotIP = config.getProperty("tiotIP");
 
 
     }
