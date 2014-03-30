@@ -21,7 +21,7 @@ public class KDRCheckTask extends TimerTask {
         System.out.println("KDRCheck: End!");
         System.out.println("KDRCheck took " + (System.currentTimeMillis() - startTime) + "ms");
         
-        long startTime = System.currentTimeMillis();
+        startTime = System.currentTimeMillis();
         KDRUtil.updateUserKD("ScruffyRules,_Husky_,dutchy336,psgs,SuperDuckFace,123Oblivious");
         System.out.println("KDRUpdate took " + (System.currentTimeMillis() - startTime) + "ms");
 
