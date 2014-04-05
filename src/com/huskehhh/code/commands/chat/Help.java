@@ -8,25 +8,29 @@ import org.pircbotx.hooks.events.PrivateMessageEvent;
 public class Help extends ListenerAdapter {
 
     public void onMessage(MessageEvent event) {
-
         String[] line = event.getMessage().split(" ");
-
-        if (line[0].equalsIgnoreCase("!help") && line[1].equalsIgnoreCase("admin")) {
-            event.respond("Check your private messages for admin help!");
-            getAdminHelp(event.getUser().getNick());
-        } else if (line[0].equalsIgnoreCase("!help")) {
-            event.respond("Check your private messages for help!");
-            getHelp(event.getUser().getNick());
+        if (line[0].equalsIgnoreCase("!help")) {
+            if (line.length > 1) {
+                if (line[1].equalsIgnoreCase("admin")) {
+                    event.respond("Check your private messages for admin help!");
+                    getAdminHelp(event.getUser().getNick());
+                }
+            } else {
+                event.respond("Check your private messages for help!");
+                getHelp(event.getUser().getNick());
+            }
         }
     }
     public void onPrivateMessage(PrivateMessageEvent event) {
         String[] line = event.getMessage().split(" ");
-        if (line[0].equalsIgnoreCase("!help") && line[1].equalsIgnoreCase("admin")) {
-            event.respond("Check your private messages for admin help!");
-            getAdminHelp(event.getUser().getNick());
-        } else if (line[0].equalsIgnoreCase("!help")) {
-            event.respond("Check your private messages for help!");
-            getHelp(event.getUser().getNick());
+        if (line[0].equalsIgnoreCase("!help")) {
+            if (line.length > 1) {
+                if (line[1].equalsIgnoreCase("admin")) {
+                    getAdminHelp(event.getUser().getNick());
+                }
+            } else {
+                getHelp(event.getUser().getNick());
+            }
         }
     }
 

@@ -1,6 +1,7 @@
 package com.huskehhh.code.commands.chat;
 
 import com.huskehhh.code.HuskyIRC;
+import com.huskehhh.code.util.Utility;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 
@@ -71,11 +72,10 @@ public class Reminder extends ListenerAdapter implements Runnable {
             messageEdited = messageEdited.replace(" " + line[2] + " ", "");
             messageEdited += " [" + event.getUser().getNick() + "]";
 
-            if (HuskyIRC.bot.channelExists(who) || HuskyIRC.bot.userExists(who)) {
-
-            } else {
+            if (!(Utility.channelExists(who) || Utility.userExists(who))) {
                 event.respond("Please check that \"" + who + "\" is a real channel or user unless this is intended.");
             }
+
 
             HuskyIRC.bot.sendMessage(event.getChannel().getName(), "After " + timeStripped + " " + timeUnit + s +" your message will be sent to " + who);
             Thread t = new Thread(new Reminder(), String.valueOf(System.currentTimeMillis()));

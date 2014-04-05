@@ -155,6 +155,24 @@ public class Utility {
         return false;
     }
 
+    public static boolean channelExists(String channel) {
+        for (String chan : HuskyIRC.bot.getChannelsNames()) {
+            if (channel.toLowerCase().equals(chan.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean userExists(String user) {
+        for (User username : HuskyIRC.bot.getUsers()) {
+            if (user.toLowerCase().equals(username.getNick().toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void downloadFile(String url, String output) {
         BufferedInputStream in = null;
         FileOutputStream fout = null;
