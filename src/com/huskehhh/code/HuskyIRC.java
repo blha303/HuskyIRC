@@ -50,7 +50,7 @@ public class HuskyIRC {
             new UpdateCheck();
             new TwitterCheck();
             new BanAppealCheck();
-            new KDRCheck();
+            //new KDRCheck();
 
         } catch (IrcException e) {
             System.out.println(e.getMessage());
