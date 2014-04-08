@@ -41,7 +41,7 @@ public class MinecraftServerStatusCheckTask extends TimerTask {
                         login = true;
                         HuskyIRC.bot.sendMessage("Scruff", "Login servers are slow!");
                         HuskyIRC.bot.sendMessage("#OresomeCraft", "Login servers are slow!");
-                    } else if (entry.getValue().getAsString().equals("green")) {
+                    } else if (entry.getValue().getAsString().equals("green") && login) {
                         login = false;
                         HuskyIRC.bot.sendMessage("Scruff", "Login servers are back up!");
                         HuskyIRC.bot.sendMessage("#OresomeCraft", "Login servers are back up!");
@@ -56,7 +56,7 @@ public class MinecraftServerStatusCheckTask extends TimerTask {
                         session = true;
                         HuskyIRC.bot.sendMessage("Scruff", "Session servers are slow!");
                         HuskyIRC.bot.sendMessage("#OresomeCraft", "Session servers are slow!");
-                    } else if (entry.getValue().getAsString().equals("green")) {
+                    } else if (entry.getValue().getAsString().equals("green") && session) {
                         session = false;
                         HuskyIRC.bot.sendMessage("Scruff", "Session servers are back up!");
                         HuskyIRC.bot.sendMessage("#OresomeCraft", "Session servers are back up!");
