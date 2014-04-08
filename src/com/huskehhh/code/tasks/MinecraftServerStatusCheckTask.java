@@ -57,6 +57,6 @@ public class MinecraftServerStatusCheckTask extends TimerTask {
         } catch (Exception exce) {
             exce.printStackTrace();
         }
-        new BanAppealCheck();
+        new MinecraftServerStatusCheck();
     }
 }

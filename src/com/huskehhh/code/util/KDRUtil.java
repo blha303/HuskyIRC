@@ -74,7 +74,7 @@ public class KDRUtil {
     }
 
     public static void updateUserKD(String usernames) {
-        for (String userSplit : "ScruffyRules,_Husky_,SuperDuckFace,dutchy336,psgs,123Oblivious".split(",")) {
+        for (String userSplit : usernames.split(",")) {
             String KD = KDRUtil.getKD(userSplit);
             if (!KD.equals("0.000")) {
                 if (!KD.equals(getLastKD(userSplit)))  {
