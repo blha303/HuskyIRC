@@ -14,7 +14,6 @@ import java.util.TimerTask;
 
 public class MinecraftServerStatusCheckTask extends TimerTask {
 
-    String channel = "#OresomeCraft-Admin";
     boolean login = false;
     boolean session = false;
 
