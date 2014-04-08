@@ -50,6 +50,7 @@ public class HuskyIRC {
             new UpdateCheck();
             new TwitterCheck();
             new BanAppealCheck();
+            new MinecraftServerStatusCheck();
             //new KDRCheck();
 
         } catch (IrcException e) {

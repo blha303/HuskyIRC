@@ -21,7 +21,7 @@ public class BanAppealCheckTask extends TimerTask {
             HuskyIRC.bot.sendMessage(channel, "Posted on: " + BanAppealUtil.getDate());
             HuskyIRC.bot.sendMessage(channel, "More info here: " + BanAppealUtil.getLink());
 
-            HuskyIRC.bot.sendMessage("Scruffeh","Check #OresomeCraft-Admin!");
+            HuskyIRC.bot.sendMessage("Scruff","Check #OresomeCraft-Admin!");
 
             BanAppealUtil.setLastTitle(title);
         }

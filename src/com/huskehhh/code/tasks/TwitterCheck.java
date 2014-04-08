@@ -9,7 +9,7 @@ public class TwitterCheck {
     public TwitterCheck() {
 
         timer = new Timer();
-        timer.schedule(new TwitterCheckTask(), (31 * 1000));
+        timer.schedule(new TwitterCheckTask(), (60000));
 
     }
 }
