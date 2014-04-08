@@ -14,9 +14,6 @@ import java.util.TimerTask;
 
 public class MinecraftServerStatusCheckTask extends TimerTask {
 
-    boolean login = false;
-    boolean session = false;
-
     @Override
     public void run() {
 
@@ -32,31 +29,31 @@ public class MinecraftServerStatusCheckTask extends TimerTask {
                 Map.Entry<String, JsonElement> entry  = parser.parse(obj.toString()).getAsJsonObject().entrySet().iterator().next();
 
                 if (entry.getKey().equals("login.minecraft.net")) {
-                    if (entry.getValue().getAsString().equals("red") && !login) {
-                        login = true;
+                    if (entry.getValue().getAsString().equals("red") && !MinecraftServerStatusCheck.login) {
+                        MinecraftServerStatusCheck.login = true;
                         HuskyIRC.bot.sendMessage("Scruff", "Login servers are down!");
                         HuskyIRC.bot.sendMessage("#OresomeCraft", "Login servers are down!");
-                    } else if (entry.getValue().getAsString().equals("yellow") && !login) {
-                        login = true;
+                    } else if (entry.getValue().getAsString().equals("yellow") && !MinecraftServerStatusCheck.login) {
+                        MinecraftServerStatusCheck.login = true;
                         HuskyIRC.bot.sendMessage("Scruff", "Login servers are slow!");
                         HuskyIRC.bot.sendMessage("#OresomeCraft", "Login servers are slow!");
-                    } else if (entry.getValue().getAsString().equals("green") && login) {
-                        login = false;
+                    } else if (entry.getValue().getAsString().equals("green") && MinecraftServerStatusCheck.login) {
+                        MinecraftServerStatusCheck.login = false;
                         HuskyIRC.bot.sendMessage("Scruff", "Login servers are back up!");
                         HuskyIRC.bot.sendMessage("#OresomeCraft", "Login servers are back up!");
                     }
                 }
                 if (entry.getKey().equals("session.minecraft.net")) {
-                    if (entry.getValue().getAsString().equals("red") && !session) {
-                        session = true;
+                    if (entry.getValue().getAsString().equals("red") && !MinecraftServerStatusCheck.session) {
+                        MinecraftServerStatusCheck.session = true;
                         HuskyIRC.bot.sendMessage("Scruff", "Session servers are down!");
                         HuskyIRC.bot.sendMessage("#OresomeCraft", "Session servers are down!");
-                    } else if (entry.getValue().getAsString().equals("yellow") && !session) {
-                        session = true;
+                    } else if (entry.getValue().getAsString().equals("yellow") && !MinecraftServerStatusCheck.session) {
+                        MinecraftServerStatusCheck.session = true;
                         HuskyIRC.bot.sendMessage("Scruff", "Session servers are slow!");
                         HuskyIRC.bot.sendMessage("#OresomeCraft", "Session servers are slow!");
-                    } else if (entry.getValue().getAsString().equals("green") && session) {
-                        session = false;
+                    } else if (entry.getValue().getAsString().equals("green") && MinecraftServerStatusCheck.session) {
+                        MinecraftServerStatusCheck.session = false;
                         HuskyIRC.bot.sendMessage("Scruff", "Session servers are back up!");
                         HuskyIRC.bot.sendMessage("#OresomeCraft", "Session servers are back up!");
                     }

@@ -4,6 +4,8 @@ import java.util.Timer;
 
 public class MinecraftServerStatusCheck {
 
+    public static boolean login = false;
+    public static boolean session = false;
     Timer timer;
 
     public MinecraftServerStatusCheck() {
