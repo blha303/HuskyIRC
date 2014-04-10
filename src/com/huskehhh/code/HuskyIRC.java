@@ -50,7 +50,6 @@ public class HuskyIRC {
             new UpdateCheck();
             new TwitterCheck();
             new BanAppealCheck();
-            new MinecraftServerStatusCheck();
             //new KDRCheck();
 
         } catch (IrcException e) {
@@ -88,6 +87,7 @@ public class HuskyIRC {
         bot.getListenerManager().addListener(new Reminder());
         bot.getListenerManager().addListener(new DownloadFile());
         bot.getListenerManager().addListener(new GlobalCount());
+        bot.getListenerManager().addListener(new MCServerStatus());
     }
 
 
