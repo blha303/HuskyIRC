@@ -1,12 +1,12 @@
 package com.huskehhh.code.commands.chat;
 
+import ch.jamiete.mcping.MinecraftPing;
 import com.huskehhh.code.HuskyIRC;
-import com.huskehhh.code.util.Utility;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 
+import java.io.IOException;
 import java.util.Random;
-import java.util.Scanner;
 
 @SuppressWarnings("rawtypes")
 public class ChatManagement extends ListenerAdapter {
@@ -100,25 +100,30 @@ public class ChatManagement extends ListenerAdapter {
                 event.respond("Free memory: " + (Runtime.getRuntime().freeMemory() / 1024 / 1024) + "MB");
 
             } else if (line[0].equalsIgnoreCase("!ci")) {
+
                 event.respond("http://ci.drtshock.com/view/Huskehhh/");
                 event.respond("Kindly provided by drtshock and blha303! :D");
+
+            } else if (line[0].equalsIgnoreCase("!players")) {
+
+                if (event.getChannel().getName().equals("#oresomecraft")) {
+
+                    int players = 69;
+                    try {
+                        if (new MinecraftPing().getPing("mc.oresomecraft.com").getOnlinePlayers() <= 10) {
+
+                            players = new MinecraftPing().getPing("mc.oresomecraft.com").getOnlinePlayers();
+
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    event.getBot().sendMessage(event.getChannel(), "There are " + players + " players connected: Wrong Channel Man, PEW PEW PEW");
+
+                }
+
             }
-
-        }
-
-    }
-
-    public static void end() {
-
-        Scanner reader = new Scanner(System.in);
-        String command = reader.nextLine();
-
-        if (command.equals("end")) {
-
-            System.out.println("Bot shutting down! Cya!");
-            HuskyIRC.bot.disconnect();
-            HuskyIRC.bot.shutdown();
-            System.exit(0);
 
         }
 
