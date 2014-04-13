@@ -2,6 +2,7 @@ package com.huskehhh.code.commands.oresomecraft;
 
 import com.huskehhh.code.auth.AuthCheck;
 import com.huskehhh.code.config.Config;
+import com.huskehhh.code.util.Utility;
 import com.huskehhh.database.mysql.MySQL;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
@@ -20,44 +21,37 @@ public class Query extends ListenerAdapter {
 
         if (line[0].equalsIgnoreCase("!query")) {
 
-            if (AuthCheck.authCheck(event.getUser().getNick())) {
+            if (line.length != 1) {
 
-                if (line.length > 3) {
+                if (Utility.isAdminV2(event.getUser().getNick())) {
 
-                    String[] admin = Config.admins;
+                    String s = "";
+                    for (int x = 1; x < line.length; x++) {
 
-                    for (int i = 0; i <= admin.length; i++) {
+                        s = s + line[x] + " ";
 
-                        if (admin[i] == null) return;
+                    }
 
-                        if (admin[i].replaceAll(" ", "").equals(event.getUser().getNick())) {
+                    if (!s.startsWith("SELECT")) return;
 
-                            String s = "";
-                            for (int x = 1; x < line.length; x++) {
-                                s = s + line[x] + " ";
-                            }
+                    ResultSet rs = mysql.querySQL(s);
 
-                            if (!s.startsWith("SELECT")) return;
+                    if (rs != null) {
 
-                            ResultSet rs = mysql.querySQL(s);
+                        while (rs.next()) {
 
-                            if (rs != null) {
+                            if (rs.getString(line[2].replaceAll("`", "")) != null) {
 
-                                while (rs.next()) {
-                                    if (rs.getString(line[2].replaceAll("`", "")) != null)
-                                        event.respond("Result: " + rs.getString(line[2].replaceAll("`", "")));
-                                }
+                                event.respond("Result: " + rs.getString(line[2].replaceAll("`", "")));
 
                             }
 
                         }
 
                     }
-
-                } else {
-                    event.respond("Usage: !query <sql query syntax>");
                 }
-
+            } else {
+                event.respond("Usage: !query <sql query syntax>");
             }
 
         }

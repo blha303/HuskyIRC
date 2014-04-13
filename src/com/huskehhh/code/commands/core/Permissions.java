@@ -13,23 +13,23 @@ public class Permissions extends ListenerAdapter {
 
         String[] line = event.getMessage().split(" ");
 
-        if (line[0].equalsIgnoreCase("!op") && AuthCheck.authCheck(event.getUser().getNick()) && Utility.isAdmin(event.getUser().getNick())) {
+        if (line[0].equalsIgnoreCase("!op") && Utility.isAdminV2(event.getUser().getNick())) {
 
             HuskyIRC.bot.op(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
 
-        } else if (line[0].equalsIgnoreCase("!deop") && AuthCheck.authCheck(event.getUser().getNick()) && Utility.isAdmin(event.getUser().getNick())) {
+        } else if (line[0].equalsIgnoreCase("!deop") && Utility.isAdminV2(event.getUser().getNick())) {
 
             HuskyIRC.bot.deOp(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
 
-        } else if (line[0].equalsIgnoreCase("!voice") && AuthCheck.authCheck(event.getUser().getNick()) && Utility.isAdmin(event.getUser().getNick())) {
+        } else if (line[0].equalsIgnoreCase("!voice") && Utility.isAdminV2(event.getUser().getNick())) {
 
             HuskyIRC.bot.voice(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
 
-        } else if (line[0].equalsIgnoreCase("!devoice") && AuthCheck.authCheck(event.getUser().getNick()) && Utility.isAdmin(event.getUser().getNick())) {
+        } else if (line[0].equalsIgnoreCase("!devoice") && Utility.isAdminV2(event.getUser().getNick())) {
 
             HuskyIRC.bot.deVoice(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
 
-        } else if (line[0].equalsIgnoreCase("!reload") && AuthCheck.authCheck(event.getUser().getNick()) && Utility.isAdmin(event.getUser().getNick())) {
+        } else if (line[0].equalsIgnoreCase("!reload") && Utility.isAdminV2(event.getUser().getNick())) {
 
             Config.loadConfiguration();
             event.respond("Config reloaded!");

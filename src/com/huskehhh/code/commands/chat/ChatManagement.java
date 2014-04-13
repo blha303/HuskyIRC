@@ -1,7 +1,6 @@
 package com.huskehhh.code.commands.chat;
 
 import ch.jamiete.mcping.MinecraftPing;
-import com.huskehhh.code.HuskyIRC;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 
@@ -110,7 +109,7 @@ public class ChatManagement extends ListenerAdapter {
 
                     int players = 69;
                     try {
-                        if (new MinecraftPing().getPing("mc.oresomecraft.com").getOnlinePlayers() <= 10) {
+                        if (new MinecraftPing().getPing("mc.oresomecraft.com").getOnlinePlayers() >= 10) {
 
                             players = new MinecraftPing().getPing("mc.oresomecraft.com").getOnlinePlayers();
 
