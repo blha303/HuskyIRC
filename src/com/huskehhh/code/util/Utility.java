@@ -2,11 +2,14 @@ package com.huskehhh.code.util;
 
 import com.huskehhh.code.HuskyIRC;
 import com.huskehhh.code.config.Config;
+import com.huskehhh.database.mysql.MySQL;
 import org.pircbotx.User;
 
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.Properties;
 
@@ -73,7 +76,7 @@ public class Utility {
             if (v != null) {
                 return v;
             }
-
+            ;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -235,5 +238,66 @@ public class Utility {
             saveLastFile();
 //			e.printStackTrace();
         }
+    }
+
+    private static MySQL mysql = new MySQL(Config.Ohostname,
+            Config.Oport, Config.Odatabase,
+            Config.Ouser, Config.Opassword);
+
+    public static int getPlayersOnline(String server) {
+        String query = "SELECT COUNT(*) FROM `online_users` WHERE server LIKE '" + server + "';";
+        ResultSet rs = mysql.querySQL(query);
+        try {
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public static String findPlayer(String player) {
+        String query = "SELECT server FROM `online_users` WHERE user LIKE '" + player + "';";
+        ResultSet rs = mysql.querySQL(query);
+        try {
+            if (rs.next()) {
+                return rs.getString(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return "'" + player + "' isn't online!";
+    }
+
+    public static String seenPlayer(String player, String server) {
+        boolean searchUsingServer = true;
+        if (server.isEmpty() || server.equals(null)) {
+            searchUsingServer = false;
+        }                                  ;
+        String query = "";
+        String selectFrom = "";
+        if (searchUsingServer) {
+            if (server.equalsIgnoreCase("smp")) {
+                selectFrom = "lastlogin FROM `LogBlock_SMP`.`lb_players` WHERE player";
+            } else if (server.equalsIgnoreCase("battles")) {
+                selectFrom = "lastlogin FROM `battle`.`UserInfo` WHERE username";
+            }
+
+            // Will check if arcade and shit have their own systems later. No internet atm, this is coming from my memory.. :c
+
+        }
+        query = "SELECT " + selectFrom + " LIKE " + player + ";";
+        String key = selectFrom.split(" ")[0]; //should give out 'lastlogin' or alike..
+        ResultSet rs = mysql.querySQL(query);
+        try {
+            if (rs.next()) {
+                return rs.getString(key);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return "This player hasn't been seen at all, yet!";
     }
 }

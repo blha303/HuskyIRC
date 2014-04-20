@@ -15,7 +15,7 @@ import java.text.DecimalFormat;
 public class BattleStats extends ListenerAdapter {
 
     /**
-     * I took no part in writing this code, it was all @Zachoz, give him the credit. I just stole it because OresomeBot likes to die of death. HuskBot > OresomeBot
+     * I took no part in writing this code, it was all @Zachoz, give him the credit. I just stole it because @OresomeBot likes to die of death. HuskBot > OresomeBot
      */
 
     public void onMessage(MessageEvent event) {

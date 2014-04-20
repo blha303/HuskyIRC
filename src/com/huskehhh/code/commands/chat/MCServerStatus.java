@@ -3,6 +3,7 @@ package com.huskehhh.code.commands.chat;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import org.pircbotx.Colors;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 
@@ -36,27 +37,27 @@ public class MCServerStatus extends ListenerAdapter {
 
                     if (entry.getKey().equals("minecraft.net")) {
                         if (entry.getValue().getAsString().equals("red")) {
-                            site = "down";
+                            site = Colors.BOLD + Colors.RED + "down";
                         } else if (entry.getValue().getAsString().equals("yellow")) {
-                            site = "slow";
+                            site = Colors.BOLD + Colors.YELLOW + "slow";
                         } else {
-                            site = "up";
+                            site = Colors.BOLD + Colors.GREEN + "up";
                         }
                     } else if (entry.getKey().equals("login.minecraft.net")) {
                         if (entry.getValue().getAsString().equals("red")) {
-                            login = "down";
+                            login = Colors.BOLD + Colors.RED + "down";
                         } else if (entry.getValue().getAsString().equals("yellow")) {
-                            login = "slow";
+                            login = Colors.BOLD + Colors.YELLOW + "slow";
                         } else {
-                            login = "up";
+                            login = Colors.BOLD + Colors.GREEN + "up";
                         }
                     } else if (entry.getKey().equals("session.minecraft.net")) {
                         if (entry.getValue().getAsString().equals("red")) {
-                            session = "down";
+                            session = Colors.BOLD + Colors.RED + "down";
                         } else if (entry.getValue().getAsString().equals("yellow")) {
-                            session = "slow";
+                            session = Colors.BOLD + Colors.YELLOW + "slow";
                         } else {
-                            session = "up";
+                            session = Colors.BOLD + Colors.GREEN + "up";
                         }
                     }
 
@@ -64,7 +65,7 @@ public class MCServerStatus extends ListenerAdapter {
                 event.respond("Minecraft Site: " + site + ", Login Server: " + login + ", Session Server: " + session);
             } catch (Exception e) {
 
-                event.respond("Could not reach the Minecraft Servers.");
+                event.respond(Colors.RED + "Could not reach the Minecraft Servers.");
                 e.printStackTrace();
 
             }

@@ -1,37 +1,33 @@
 package com.huskehhh.code.util;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.huskehhh.code.HuskyIRC;
 import com.huskehhh.code.config.Config;
+import com.huskehhh.database.mysql.MySQL;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DecimalFormat;
 
 public class KDRUtil {
 
+    private static MySQL mysql = new MySQL(Config.Ohostname,
+            Config.Oport, Config.Odatabase,
+            Config.Ouser, Config.Opassword);
+
     private static String getKD(String username) {
+        String query = "SELECT * FROM `battle`.`stats` WHERE user LIKE '" + username + "';";
+        ResultSet rs = mysql.querySQL(query);
         try {
-            URL url = new URL("http://" + Config.battlesSiteURL + "/battleapi.php?name=" + username);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection(); // Open URL connection
-            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-            StringBuilder sb1 = new StringBuilder();
-            String inputLine;
-            while ((inputLine = in.readLine()) != null) sb1.append(inputLine);
-
-            JsonObject jsonStats = new JsonParser().parse(sb1.toString()).getAsJsonObject().getAsJsonObject("stats");
-            String KD = (roundDouble(Double.parseDouble(jsonStats.get("kills").toString().replace("\"", ""))
-                    / roundDouble(Double.parseDouble(jsonStats.get("deaths").toString().replace("\"", "")))) + "");
-
-            return KD;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return "0.000";
+            if (rs.next()) {
+                int kills = rs.getInt("kills");
+                int deaths = rs.getInt("deaths");
+                double kd = kills / deaths;
+                return Double.toString(roundDouble(kd));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        return "0.00";
     }
 
     private static double roundDouble(double d) {
@@ -61,7 +57,7 @@ public class KDRUtil {
             String KD = KDRUtil.getKD(userSplit);
             if (!KD.equals("0.000")) {
                 for (String ircUser : ircUsername.split(",")) {
-                    if (!KD.equals(getLastKD(userSplit)) && (HuskyIRC.bot.userExists(ircUser) || HuskyIRC.bot.channelExists(ircUser)))  {
+                    if (!KD.equals(getLastKD(userSplit)) && (HuskyIRC.bot.userExists(ircUser) || HuskyIRC.bot.channelExists(ircUser))) {
                         if (getLastKD(userSplit).equals("0.000")) {
                             HuskyIRC.bot.sendMessage(ircUser, userSplit + " has a new K/D: " + KD + "!");
                         } else {
@@ -77,7 +73,7 @@ public class KDRUtil {
         for (String userSplit : usernames.split(",")) {
             String KD = KDRUtil.getKD(userSplit);
             if (!KD.equals("0.000")) {
-                if (!KD.equals(getLastKD(userSplit)))  {
+                if (!KD.equals(getLastKD(userSplit))) {
                     setLastKD(KD, userSplit);
                 }
             }

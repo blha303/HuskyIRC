@@ -26,6 +26,7 @@ public class DownloadFile extends ListenerAdapter {
 
                     event.respond("Download finished!");
                     event.respond("Saved as: " + line[2] + ", Downloaded in " + (endTime - startTime) + "ms");
+
                 } else {
 
                     event.respond("Sorry but you can't use this!");
@@ -38,3 +39,9 @@ public class DownloadFile extends ListenerAdapter {
         }
     }
 }
+
+
+/**
+ Maybe we could make My VPS a file hosting/sharing website, instead of having stuff all over the place, like imgur, youtube, mediafire-
+ this way we can also keep records aswell as it being super-useful. :)
+**/

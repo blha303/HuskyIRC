@@ -88,6 +88,8 @@ public class HuskyIRC {
         bot.getListenerManager().addListener(new DownloadFile());
         bot.getListenerManager().addListener(new GlobalCount());
         bot.getListenerManager().addListener(new MCServerStatus());
+        bot.getListenerManager().addListener(new Alert());
+        bot.getListenerManager().addListener(new FindPlayer());
     }
 
 

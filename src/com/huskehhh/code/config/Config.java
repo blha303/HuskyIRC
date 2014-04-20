@@ -31,15 +31,6 @@ public class Config {
     public static String mumbleusername;
     public static String mumblepassword;
 
-    public static String mainIP;
-    public static int arcadePort;
-    public static int battlesPort;
-    public static int developmentPort;
-    public static int hubPort;
-    public static int kartPort;
-    public static int smpPort;
-    public static int tiotPort;
-
 
     public static void loadConfiguration() throws IOException {
 
@@ -70,15 +61,6 @@ public class Config {
         mumbleport = Integer.parseInt(config.getProperty("mumble-port"));
         mumbleusername = config.getProperty("mumble-username");
         mumblepassword = config.getProperty("mumble-password");
-
-        mainIP = config.getProperty("mainIP");
-        arcadePort = Integer.parseInt(config.getProperty("arcadePort"));
-        battlesPort = Integer.parseInt(config.getProperty("battlesPort"));
-        developmentPort = Integer.parseInt(config.getProperty("developmentPort"));
-        hubPort = Integer.parseInt(config.getProperty("hubPort"));
-        kartPort = Integer.parseInt(config.getProperty("kartPort"));
-        smpPort = Integer.parseInt(config.getProperty("smpPort"));
-        tiotPort = Integer.parseInt(config.getProperty("tiotPort"));
 
     }
 
