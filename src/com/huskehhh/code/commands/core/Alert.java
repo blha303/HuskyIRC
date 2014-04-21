@@ -23,7 +23,7 @@ public class Alert extends ListenerAdapter {
                 String text = event.getMessage().replace(line[0], "");
 
                 for (int x = 0; x < channels.length; x++) {
-                    HuskyIRC.bot.sendMessage(channels[x], Colors.RED + Colors.BOLD + "[Alert]" + Colors.removeFormattingAndColors(text));
+                    HuskyIRC.bot.sendMessage(channels[x], Colors.RED + Colors.BOLD + "[Alert]" + Colors.NORMAL + text);
                 }
             }
         }
