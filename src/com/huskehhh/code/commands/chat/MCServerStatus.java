@@ -37,7 +37,7 @@ public class MCServerStatus extends ListenerAdapter {
 
                     if (entry.getKey().equals("minecraft.net")) {
                         if (entry.getValue().getAsString().equals("red")) {
-                            site = Colors.BOLD + Colors.RED + "down";
+                            site = Colors.RED + Colors.BOLD + "down";
                         } else if (entry.getValue().getAsString().equals("yellow")) {
                             site = Colors.BOLD + Colors.YELLOW + "slow";
                         } else {
@@ -62,7 +62,7 @@ public class MCServerStatus extends ListenerAdapter {
                     }
 
                 }
-                event.respond("Minecraft Site: " + site + ", Login Server: " + login + ", Session Server: " + session);
+                event.respond("Minecraft Site: " + site + Colors.removeFormattingAndColors(", Login Server: ") + login + Colors.removeFormattingAndColors(", Session Server: ") + session);
             } catch (Exception e) {
 
                 event.respond(Colors.RED + "Could not reach the Minecraft Servers.");

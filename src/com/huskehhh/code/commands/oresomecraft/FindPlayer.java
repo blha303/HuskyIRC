@@ -16,7 +16,7 @@ public class FindPlayer extends ListenerAdapter {
                 String player = line[1];
                 String result = Utility.findPlayer(player);
                 if (!result.contains("isn't")) {
-                    event.respond("'" + player + "', is on '" + Utility.findPlayer(player) + "'.");
+                    event.respond("'" + player + "', is on '" + result + "'.");
                 }
             }
         }

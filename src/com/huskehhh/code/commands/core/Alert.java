@@ -16,16 +16,14 @@ public class Alert extends ListenerAdapter {
 
         if (line[0].equalsIgnoreCase("!alert")) {
 
-            if (Utility.isAdminV2(event.getUser().getNick()) && AuthCheck.authCheck(event.getUser().getNick())) {
+            if (Utility.isAdminV2(event.getUser().getNick())) {
 
-                String build = "";
-                for (int i = 1; i < line.length; i++) {
-                    build = build + line[i];
-                }
                 String[] channels = Config.channels;
 
+                String text = event.getMessage().replace(line[0], "");
+
                 for (int x = 0; x < channels.length; x++) {
-                    HuskyIRC.bot.getChannel(channels[x]).sendMessage(Colors.RED + Colors.BOLD + "[Alert] " + Colors.REVERSE + build);
+                    HuskyIRC.bot.sendMessage(channels[x], Colors.RED + Colors.BOLD + "[Alert]" + Colors.removeFormattingAndColors(text));
                 }
             }
         }

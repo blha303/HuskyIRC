@@ -76,7 +76,6 @@ public class Utility {
             if (v != null) {
                 return v;
             }
-            ;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -274,7 +273,7 @@ public class Utility {
         boolean searchUsingServer = true;
         if (server.isEmpty() || server.equals(null)) {
             searchUsingServer = false;
-        }                                  ;
+        }
         String query = "";
         String selectFrom = "";
         if (searchUsingServer) {
