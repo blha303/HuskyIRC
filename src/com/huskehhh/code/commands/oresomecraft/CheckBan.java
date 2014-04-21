@@ -63,9 +63,9 @@ public class CheckBan extends ListenerAdapter {
                 parse.next();
 
                 if (parse.getString("banned") == null) {
-                    return player + " is " + Colors.GREEN + "not banned" + Colors.removeFormattingAndColors(" from " + server);
+                    return player + " is " + Colors.GREEN + "not banned" + Colors.NORMAL + " from " + server;
                 } else {
-                    return player + " is " + Colors.RED + "banned" + Colors.removeFormattingAndColors(" from " + server + ", banned by " + parse.getString("banned_by") + " for the reason of '" + parse.getString("ban_reason") + "'.");
+                    return player + " is " + Colors.RED + "banned" + Colors.NORMAL + " from " + server + ", banned by " + parse.getString("banned_by") + " for the reason of '" + parse.getString("ban_reason") + "'.";
                 }
 
             }
@@ -75,7 +75,7 @@ public class CheckBan extends ListenerAdapter {
             System.out.println(e.getMessage());
         }
 
-        return player + " is " + Colors.GREEN + "not banned" + Colors.removeFormattingAndColors(" from " + server);
+        return player + " is " + Colors.GREEN + "not banned" + Colors.NORMAL + " from " + server;
     }
 
 }

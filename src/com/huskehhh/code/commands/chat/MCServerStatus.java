@@ -62,7 +62,7 @@ public class MCServerStatus extends ListenerAdapter {
                     }
 
                 }
-                event.respond("Minecraft Site: " + site + Colors.removeFormattingAndColors(", Login Server: ") + login + Colors.removeFormattingAndColors(", Session Server: ") + session);
+                event.respond("Minecraft Site: " + site + Colors.NORMAL + ", Login Server: " + login + Colors.NORMAL + ", Session Server: " + session);
             } catch (Exception e) {
 
                 event.respond(Colors.RED + "Could not reach the Minecraft Servers.");
