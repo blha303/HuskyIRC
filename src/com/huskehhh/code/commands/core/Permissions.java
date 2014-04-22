@@ -13,26 +13,42 @@ public class Permissions extends ListenerAdapter {
 
         String[] line = event.getMessage().split(" ");
 
-        if (line[0].equalsIgnoreCase("!op") && Utility.isAdminV2(event.getUser().getNick())) {
+        if (Utility.isAdminV2(event.getUser().getNick())) {
 
-            HuskyIRC.bot.op(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
+            if (event.getUser().isVerified()) {
 
-        } else if (line[0].equalsIgnoreCase("!deop") && Utility.isAdminV2(event.getUser().getNick())) {
+                if (line[0].equalsIgnoreCase("!op")) {
 
-            HuskyIRC.bot.deOp(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
+                    HuskyIRC.bot.op(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
 
-        } else if (line[0].equalsIgnoreCase("!voice") && Utility.isAdminV2(event.getUser().getNick())) {
+                } else if (line[0].equalsIgnoreCase("!deop")) {
 
-            HuskyIRC.bot.voice(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
+                    HuskyIRC.bot.deOp(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
 
-        } else if (line[0].equalsIgnoreCase("!devoice") && Utility.isAdminV2(event.getUser().getNick())) {
+                } else if (line[0].equalsIgnoreCase("!voice")) {
 
-            HuskyIRC.bot.deVoice(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
+                    HuskyIRC.bot.voice(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
 
-        } else if (line[0].equalsIgnoreCase("!reload") && Utility.isAdminV2(event.getUser().getNick())) {
+                } else if (line[0].equalsIgnoreCase("!devoice")) {
 
-            Config.loadConfiguration();
-            event.respond("Config reloaded!");
+                    HuskyIRC.bot.deVoice(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
+
+                } else if (line[0].equalsIgnoreCase("!reload")) {
+
+                    Config.loadConfiguration();
+                    event.respond("Config reloaded!");
+
+                }
+
+            } else {
+
+                event.respond("You need to be authenticated with NickServ!");
+
+            }
+
+        } else {
+
+            event.respond("You need to be Admin to do this");
 
         }
 

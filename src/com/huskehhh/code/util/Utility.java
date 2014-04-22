@@ -148,7 +148,7 @@ public class Utility {
 
     public static boolean isAdminV2(String username) {
         for (String i : Config.admins) {
-            if (i.replace(" ", "").equals(username) && HuskyIRC.bot.getUser(username).isVerified()) {
+            if (i.replace(" ", "").equals(username)) {
                 return true;
             }
         }
