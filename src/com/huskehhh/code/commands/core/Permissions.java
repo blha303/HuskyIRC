@@ -40,15 +40,7 @@ public class Permissions extends ListenerAdapter {
 
                 }
 
-            } else {
-
-                event.respond("You need to be authenticated with NickServ!");
-
             }
-
-        } else {
-
-            event.respond("You need to be Admin to do this");
 
         }
 
