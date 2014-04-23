@@ -14,35 +14,31 @@ public class Punishment extends ListenerAdapter {
 
         if (Utility.isAdminV2(event.getUser().getNick())) {
 
-            if (event.getUser().isVerified()) {
+            if (line[0].equalsIgnoreCase("!ban") && event.getUser().isVerified()) {
 
-                if (line[0].equalsIgnoreCase("!ban")) {
+                HuskyIRC.bot.ban(event.getChannel(), line[1]);
+                HuskyIRC.bot.kick(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
+                event.respond("Banned " + line[1]);
 
-                    HuskyIRC.bot.ban(event.getChannel(), line[1]);
-                    HuskyIRC.bot.kick(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
-                    event.respond("Banned " + line[1]);
+            } else if (line[0].equalsIgnoreCase("!mute") && event.getUser().isVerified()) {
 
-                } else if (line[0].equalsIgnoreCase("!mute")) {
+                HuskyIRC.bot.setMode(event.getChannel(), "+q", Utility.getUser(line[1], event.getChannel().getName()));
+                event.respond("Muted " + line[1]);
 
-                    HuskyIRC.bot.setMode(event.getChannel(), "+q", Utility.getUser(line[1], event.getChannel().getName()));
-                    event.respond("Muted " + line[1]);
+            } else if (line[0].equalsIgnoreCase("!unban") && event.getUser().isVerified()) {
 
-                } else if (line[0].equalsIgnoreCase("!unban")) {
+                HuskyIRC.bot.unBan(event.getChannel(), line[1]);
+                event.respond("Unbanned " + line[1]);
 
-                    HuskyIRC.bot.unBan(event.getChannel(), line[1]);
-                    event.respond("Unbanned " + line[1]);
+            } else if (line[0].equalsIgnoreCase("!unmute") && event.getUser().isVerified()) {
 
-                } else if (line[0].equalsIgnoreCase("!unmute")) {
+                HuskyIRC.bot.setMode(event.getChannel(), "-q", Utility.getUser(line[1], event.getChannel().getName()));
+                event.respond("Unmuted " + line[1]);
 
-                    HuskyIRC.bot.setMode(event.getChannel(), "-q", Utility.getUser(line[1], event.getChannel().getName()));
-                    event.respond("Unmuted " + line[1]);
+            } else if (line[0].equalsIgnoreCase("!kick") && event.getUser().isVerified()) {
 
-                } else if (line[0].equalsIgnoreCase("!kick")) {
-
-                    HuskyIRC.bot.kick(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
-                    event.respond("Kicked " + line[1]);
-
-                }
+                HuskyIRC.bot.kick(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
+                event.respond("Kicked " + line[1]);
 
             }
 

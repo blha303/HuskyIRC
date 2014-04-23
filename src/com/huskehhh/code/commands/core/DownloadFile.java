@@ -1,6 +1,5 @@
 package com.huskehhh.code.commands.core;
 
-import com.huskehhh.code.auth.AuthCheck;
 import com.huskehhh.code.util.Utility;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;

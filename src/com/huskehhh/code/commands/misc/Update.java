@@ -1,6 +1,5 @@
 package com.huskehhh.code.commands.misc;
 
-import com.huskehhh.code.auth.AuthCheck;
 import com.huskehhh.code.util.Utility;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
@@ -17,7 +16,7 @@ public class Update extends ListenerAdapter {
 
             if (line.length == 1) {
 
-                if ((event.getUser().getNick().equals("Husk") || event.getUser().getNick().equals("Scruffeh"))&& AuthCheck.authCheck(event.getUser().getNick())) {
+                if ((event.getUser().getNick().equals("Husk") || event.getUser().getNick().equals("Scruffeh"))&& event.getUser().isVerified()) {
 
                     if (Utility.isUpdate()) {
 
@@ -42,7 +41,7 @@ public class Update extends ListenerAdapter {
 
                 if (line[1].equalsIgnoreCase("repo")) {
 
-                    if (event.getUser().getNick().equals("Husk") && AuthCheck.authCheck(event.getUser().getNick())) {
+                    if (event.getUser().getNick().equals("Husk") && event.getUser().isVerified()) {
 
                         event.respond("Updating local map repo!");
 

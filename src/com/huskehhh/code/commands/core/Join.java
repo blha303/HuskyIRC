@@ -1,7 +1,6 @@
 package com.huskehhh.code.commands.core;
 
 import com.huskehhh.code.HuskyIRC;
-import com.huskehhh.code.auth.AuthCheck;
 import com.huskehhh.code.config.Config;
 import com.huskehhh.code.tasks.UpdateCheck;
 import org.pircbotx.hooks.ListenerAdapter;
@@ -24,7 +23,7 @@ public class Join extends ListenerAdapter {
             String channelarg = event.getMessage().split(" ")[1];
             if (event.getMessage().startsWith("!join ") && event.getMessage().contains(channelarg)) {
 
-                if (AuthCheck.authCheck(event.getUser().getNick())) {
+                if (event.getUser().isVerified()) {
 
                     String[] admin = Config.admins;
 

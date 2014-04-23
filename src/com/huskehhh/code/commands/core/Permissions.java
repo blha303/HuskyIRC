@@ -15,30 +15,26 @@ public class Permissions extends ListenerAdapter {
 
         if (Utility.isAdminV2(event.getUser().getNick())) {
 
-            if (event.getUser().isVerified()) {
+            if (line[0].equalsIgnoreCase("!op") && event.getUser().isVerified()) {
 
-                if (line[0].equalsIgnoreCase("!op")) {
+                HuskyIRC.bot.op(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
 
-                    HuskyIRC.bot.op(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
+            } else if (line[0].equalsIgnoreCase("!deop") && event.getUser().isVerified()) {
 
-                } else if (line[0].equalsIgnoreCase("!deop")) {
+                HuskyIRC.bot.deOp(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
 
-                    HuskyIRC.bot.deOp(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
+            } else if (line[0].equalsIgnoreCase("!voice") && event.getUser().isVerified()) {
 
-                } else if (line[0].equalsIgnoreCase("!voice")) {
+                HuskyIRC.bot.voice(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
 
-                    HuskyIRC.bot.voice(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
+            } else if (line[0].equalsIgnoreCase("!devoice") && event.getUser().isVerified()) {
 
-                } else if (line[0].equalsIgnoreCase("!devoice")) {
+                HuskyIRC.bot.deVoice(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
 
-                    HuskyIRC.bot.deVoice(event.getChannel(), Utility.getUser(line[1], event.getChannel().getName()));
+            } else if (line[0].equalsIgnoreCase("!reload") && event.getUser().isVerified()) {
 
-                } else if (line[0].equalsIgnoreCase("!reload")) {
-
-                    Config.loadConfiguration();
-                    event.respond("Config reloaded!");
-
-                }
+                Config.loadConfiguration();
+                event.respond("Config reloaded!");
 
             }
 
