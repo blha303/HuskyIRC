@@ -12,12 +12,10 @@ public class FindPlayer extends ListenerAdapter {
 
         if (line[0].equalsIgnoreCase("!findplayer")) {
 
-            if (line.length > 1) {
-                String player = line[1];
-                String result = Utility.findPlayer(player);
-                if (!result.contains("isn't")) {
-                    event.respond("'" + player + "', is on '" + result + "'.");
-                }
+            String player = line[1];
+            String result = Utility.findPlayer(player);
+            if (!result.contains("isn't")) {
+                event.respond("'" + player + "', is on '" + result + "'.");
             }
         }
     }
