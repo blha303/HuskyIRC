@@ -1,8 +1,6 @@
 package com.huskehhh.code.commands.core;
 
 import com.huskehhh.code.HuskyIRC;
-import com.huskehhh.code.auth.AuthCheck;
-import com.huskehhh.code.config.Config;
 import com.huskehhh.code.util.Utility;
 import org.pircbotx.Channel;
 import org.pircbotx.Colors;

@@ -1,6 +1,5 @@
 package com.huskehhh.code.commands.oresomecraft;
 
-import com.huskehhh.code.auth.AuthCheck;
 import com.huskehhh.code.config.Config;
 import com.huskehhh.code.util.Utility;
 import com.huskehhh.database.mysql.MySQL;
