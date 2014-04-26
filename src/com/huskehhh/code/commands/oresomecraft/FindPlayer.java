@@ -24,7 +24,7 @@ public class FindPlayer extends ListenerAdapter {
             String player = line[1];
             String result = findPlayer(player);
             if (!result.contains("isn't")) {
-                event.respond("'" + player + "', is on '" + result + "'.");
+                event.respond(player + ", is on " + result + ".");
             }
         }
     }
@@ -35,12 +35,11 @@ public class FindPlayer extends ListenerAdapter {
         try {
             if (rs.next()) {
                 return rs.getString("server");
-            } else {
-                return "'" + player + "' isn't online!";
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return "'" + player + "' isn't online!";
     }
 
 }
