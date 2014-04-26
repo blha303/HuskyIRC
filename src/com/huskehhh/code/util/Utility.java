@@ -16,6 +16,9 @@ import java.util.Properties;
 public class Utility {
 
     public static Properties lastFile;
+    MySQL mysql = new MySQL(Config.Ohostname,
+            Config.Oport, Config.Odatabase,
+            Config.Ouser, Config.Opassword);
 
     public static boolean isUpdate() {
 
@@ -237,36 +240,6 @@ public class Utility {
             saveLastFile();
 //			e.printStackTrace();
         }
-    }
-
-    private static MySQL mysql = new MySQL(Config.Ohostname,
-            Config.Oport, Config.Odatabase,
-            Config.Ouser, Config.Opassword);
-
-    public static int getPlayersOnline(String server) {
-        String query = "SELECT COUNT(*) FROM `online_users`.`players` WHERE server LIKE '" + server + "';";
-        ResultSet rs = mysql.querySQL(query);
-        try {
-            if (rs.next()) {
-                return rs.getInt("COUNT(*)");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }
-
-    public static String findPlayer(String player) {
-        String query = "SELECT server FROM `online_users`.`players` WHERE user LIKE '" + player + "';";
-        ResultSet rs = mysql.querySQL(query);
-        try {
-            if (rs.next()) {
-                return rs.getString("server");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return "'" + player + "' isn't online!";
     }
 
     public static String seenPlayer(String player, String server) {

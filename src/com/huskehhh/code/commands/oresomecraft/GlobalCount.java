@@ -1,14 +1,19 @@
 package com.huskehhh.code.commands.oresomecraft;
 
-import ch.jamiete.mcping.MinecraftPing;
+import com.huskehhh.code.config.Config;
 import com.huskehhh.code.util.Utility;
+import com.huskehhh.database.mysql.MySQL;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class GlobalCount extends ListenerAdapter {
 
-    MinecraftPing ping = new MinecraftPing();
-    int totalPlayers;
+    MySQL mysql = new MySQL(Config.Ohostname,
+            Config.Oport, Config.Odatabase,
+            Config.Ouser, Config.Opassword);
 
     public void onMessage(MessageEvent event) {
 
@@ -34,6 +39,19 @@ public class GlobalCount extends ListenerAdapter {
 
             event.getBot().sendMessage(channel, "--== Total Player Count: " + (hub + smp + battle + arcade + kart + tiot + dev) + " ==--");
         }
+    }
+
+    private int getPlayersOnline(String server) {
+        String query = "SELECT COUNT(*) FROM `online_users`.`players` WHERE server LIKE '" + server + "';";
+        ResultSet rs = mysql.querySQL(query);
+        try {
+            if (rs.next()) {
+                return rs.getInt("COUNT(*)");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
 }
