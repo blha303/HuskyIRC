@@ -244,11 +244,11 @@ public class Utility {
             Config.Ouser, Config.Opassword);
 
     public static int getPlayersOnline(String server) {
-        String query = "SELECT COUNT(*) FROM `online_users` WHERE server LIKE '" + server + "';";
+        String query = "SELECT COUNT(*) FROM `online_users`.`players` WHERE server LIKE '" + server + "';";
         ResultSet rs = mysql.querySQL(query);
         try {
             if (rs.next()) {
-                return rs.getInt(1);
+                return rs.getInt("COUNT(*)");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -257,11 +257,11 @@ public class Utility {
     }
 
     public static String findPlayer(String player) {
-        String query = "SELECT server FROM `online_users` WHERE user LIKE '" + player + "';";
+        String query = "SELECT server FROM `online_users`.`players` WHERE user LIKE '" + player + "';";
         ResultSet rs = mysql.querySQL(query);
         try {
             if (rs.next()) {
-                return rs.getString(1);
+                return rs.getString("server");
             }
         } catch (SQLException e) {
             e.printStackTrace();
