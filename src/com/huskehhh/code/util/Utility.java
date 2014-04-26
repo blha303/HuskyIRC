@@ -242,34 +242,36 @@ public class Utility {
         }
     }
 
-    public static String seenPlayer(String player, String server) {
-        boolean searchUsingServer = true;
-        if (server.isEmpty() || server.equals(null)) {
-            searchUsingServer = false;
-        }
-        String query = "";
-        String selectFrom = "";
-        if (searchUsingServer) {
-            if (server.equalsIgnoreCase("smp")) {
-                selectFrom = "lastlogin FROM `LogBlock_SMP`.`lb_players` WHERE player";
-            } else if (server.equalsIgnoreCase("battles")) {
-                selectFrom = "lastlogin FROM `battle`.`UserInfo` WHERE username";
-            }
+    /**
+     public static String seenPlayer(String player, String server) {
+     boolean searchUsingServer = true;
+     if (server.isEmpty() || server.equals(null)) {
+     searchUsingServer = false;
+     }
+     String query = "";
+     String selectFrom = "";
+     if (searchUsingServer) {
+     if (server.equalsIgnoreCase("smp")) {
+     selectFrom = "lastlogin FROM `LogBlock_SMP`.`lb_players` WHERE player";
+     } else if (server.equalsIgnoreCase("battles")) {
+     selectFrom = "lastlogin FROM `battle`.`UserInfo` WHERE username";
+     }
 
-            // Will check if arcade and shit have their own systems later. No internet atm, this is coming from my memory.. :c
+     // Will check if arcade and shit have their own systems later. No internet atm, this is coming from my memory.. :c
 
-        }
-        query = "SELECT " + selectFrom + " LIKE " + player + ";";
-        String key = selectFrom.split(" ")[0]; //should give out 'lastlogin' or alike..
-        ResultSet rs = mysql.querySQL(query);
-        try {
-            if (rs.next()) {
-                return rs.getString(key);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+     }
+     query = "SELECT " + selectFrom + " LIKE " + player + ";";
+     String key = selectFrom.split(" ")[0]; //should give out 'lastlogin' or alike..
+     ResultSet rs = mysql.querySQL(query);
+     try {
+     if (rs.next()) {
+     return rs.getString(key);
+     }
+     } catch (SQLException e) {
+     e.printStackTrace();
+     }
 
-        return "This player hasn't been seen at all, yet!";
-    }
+     return "This player hasn't been seen at all, yet!";
+     }
+     **/
 }

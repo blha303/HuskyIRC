@@ -22,7 +22,7 @@ public class FindPlayer extends ListenerAdapter {
         if (line[0].equalsIgnoreCase("!findplayer")) {
 
             String player = line[1];
-            String result = Utility.findPlayer(player);
+            String result = findPlayer(player);
             if (!result.contains("isn't")) {
                 event.respond("'" + player + "', is on '" + result + "'.");
             }
