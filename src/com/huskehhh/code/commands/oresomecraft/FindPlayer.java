@@ -35,11 +35,12 @@ public class FindPlayer extends ListenerAdapter {
         try {
             if (rs.next()) {
                 return rs.getString("server");
+            } else {
+                return "'" + player + "' isn't online!";
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return "'" + player + "' isn't online!";
     }
 
 }
