@@ -47,6 +47,7 @@ public class HuskyIRC {
             bot.connect(Config.network, 6667);
             bot.setAutoReconnect(false);
             bot.setAutoReconnectChannels(true);
+            bot.setMessageDelay(250);
 
             new UpdateCheck();
             new TwitterCheck();

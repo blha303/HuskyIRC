@@ -29,13 +29,13 @@ public class GlobalCount extends ListenerAdapter {
             int dev = getPlayersOnline("dev");
             String channel = event.getChannel().getName();
             event.getBot().sendMessage(channel, "--== OresomeCraft Global Player Count ==--");
-            event.respond("Hub: " + hub);
-            event.respond("SMP: " + smp);
-            event.respond("Battles: " + battle);
-            event.respond("Arcade: " + arcade);
-            event.respond("Kart: " + kart);
-            event.respond("TiOT: " + tiot);
-            event.respond("Development: " + dev);
+            event.getBot().sendMessage(channel, "Hub: " + hub);
+            event.getBot().sendMessage(channel, "SMP: " + smp);
+            event.getBot().sendMessage(channel, "Battles: " + battle);
+            event.getBot().sendMessage(channel, "Arcade: " + arcade);
+            event.getBot().sendMessage(channel, "Kart: " + kart);
+            event.getBot().sendMessage(channel, "TiOT: " + tiot);
+            event.getBot().sendMessage(channel, "Development: " + dev);
 
             event.getBot().sendMessage(channel, "--== Total Player Count: " + (hub + smp + battle + arcade + kart + tiot + dev) + " ==--");
         }
