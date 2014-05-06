@@ -5,6 +5,7 @@ import com.huskehhh.code.commands.core.*;
 import com.huskehhh.code.commands.misc.Update;
 import com.huskehhh.code.commands.misc.Version;
 import com.huskehhh.code.commands.network.Check;
+import com.huskehhh.code.commands.network.LatestTweet;
 import com.huskehhh.code.commands.network.MumblePing;
 import com.huskehhh.code.commands.network.Ping;
 import com.huskehhh.code.commands.oresomecraft.*;
@@ -90,6 +91,7 @@ public class HuskyIRC {
         bot.getListenerManager().addListener(new MCServerStatus());
         bot.getListenerManager().addListener(new Alert());
         bot.getListenerManager().addListener(new FindPlayer());
+        bot.getListenerManager().addListener(new LatestTweet());
     }
 
 
