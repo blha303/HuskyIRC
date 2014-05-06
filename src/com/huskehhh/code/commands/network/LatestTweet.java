@@ -25,7 +25,7 @@ public class LatestTweet extends ListenerAdapter {
                     ResponseList<Status> timeLine = twitter.getUserTimeline(line[1]);
                     event.respond(timeLine.get(0).getUser().getName() + ": " + timeLine.get(0).getText());
                 } catch (TwitterException ex) {
-                    event.respond(ex.getCause().toString());
+                    event.respond(ex.getMessage());
                 }
             } else {
                 event.respond("Usage: !lasttweet <twitter username>");
