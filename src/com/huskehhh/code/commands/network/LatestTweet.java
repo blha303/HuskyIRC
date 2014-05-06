@@ -23,9 +23,11 @@ public class LatestTweet extends ListenerAdapter {
                 Twitter twitter = twitterFactory.getInstance();
                 try {
                     ResponseList<Status> timeLine = twitter.getUserTimeline(line[1]);
-                    event.respond(timeLine.get(0).getUser().getName() + ": " + timeLine.get(0).getText());
+                    event.respond(timeLine.get(0).getUser().getScreenName() + ": " + timeLine.get(0).getText());
                 } catch (TwitterException ex) {
-                    event.respond(ex.getMessage());
+                    event.respond("User not found!");
+                } catch (IndexOutOfBoundsException ex) {
+                    event.respond("User has no tweets!");
                 }
             } else {
                 event.respond("Usage: !lasttweet <twitter username>");
