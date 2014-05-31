@@ -49,10 +49,10 @@ public class HuskyIRC {
             bot.setAutoReconnectChannels(true);
             bot.setMessageDelay(500);
 
-            new UpdateCheck();
+//            new UpdateCheck();
             new TwitterCheck();
-            new BanAppealCheck();
-            //new KDRCheck();
+//            new BanAppealCheck();
+//            new KDRCheck();
 
         } catch (IrcException e) {
             System.out.println(e.getMessage());
@@ -66,6 +66,7 @@ public class HuskyIRC {
 
     }
 
+    // Too many bloody listeners...
     private static void loadListeners() {
         bot.getListenerManager().addListener(new CheckBan());
         bot.getListenerManager().addListener(new Check());
@@ -77,7 +78,7 @@ public class HuskyIRC {
         bot.getListenerManager().addListener(new Query());
         bot.getListenerManager().addListener(new Ping());
         bot.getListenerManager().addListener(new FirstJoin());
-        bot.getListenerManager().addListener(new Update());
+//        bot.getListenerManager().addListener(new Update());
         bot.getListenerManager().addListener(new Version());
         bot.getListenerManager().addListener(new Channels());
         bot.getListenerManager().addListener(new RotationGen());
@@ -87,7 +88,7 @@ public class HuskyIRC {
         bot.getListenerManager().addListener(new Help());
         bot.getListenerManager().addListener(new MumblePing());
         bot.getListenerManager().addListener(new Reminder());
-        bot.getListenerManager().addListener(new DownloadFile());
+//        bot.getListenerManager().addListener(new DownloadFile());
         bot.getListenerManager().addListener(new GlobalCount());
         bot.getListenerManager().addListener(new MCServerStatus());
         bot.getListenerManager().addListener(new Alert());
