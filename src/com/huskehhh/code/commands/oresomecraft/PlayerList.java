@@ -27,6 +27,7 @@ public class PlayerList extends ListenerAdapter {
                     String user = rs.getString("user");
                     while (user != null) {
                         event.respond(user);
+                        rs.next();
                     }
                 }
             } catch (SQLException e) {
