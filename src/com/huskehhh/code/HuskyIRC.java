@@ -1,8 +1,10 @@
 package com.huskehhh.code;
 
-import com.huskehhh.code.commands.chat.*;
+import com.huskehhh.code.commands.chat.ChatManagement;
+import com.huskehhh.code.commands.chat.Help;
+import com.huskehhh.code.commands.chat.MCServerStatus;
+import com.huskehhh.code.commands.chat.Reminder;
 import com.huskehhh.code.commands.core.*;
-import com.huskehhh.code.commands.misc.Update;
 import com.huskehhh.code.commands.misc.Version;
 import com.huskehhh.code.commands.network.Check;
 import com.huskehhh.code.commands.network.LatestTweet;
@@ -10,7 +12,7 @@ import com.huskehhh.code.commands.network.MumblePing;
 import com.huskehhh.code.commands.network.Ping;
 import com.huskehhh.code.commands.oresomecraft.*;
 import com.huskehhh.code.config.Config;
-import com.huskehhh.code.tasks.*;
+import com.huskehhh.code.tasks.TwitterCheck;
 import com.huskehhh.code.util.Utility;
 import org.pircbotx.PircBotX;
 import org.pircbotx.exception.IrcException;
@@ -94,6 +96,7 @@ public class HuskyIRC {
         bot.getListenerManager().addListener(new Alert());
         bot.getListenerManager().addListener(new FindPlayer());
         bot.getListenerManager().addListener(new LatestTweet());
+        bot.getListenerManager().addListener(new PlayerList());
     }
 
 
