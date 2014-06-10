@@ -24,10 +24,8 @@ public class PlayerList extends ListenerAdapter {
             ResultSet rs = mysql.querySQL(query);
             try {
                 while (rs.next()) {
-                    String user = rs.getString("user");
-                    while (user != null) {
-                        event.respond(user);
-                        rs.next();
+                    while (rs.getString("user") != null) {
+                        event.respond(rs.getString("user"));
                     }
                 }
             } catch (SQLException e) {
