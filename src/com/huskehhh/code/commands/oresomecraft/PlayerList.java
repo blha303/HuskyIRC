@@ -19,7 +19,7 @@ public class PlayerList extends ListenerAdapter {
         String[] line = event.getMessage().split(" ");
 
         if (line[0].equalsIgnoreCase("!players")) {
-            if (line.length > 1) {return;}
+            if (line.length == 1) {return;}
             String server = line[1];
             String query = "SELECT * FROM `online_users`.`players` WHERE server LIKE '" + server + "';";
             ResultSet rs = mysql.querySQL(query);
