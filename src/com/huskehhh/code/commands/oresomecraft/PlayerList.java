@@ -28,8 +28,8 @@ public class PlayerList extends ListenerAdapter {
                 while (rs.next()) {
                     while (rs.getString("user") != null) {
                         players += rs.getString("user") + ", ";
-                        rs.next();
                     }
+                    rs.next();
                 }
                 event.respond(players.substring(0, players.length()-2));
             } catch (SQLException e) {
