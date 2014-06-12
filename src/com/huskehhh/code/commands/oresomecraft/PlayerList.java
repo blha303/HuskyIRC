@@ -27,11 +27,13 @@ public class PlayerList extends ListenerAdapter {
             try {
                 while (rs.next()) {
                     while (rs.getString("user") != null) {
-                        players += rs.getString("user") + ", ";
+//                        players += rs.getString("user") + ", ";
+	                    event.respond(rs.getString("user"));
+	                    rs.next();
                     }
-                    rs.next();
+//                    rs.next();
                 }
-                event.respond(players.substring(0, players.length()-2));
+//                event.respond(players.substring(0, players.length()-2));
             } catch (SQLException e) {
                 e.printStackTrace();
             }
