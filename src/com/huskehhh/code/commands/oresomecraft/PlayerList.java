@@ -19,17 +19,22 @@ public class PlayerList extends ListenerAdapter {
         String[] line = event.getMessage().split(" ");
 
         if (line[0].equalsIgnoreCase("!players")) {
-            String server = line[1];
-            String query = "SELECT * FROM `online_users`.`players` WHERE server LIKE '" + server + "';";
-            ResultSet rs = mysql.querySQL(query);
-            try {
-                while (rs.next()) {
-                    while (rs.getString("user") != null) {
-                        event.respond(rs.getString("user"));
+            if (line.length > 1) {
+                String server = line[1];
+                String query = "SELECT * FROM `online_users`.`players` WHERE server LIKE '" + server + "';";
+                ResultSet rs = mysql.querySQL(query);
+                try {
+                    while (rs.next()) {
+                        while (rs.getString("user") != null) {
+                            event.respond(rs.getString("user"));
+                            rs.next();
+                        }
                     }
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
-            } catch (SQLException e) {
-                e.printStackTrace();
+            } else {
+                event.respond("!players <hub|smp|battle|arcade|oresomekart|tiot|dev>");
             }
         }
     }

@@ -1,7 +1,6 @@
 package com.huskehhh.code.commands.oresomecraft;
 
 import com.huskehhh.code.config.Config;
-import com.huskehhh.code.util.Utility;
 import com.huskehhh.database.mysql.MySQL;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.MessageEvent;
@@ -27,15 +26,16 @@ public class GlobalCount extends ListenerAdapter {
             int kart = getPlayersOnline("oresomekart");
             int tiot = getPlayersOnline("tiot");
             int dev = getPlayersOnline("dev");
+
             String channel = event.getChannel().getName();
             event.getBot().sendMessage(channel, "--== OresomeCraft Global Player Count ==--");
-            event.getBot().sendMessage(channel, "Hub: " + hub);
-            event.getBot().sendMessage(channel, "SMP: " + smp);
-            event.getBot().sendMessage(channel, "Battles: " + battle);
-            event.getBot().sendMessage(channel, "Arcade: " + arcade);
-            event.getBot().sendMessage(channel, "Kart: " + kart);
-            event.getBot().sendMessage(channel, "TiOT: " + tiot);
-            event.getBot().sendMessage(channel, "Development: " + dev);
+            if (hub != 0) {event.getBot().sendMessage(channel, "Hub: " + hub);}
+            if (smp != 0) {event.getBot().sendMessage(channel, "SMP: " + smp);}
+            if (battle != 0) {event.getBot().sendMessage(channel, "Battles: " + battle);}
+            if (arcade != 0) {event.getBot().sendMessage(channel, "Arcade: " + arcade);}
+            if (kart != 0) {event.getBot().sendMessage(channel, "Kart: " + kart);}
+            if (tiot != 0) {event.getBot().sendMessage(channel, "TiOT: " + tiot);}
+            if (dev != 0) {event.getBot().sendMessage(channel, "Development: " + dev);}
 
             event.getBot().sendMessage(channel, "--== Total Player Count: " + (hub + smp + battle + arcade + kart + tiot + dev) + " ==--");
         }
