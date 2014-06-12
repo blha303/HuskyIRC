@@ -20,20 +20,19 @@ public class PlayerList extends ListenerAdapter {
 
         if (line[0].equalsIgnoreCase("!players")) {
             if (line.length == 1) {return;}
-            String players = "";
+//            String players = "";
             String server = line[1];
             String query = "SELECT * FROM `online_users`.`players` WHERE server LIKE '" + server + "';";
             ResultSet rs = mysql.querySQL(query);
             try {
                 while (rs.next()) {
                     while (rs.getString("user") != null) {
-                        players += rs.getString("user") + ", ";
-	                    event.respond(rs.getString("user"));
-	                    rs.next();
+//                        players += rs.getString("user") + ", ";
+                        event.respond(rs.getString("user"));
+                        rs.next();
                     }
-//                    rs.next();
                 }
-                event.respond(players.substring(0, players.length()-2));
+//                event.respond(players);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
