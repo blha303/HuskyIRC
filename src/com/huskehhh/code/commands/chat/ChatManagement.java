@@ -38,6 +38,14 @@ public class ChatManagement extends ListenerAdapter {
                     event.respond("You need to actually have a parameter after the command! >.<");
                 }
 
+            } else if (line[0].equalsIgnoreCase("!hug")) {
+
+                if (line.length > 1) {
+                    event.getBot().sendAction(event.getChannel(), "hugs " + line[1] + "!");
+                } else {
+                    event.respond("You need to actually have a parameter after the command! >.<");
+                }
+
             } else if (line[0].equalsIgnoreCase("!slay")) {
 
                 if (line.length > 1) {
