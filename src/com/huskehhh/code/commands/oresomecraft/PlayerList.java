@@ -49,7 +49,7 @@ public class PlayerList extends ListenerAdapter {
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
-                    event.respond(players);
+                    event.respond(players.substring(0, players.length()-2));
                 }
             }
         }
