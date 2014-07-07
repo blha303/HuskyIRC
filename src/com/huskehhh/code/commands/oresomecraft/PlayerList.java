@@ -39,7 +39,7 @@ public class PlayerList extends ListenerAdapter {
                 try {
                     if (rsc.next()) {
                         rows = rsc.getInt("COUNT(*)");
-                        for (int i = 0; i < rows; i++) {
+                        for (int i = 1; i < rows; i++) {
                             players = players + rs.getString(i) + ", ";
                         }
                     }
@@ -60,14 +60,14 @@ public class PlayerList extends ListenerAdapter {
         String players = "";
         String[] servers = {"SMP", "Battle", "Arcade", "Hub", "TiOT"};
 
-        for (int i = 0; i < servers.length; i++) {
+        for (int i = 1; i < servers.length; i++) {
             ResultSet rs = mysql.querySQL("SELECT * FROM `online_users`.`players` WHERE server LIKE '" + servers[i] + "';");
             ResultSet count = mysql.querySQL("SELECT COUNT(*) FROM `online_users`.`players` WHERE server LIKE '" + servers[i] + "';");
             int rows = 0;
             try {
                 if (rs.next()) {
                     rows = count.getInt("COUNT(*)");
-                    for (int x = 0; x < rows; x++) {
+                    for (int x = 1; x < rows; x++) {
                         players = players + " | " + servers[i] + ": " + rs.getString(x) + ", ";
                     }
                 }
