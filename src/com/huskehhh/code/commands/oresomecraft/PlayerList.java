@@ -22,31 +22,32 @@ public class PlayerList extends ListenerAdapter {
 
         if (line[0].equalsIgnoreCase("!players")) {
             if (line.length == 1) {
-                if (event.getChannel().equals("#oresomecraft")) {
+                if (event.getChannel().getName().equals("#oresomecraft")) {
                     event.respond(getAllPlayersOnline());
                 }
-            }
-            String players = "";
-            String server = line[1];
-            if (server.equalsIgnoreCase("smp") || server.equalsIgnoreCase("battle") || server.equalsIgnoreCase("arcade") || server.equalsIgnoreCase("tiot") || server.equalsIgnoreCase("hub")) {
-                String query = "SELECT * FROM `online_users`.`players` WHERE server LIKE '" + server + "';";
-                String count = "SELECT COUNT(*) FROM `online_users`.`players` WHERE server LIKE '" + server + "';";
-                ResultSet rs = mysql.querySQL(query);
-                ResultSet rsc = mysql.querySQL(count);
+            } else {
+                String players = "";
+                String server = line[1];
+                if (server.equalsIgnoreCase("smp") || server.equalsIgnoreCase("battle") || server.equalsIgnoreCase("arcade") || server.equalsIgnoreCase("tiot") || server.equalsIgnoreCase("hub")) {
+                    String query = "SELECT * FROM `online_users`.`players` WHERE server LIKE '" + server + "';";
+                    String count = "SELECT COUNT(*) FROM `online_users`.`players` WHERE server LIKE '" + server + "';";
+                    ResultSet rs = mysql.querySQL(query);
+                    ResultSet rsc = mysql.querySQL(count);
 
-                int rows = 0;
+                    int rows = 0;
 
-                try {
-                    if (rsc.next()) {
-                        rows = rsc.getInt("COUNT(*)");
-                        for (int i = 1; i < rows; i++) {
-                            players = players + rs.getString(i) + ", ";
+                    try {
+                        if (rsc.next()) {
+                            rows = rsc.getInt("COUNT(*)");
+                            for (int i = 1; i < rows; i++) {
+                                players = players + rs.getString(i) + ", ";
+                            }
                         }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
                     }
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                    event.respond(players);
                 }
-                event.respond(players);
             }
         }
     }
