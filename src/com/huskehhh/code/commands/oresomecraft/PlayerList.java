@@ -40,10 +40,11 @@ public class PlayerList extends ListenerAdapter {
                     try {
                         if (rsc.next()) {
                             rows = rsc.getInt("COUNT(*)");
-                            for (int i = 1; i < rows; i++) {
-                                rs.next();
-                                players += rs.getString(i) + ", ";
-                                event.respond("Debug: " + rs.getString(i));
+                            while (rs.next()) {
+                                for (int i = 1; i < rows; i++) {
+                                    players += rs.getString(i) + ", ";
+                                    event.respond("Debug: " + rs.getString(i));
+                                }
                             }
                         }
                     } catch (SQLException e) {
@@ -72,10 +73,12 @@ public class PlayerList extends ListenerAdapter {
             try {
                 if (count.next()) {
                     rows = count.getInt("COUNT(*)");
-                    for (int x = 1; x < rows; x++) {
-                        rs.next();
-                        players += " | " + servers[i] + ": " + rs.getString(x) + ", ";
-                        HuskyIRC.bot.getChannel("#oresomecraft").sendMessage("Debug: " + servers[i] + " : " + rs.getString(x));
+                    while (rs.next()) {
+                        for (int x = 1; x < rows; x++) {
+                            rs.next();
+                            players += " | " + servers[i] + ": " + rs.getString(x) + ", ";
+                            HuskyIRC.bot.getChannel("#oresomecraft").sendMessage("Debug: " + servers[i] + " : " + rs.getString(x));
+                        }
                     }
                 }
             } catch (SQLException e) {
