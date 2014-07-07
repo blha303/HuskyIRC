@@ -39,9 +39,9 @@ public class PlayerList extends ListenerAdapter {
 
                     try {
                         if (rsc.next()) {
-                            rs.next();
                             rows = rsc.getInt("COUNT(*)");
                             for (int i = 1; i < rows; i++) {
+                                rs.next();
                                 players += rs.getString(i) + ", ";
                                 event.respond("Debug: " + rs.getString(i));
                             }
@@ -71,9 +71,9 @@ public class PlayerList extends ListenerAdapter {
             int rows = 0;
             try {
                 if (count.next()) {
-                    rs.next();
                     rows = count.getInt("COUNT(*)");
                     for (int x = 1; x < rows; x++) {
+                        rs.next();
                         players += " | " + servers[i] + ": " + rs.getString(x) + ", ";
                         HuskyIRC.bot.getChannel("#oresomecraft").sendMessage("Debug: " + servers[i] + " : " + rs.getString(x));
                     }
