@@ -41,7 +41,7 @@ public class PlayerList extends ListenerAdapter {
                             rs.next();
                             rows = rsc.getInt("COUNT(*)");
                             for (int i = 1; i < rows; i++) {
-                                players = players + rs.getString(i) + ", ";
+                                players += rs.getString(i) + ", ";
                             }
                         }
                     } catch (SQLException e) {
@@ -72,7 +72,7 @@ public class PlayerList extends ListenerAdapter {
                     rs.next();
                     rows = count.getInt("COUNT(*)");
                     for (int x = 1; x < rows; x++) {
-                        players = players + " | " + servers[i] + ": " + rs.getString(x) + ", ";
+                        players += " | " + servers[i] + ": " + rs.getString(x) + ", ";
                     }
                 }
             } catch (SQLException e) {
