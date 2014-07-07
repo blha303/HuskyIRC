@@ -40,7 +40,7 @@ public class PlayerList extends ListenerAdapter {
                     if (rsc.next()) {
                         rows = rsc.getInt("COUNT(*)");
                         for (int i = 0; i < rows; i++) {
-                            players += rs.getString(i);
+                            players = players + rs.getString(i) + ", ";
                         }
                     }
                 } catch (SQLException e) {
@@ -58,7 +58,7 @@ public class PlayerList extends ListenerAdapter {
      */
     public String getAllPlayersOnline() {
         String players = "";
-        String[] servers = {"SMP", "Battles", "Arcade", "Hub", "Tiot"};
+        String[] servers = {"SMP", "Battle", "Arcade", "Hub", "TiOT"};
 
         for (int i = 0; i < servers.length; i++) {
             ResultSet rs = mysql.querySQL("SELECT * FROM `online_users`.`players` WHERE server LIKE '" + servers[i] + "';");
