@@ -28,7 +28,7 @@ public class PlayerList extends ListenerAdapter {
             } else {
                 String players = "";
                 String server = line[1];
-                if (server.equalsIgnoreCase("smp") || server.equalsIgnoreCase("battle") || server.equalsIgnoreCase("arcade") || server.equalsIgnoreCase("tiot") || server.equalsIgnoreCase("hub")) {
+                if (server.equalsIgnoreCase("smp") || server.equalsIgnoreCase("battle") || server.equalsIgnoreCase("arcade") || server.equalsIgnoreCase("tiot") || server.equalsIgnoreCase("hub") || server.equalsIgnoreCase("dev")) {
                     String query = "SELECT * FROM `online_users`.`players` WHERE server LIKE '" + server + "';";
                     String count = "SELECT COUNT(*) FROM `online_users`.`players` WHERE server LIKE '" + server + "';";
                     ResultSet rs = mysql.querySQL(query);
