@@ -40,16 +40,14 @@ public class PlayerList extends ListenerAdapter {
                     try {
                         if (rsc.next()) {
                             rows = rsc.getInt("COUNT(*)");
-                            while (rs.next()) {
-                                for (int i = 1; i < rows; i += 2) {
-                                    players += rs.getString(i) + ", ";
-                                    event.respond("Debug: " + rs.getString(i));
-                                }
+                            for (int i = 1; i < rows; i++) {
+                                System.out.println("i=" + i + " and rows=" + rows);
+                                rs.absolute(i);
+                                players += rs.getString("user") + ", ";
                             }
                         }
                     } catch (SQLException e) {
                         e.printStackTrace();
-                        System.out.println(e.getMessage());
                     }
                     event.respond(players);
                 }
@@ -66,24 +64,20 @@ public class PlayerList extends ListenerAdapter {
         String players = "";
         String[] servers = {"SMP", "Battle", "Arcade", "Hub", "TiOT"};
 
-        for (int i = 1; i < servers.length; i++) {
+        for (int i = 0; i < servers.length; i++) {
             ResultSet rs = mysql.querySQL("SELECT * FROM `online_users`.`players` WHERE server LIKE '" + servers[i] + "';");
             ResultSet count = mysql.querySQL("SELECT COUNT(*) FROM `online_users`.`players` WHERE server LIKE '" + servers[i] + "';");
             int rows = 0;
             try {
                 if (count.next()) {
                     rows = count.getInt("COUNT(*)");
-                    while (rs.next()) {
-                        for (int x = 1; x < rows; x += 2) {
-                            rs.next();
-                            players += " | " + servers[i] + ": " + rs.getString(x) + ", ";
-                            HuskyIRC.bot.getChannel("#oresomecraft").sendMessage("Debug: " + servers[i] + " : " + rs.getString(x));
-                        }
+                    for (int x = 1; x < rows; x++) {
+                        rs.absolute(x);
+                        players += " | " + servers[i] + ": " + rs.getString("user") + ", ";
                     }
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
-                System.out.println(e.getMessage());
             }
         }
         return players;
