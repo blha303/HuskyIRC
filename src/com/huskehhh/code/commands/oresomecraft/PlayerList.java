@@ -40,7 +40,7 @@ public class PlayerList extends ListenerAdapter {
                         if (rsc.next()) {
                             rs.next();
                             rows = rsc.getInt("COUNT(*)");
-                            for (int i = 0; i < rows; i++) {
+                            for (int i = 1; i < rows; i++) {
                                 players = players + rs.getString(i) + ", ";
                             }
                         }
@@ -71,7 +71,7 @@ public class PlayerList extends ListenerAdapter {
                 if (count.next()) {
                     rs.next();
                     rows = count.getInt("COUNT(*)");
-                    for (int x = 0; x < rows; x++) {
+                    for (int x = 1; x < rows; x++) {
                         players = players + " | " + servers[i] + ": " + rs.getString(x) + ", ";
                     }
                 }
