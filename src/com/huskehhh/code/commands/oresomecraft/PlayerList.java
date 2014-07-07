@@ -45,6 +45,7 @@ public class PlayerList extends ListenerAdapter {
                         }
                     } catch (SQLException e) {
                         e.printStackTrace();
+                        System.out.println(e.getMessage());
                     }
                     event.respond(players);
                 }
@@ -74,6 +75,7 @@ public class PlayerList extends ListenerAdapter {
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
+                System.out.println(e.getMessage());
             }
         }
         return players;
