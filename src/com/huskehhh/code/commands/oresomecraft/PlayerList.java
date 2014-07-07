@@ -23,12 +23,12 @@ public class PlayerList extends ListenerAdapter {
         if (line[0].equalsIgnoreCase("!players")) {
             if (line.length == 1) {
                 if (event.getChannel().equals("#oresomecraft")) {
-                    return getAllPlayersOnline();
+                    event.respond(getAllPlayersOnline());
                 }
             }
             String players = "";
             String server = line[1];
-            if (server.equalsIgnoreCase("smp") || server.equalsIgnoreCase("battle") || server.equalsIgnoreCase("arcade") || server.equalsIgnoreCase("tiot") || server.equalsIgnoreCase("hub") || server.equalsIgnoreCase("hub")) {
+            if (server.equalsIgnoreCase("smp") || server.equalsIgnoreCase("battle") || server.equalsIgnoreCase("arcade") || server.equalsIgnoreCase("tiot") || server.equalsIgnoreCase("hub")) {
                 String query = "SELECT * FROM `online_users`.`players` WHERE server LIKE '" + server + "';";
                 String count = "SELECT COUNT(*) FROM `online_users`.`players` WHERE server LIKE '" + server + "';";
                 ResultSet rs = mysql.querySQL(query);
@@ -39,9 +39,9 @@ public class PlayerList extends ListenerAdapter {
                 try {
                     if (rsc.next()) {
                         rows = rsc.getInt("COUNT(*)");
-                    }
-                    for (int i = 0; i < rows; i++) {
-                        players += rs.getString(i);
+                        for (int i = 0; i < rows; i++) {
+                            players += rs.getString(i);
+                        }
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -51,12 +51,30 @@ public class PlayerList extends ListenerAdapter {
         }
     }
 
+
+    /**
+     * 'players' format,
+     * SMP: player, player | Battles: player, player | Arcade: player, player | TiOT: player, player | Hub: player, player
+     */
     public String getAllPlayersOnline() {
         String players = "";
-        String[] servers = {"smp", "battles", "arcade"};
+        String[] servers = {"SMP", "Battles", "Arcade", "Hub", "Tiot"};
 
-        ResultSet smprs = mysql.querySQL(smp);
-        ResultSet smpcount = mysql.querySQL();
+        for (int i = 0; i < servers.length; i++) {
+            ResultSet rs = mysql.querySQL("SELECT * FROM `online_users`.`players` WHERE server LIKE '" + servers[i] + "';");
+            ResultSet count = mysql.querySQL("SELECT COUNT(*) FROM `online_users`.`players` WHERE server LIKE '" + servers[i] + "';");
+            int rows = 0;
+            try {
+                if (rs.next()) {
+                    rows = count.getInt("COUNT(*)");
+                    for (int x = 0; x < rows; x++) {
+                        players = players + " | " + servers[i] + ": " + rs.getString(x) + ", ";
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
         return players;
     }
 }
