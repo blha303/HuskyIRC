@@ -1,5 +1,6 @@
 package com.huskehhh.code.commands.oresomecraft;
 
+import com.huskehhh.code.HuskyIRC;
 import com.huskehhh.code.config.Config;
 import com.huskehhh.database.mysql.MySQL;
 import org.pircbotx.hooks.ListenerAdapter;
@@ -42,6 +43,7 @@ public class PlayerList extends ListenerAdapter {
                             rows = rsc.getInt("COUNT(*)");
                             for (int i = 1; i < rows; i++) {
                                 players += rs.getString(i) + ", ";
+                                event.respond("Debug: " + rs.getString(i));
                             }
                         }
                     } catch (SQLException e) {
@@ -73,6 +75,7 @@ public class PlayerList extends ListenerAdapter {
                     rows = count.getInt("COUNT(*)");
                     for (int x = 1; x < rows; x++) {
                         players += " | " + servers[i] + ": " + rs.getString(x) + ", ";
+                        HuskyIRC.bot.getChannel("#oresomecraft").sendMessage("Debug: " + servers[i] + " : " + rs.getString(x));
                     }
                 }
             } catch (SQLException e) {
