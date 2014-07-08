@@ -19,7 +19,11 @@ public class PlayerList extends ListenerAdapter {
         String[] line = event.getMessage().split(" ");
 
         if (line[0].equalsIgnoreCase("!players")) {
-            event.respond(parseResultSet(line[1]));
+            if (line[1] == null) {
+                parseResultSet("all");
+            } else {
+                parseResultSet(line[1]);
+            }
         }
     }
 
