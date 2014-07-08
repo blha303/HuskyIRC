@@ -20,9 +20,9 @@ public class PlayerList extends ListenerAdapter {
 
         if (line[0].equalsIgnoreCase("!players")) {
             if (line.length == 1) {
-                parseResultSet(line[0]);
+                event.respond(parseResultSet(line[0]));
             } else {
-                parseResultSet("all");
+                event.respond(parseResultSet("all"));
             }
         }
     }
