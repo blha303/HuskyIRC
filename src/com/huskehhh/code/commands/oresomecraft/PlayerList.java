@@ -21,11 +21,9 @@ public class PlayerList extends ListenerAdapter {
         if (line[0].equalsIgnoreCase("!players")) {
             System.out.println("DEBUG: LINE LENGTH = " + line.length);
             if (line.length == 1) {
-                parseResultSet("all");
-                System.out.println("DEBUG: parsing 'all'");
-            } else if (line.length == 2) {
-                parseResultSet(line[1]);
-                System.out.println("DEBUG: parsing '" + line[1] + "'");
+                event.respond(parseResultSet("all"));
+            } else {
+                event.respond(parseResultSet(line[1]));
             }
         }
     }
