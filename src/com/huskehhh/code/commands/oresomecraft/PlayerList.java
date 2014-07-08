@@ -71,9 +71,10 @@ public class PlayerList extends ListenerAdapter {
             try {
                 if (count.next()) {
                     rows = count.getInt("COUNT(*)");
+                    players += " | " + servers[i] + ": ";
                     for (int x = 1; x < rows; x++) {
                         rs.absolute(x);
-                        players += " | " + servers[i] + ": " + rs.getString("user") + ", ";
+                        players += rs.getString(x) + ", ";
                     }
                 }
             } catch (SQLException e) {
