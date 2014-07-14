@@ -19,7 +19,6 @@ public class PlayerList extends ListenerAdapter {
         String[] line = event.getMessage().split(" ");
 
         if (line[0].equalsIgnoreCase("!players")) {
-            System.out.println("DEBUG: LINE LENGTH = " + line.length);
             if (line.length == 1) {
                 event.respond(parseResultSet("all"));
             } else {
