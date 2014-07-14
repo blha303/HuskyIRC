@@ -7,8 +7,11 @@ import org.pircbotx.hooks.events.MessageEvent;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class PlayerList extends ListenerAdapter {
+
+    List<String> disallowedChannels = Config.disallowedChannels;
 
     MySQL mysql = new MySQL(Config.Ohostname,
             Config.Oport, Config.Odatabase,
@@ -19,10 +22,12 @@ public class PlayerList extends ListenerAdapter {
         String[] line = event.getMessage().split(" ");
 
         if (line[0].equalsIgnoreCase("!players")) {
-            if (line.length == 1) {
-                event.respond(parseResultSet("all"));
-            } else {
-                event.respond(parseResultSet(line[1]));
+            if (!disallowedChannels.contains(event.getChannel().getName().toLowerCase())) {
+                if (line.length == 1) {
+                    event.respond(parseResultSet("all"));
+                } else {
+                    event.respond(parseResultSet(line[1]));
+                }
             }
         }
     }

@@ -2,6 +2,8 @@ package com.huskehhh.code.config;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 public class Config {
@@ -30,6 +32,8 @@ public class Config {
     public static int mumbleport;
     public static String mumbleusername;
     public static String mumblepassword;
+
+    public static List<String> disallowedChannels;
 
 
     public static void loadConfiguration() throws IOException {
@@ -61,6 +65,13 @@ public class Config {
         mumbleport = Integer.parseInt(config.getProperty("mumble-port"));
         mumbleusername = config.getProperty("mumble-username");
         mumblepassword = config.getProperty("mumble-password");
+
+        disallowedChannels = new ArrayList<String>();
+        disallowedChannels.add("oresomecraft-battles");
+        disallowedChannels.add("oresomecraft-chat");
+        disallowedChannels.add("oresomecraft-arcade");
+        disallowedChannels.add("oresomecraft-tiot");
+        disallowedChannels.add("oresomecraft-dev");
 
     }
 
