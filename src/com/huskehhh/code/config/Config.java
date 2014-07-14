@@ -67,11 +67,11 @@ public class Config {
         mumblepassword = config.getProperty("mumble-password");
 
         disallowedChannels = new ArrayList<String>();
-        disallowedChannels.add("oresomecraft-battles");
-        disallowedChannels.add("oresomecraft-chat");
-        disallowedChannels.add("oresomecraft-arcade");
-        disallowedChannels.add("oresomecraft-tiot");
-        disallowedChannels.add("oresomecraft-dev");
+        disallowedChannels.add("#oresomecraft-battles");
+        disallowedChannels.add("#oresomecraft-chat");
+        disallowedChannels.add("#oresomecraft-arcade");
+        disallowedChannels.add("#oresomecraft-tiot");
+        disallowedChannels.add("#oresomecraft-dev");
 
     }
 
