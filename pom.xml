@@ -109,5 +109,20 @@
                 </executions>
             </plugin>
         </plugins>
+        
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-ftp</artifactId>
+                <version>1.0-beta-6</version>
+            </extension>
+        </extensions>
     </build>
+    
+    <distributionManagement>
+        <repository>
+            <id>blha303-ftp</id>
+            <url>ftp://repo.blha303.biz/</url>
+        </repository>
+    </distributionManagement>
 </project>
