@@ -122,7 +122,7 @@
     <distributionManagement>
         <repository>
             <id>blha303-ftp</id>
-            <url>ftp://repo.blha303.biz/</url>
+            <url>ftp://repo.drtshock.net/</url>
         </repository>
     </distributionManagement>
 </project>
