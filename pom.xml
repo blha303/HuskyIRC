@@ -121,7 +121,7 @@
     
     <distributionManagement>
         <repository>
-            <id>blha303-ftp</id>
+            <id>drtshock-repo</id>
             <url>ftp://repo.drtshock.net/</url>
         </repository>
     </distributionManagement>
